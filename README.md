@@ -1,8 +1,8 @@
-# FresherNote
+# Drakebook
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://thedrakebook.herokuapp.com/
 
 ## Minimum Viable Product
 
@@ -16,19 +16,32 @@ FresherNote is a web application inspired by Evernote that will be build using R
 - [ ] CSS styling that is satisfactorily visually appealing
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md) -- you'll write this later)
 
+Drakebook is a web application inspired by Facebook that will be built using Ruby on Rails and React.js. This app, at minumum, should satisfy the following criteria:
+
+- [ ] New account creation, login, and a guest login.
+- [ ] Seed data to demonstrate the site's features.
+- [ ] Editable profile info, the ability to befriend other users and post on their walls, the ability to upload photos and tag them, display notifications, and the ability to comment on and like posts and photos.
+- [ ] Hosting on Heroku.
+- [ ] CSS styling that mirrors Facebook.
+
 ## Product Goals and Priorities
 
-FresherNote will allow users to do the following:
+Drakebook will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account (MVP)
-- [ ] Log in / Log out, including as a Guest/Demo User (MVP)
-- [ ] Create, read, edit, and delete notes (MVP)
-- [ ] Organize notes within Notebooks (MVP)
-- [ ] Tag notes with multiple tags (expected feature, but not MVP)
-- [ ] Apply complex styling to notes while editing (expected feature, but not MVP)
+- [ ] Create an account. (MVP)
+- [ ] Log in / Log out, including as a Guest. (MVP)
+- [ ] Edit profile info at will. (MVP)
+- [ ] Upload profile and cover photos. (MVP)
+- [ ] Befriend other users. (MVP)
+- [ ] Create, edit, and delete posts on their own wall or their friends' walls. (MVP)
+- [ ] Like posts. (MVP)
+- [ ] Include photos in their posts. (MVP)
+- [ ] Curate their walls by allowing them to delete unwanted posts. (MVP)
+- [ ] Tag posts and photos with people and places. (expected feature, but not MVP)
+- [ ] Instant message friends (expected feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]
