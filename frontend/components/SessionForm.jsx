@@ -1,4 +1,5 @@
 var React = require('react');
+    SessionActions = require('../actions/SessionActions');
 
 var SessionForm = module.exports = React.createClass({
   getInitialState: function () {
@@ -10,7 +11,20 @@ var SessionForm = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
-    
+
+  },
+
+  submit: function () {
+    if (this.props.type === "login" || (this.state.password === this.state.confirm))
+    {
+      SessionActions.login({
+        user: {
+          username: this.state.username,
+          password: this.state.password
+        }
+      });
+    }
+
   },
 
   buttonElement: function () {

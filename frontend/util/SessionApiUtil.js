@@ -7,12 +7,18 @@ var SessionApiUtil = module.exports = {
     var request = Ajax({
       type: "POST",
       url: "api/session",
-      data: userData,
+      data: {
+        user: {
+          username: "testthing",
+          password: "password"
+        }
+      },
       success: function () {
         console.log(this);
       }
     });
-    request();
+    // debugger
+    // request();
   },
 
   signup: function (userData) {

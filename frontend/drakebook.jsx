@@ -4,13 +4,15 @@ var React = require('react'),
     Router = ReactRouter.Router,
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute,
-    HashHistory = ReactRouter.HashHistory;
+    HashHistory = ReactRouter.HashHistory,
+    SessionForm = require('./components/SessionForm');
 
 var App = React.createClass({
   render: function () {
     return(
       <div>
         <h1>Drakebook</h1>
+        < SessionForm type="login" />
         {this.props.children}
       </div>
     );
@@ -18,9 +20,8 @@ var App = React.createClass({
 });
 
 var Router = (
-  < Router >
+  < Router hashHistory={HashHistory} >
     < Route path="/" component={App} >
-      < IndexRoute component={App} />
     </ Route >
   </ Router >
 );
