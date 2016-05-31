@@ -15,7 +15,7 @@
 #
 
 class User < ActiveRecord::Base
-  validates (
+  validates(
     :username,
     :password_digest,
     :session_token,
