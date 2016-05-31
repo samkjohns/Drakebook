@@ -48,7 +48,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Frontend User Authentication (with API) (0.5 days)
+### Phase 1: Backend setup and Frontend User Authentication (with API) (1 day)
 
 **Objective:** Functioning rails project with Authentication
 
@@ -58,7 +58,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] user signup/signin (both on the same page)
 - [ ] blank landing page after signin
 
-### Phase 2: Drakeships Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Profile View and Drakeships Model (1.5 days)
 
 **Objective:** Notes can be created, read, edited and destroyed through
 the API.
