@@ -6,31 +6,26 @@
 
 - `GET /` - loads React web app. Shows either the signin page or the Home page with a Feed.
 
-### Users
-
-- `GET /users/new`
-- `POST /users`
-- `PATCH /users`
-
-### Session
-
-- `GET /session/new`
-- `POST /session`
-- `DELETE /session`
-
 ## JSON API
 
 ### Users
 - `GET /api/users/:id`
   - Profile info and Timeline
+- `POST api/users`
 - `PATCH /api/users/:id`
   - Edits profile info, including the ability to upload profile and cover photos.
 
-### Friendships
-- `GET /api/users/:id/friendships`
-- `POST /api/friendships`
+### Session
+
+- `GET api/session`
+- `POST api/session`
+- `DELETE api/session`
+
+### Drakeships
+- `GET /api/users/:id/drakeships`
+- `POST /api/drakeships`
   - Makes a friend request. Accepts query string to specify requester and recipient.
-- `PATCH /api/friendships/:id`
+- `PATCH /api/drakeships/:id`
   - Accepts or rejects a request.
 
 ### Posts

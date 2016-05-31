@@ -1,17 +1,25 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Flux Architecture and Profile and Drakeships CRUD (2 days)
 
 ## Rails
 ### Models
+* Profile
+* Drakeships
 
 ### Controllers
+* Api::UsersController (show)
+* Api::UsersDrakeshipsController (index, create, destroy, update)
 
 ### Views
+* users/show.json.jbuilder
+* users/drakeships
+* drakeships/show.json.jbuilder
+
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* Profile
+  * ProfileDetail
+    * FriendsIndex
 
 ### Stores
 * Note
@@ -21,9 +29,9 @@
 * ApiActions.receiveSingleNote
 * ApiActions.deleteNote
 * NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
+* NoteActions.fetchSingleNote
 * NoteActions.createNote
-* NoteActions.editNote 
+* NoteActions.editNote
 * NoteActions.destroyNote
 
 ### ApiUtil

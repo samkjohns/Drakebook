@@ -1,12 +1,13 @@
 ## Component Hierarchy
 
 * `App`
+  * `SessionForm`
   * `NavBar`
     * `Search`
     * `NotificationsIndex`
       * `NotificationsIndexItem`
-    * `FriendRequestsIndex`
-      * `FriendRequestsIndexItem`
+    * `DrakeshipRequestsIndex`
+      * `DrakeshipRequestsIndexItem`
     * `ConversationsIndex`
       * `ConversationsIndexItem`
         * `ConversationDetail`
@@ -15,8 +16,8 @@
   * `PostForm`
   * `Profile`
     * `ProfileDetail`
-      * `FriendsIndex`
-        * `FriendsIndexItem`
+      * `DrakeshipsIndex`
+        * `DrakeshipsIndexItem`
   * `PostsIndex`
     * `PostsIndexItem`
       * `Photo`
@@ -24,6 +25,6 @@
         * `CommentIndexItem`
   * `PagesIndex`
     * `PagesIndexItem`
-  * `OnlineFriendsIndex`
-    * `OnlineFriendsIndexItem`
+  * `OnlineDrakesIndex`
+    * `OnlineDrakesIndexItem`
     * `Chat`

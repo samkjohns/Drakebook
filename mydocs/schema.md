@@ -12,12 +12,12 @@ cover_photo_path  | string    | not null
 birth_date        | date      |
 workplace         | string    |
 
-## friendships
+## drakeships
 column name       | data type | details
 ------------------|-----------|-----------------------
 id                | integer   | not null, primary key
-friend1_id        | integer   | not null, foreign key (references users), indexed
-friend2_id        | integer   | not null, foreign key (references users), indexed
+requester_id      | integer   | not null, foreign key (references users), indexed
+recipient_id      | integer   | not null, foreign key (references users), indexed
 relationship_type | string    | not null
 request_status    | string    | not null ("accepted", "rejected", or "pending")
 
@@ -68,6 +68,6 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 author_id       | integer   | not null, foreign key (references users), indexed
-conversation_id | integer   | not null, foreign key (references users), indexed
+conversation_id | integer   | not null, foreign key (references conversations), indexed
 body            | text      | not null
 photo_path      | string    |
