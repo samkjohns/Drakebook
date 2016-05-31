@@ -40,11 +40,11 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 * [API endpoints][api-endpoints]
 * [DB schema][schema]
 
-[views]: ./docs/views.md
-[components]: ./docs/components.md
-[flux-cycles]: ./docs/flux-cycles.md
-[api-endpoints]: ./docs/api-endpoints.md
-[schema]: ./docs/schema.md
+[views]: ./mydocs/views.md
+[components]: ./mydocs/components.md
+[flux-cycles]: ./mydocs/flux-cycles.md
+[api-endpoints]: ./mydocs/api-endpoints.md
+[schema]: ./mydocs/schema.md
 
 ## Implementation Timeline
 
@@ -143,8 +143,8 @@ which has its own `Index` view.
 - [ ] Changelogs for Notes
 - [ ] Multiple sessions
 
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+[phase-one]: ./mydocs/phases/phase1.md
+[phase-two]: ./mydocs/phases/phase2.md
+[phase-three]: ./mydocs/phases/phase3.md
+[phase-four]: ./mydocs/phases/phase4.md
+[phase-five]: ./mydocs/phases/phase5.md

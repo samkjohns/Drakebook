@@ -1,0 +1,29 @@
+## Component Hierarchy
+
+* `App`
+  * `NavBar`
+    * `Search`
+    * `NotificationsIndex`
+      * `NotificationsIndexItem`
+    * `FriendRequestsIndex`
+      * `FriendRequestsIndexItem`
+    * `ConversationsIndex`
+      * `ConversationsIndexItem`
+        * `ConversationDetail`
+        * `MessagesIndex`
+          * `MessageIndexItem`
+  * `PostForm`
+  * `Profile`
+    * `ProfileDetail`
+      * `FriendsIndex`
+        * `FriendsIndexItem`
+  * `PostsIndex`
+    * `PostsIndexItem`
+      * `Photo`
+      * `CommentsIndex`
+        * `CommentIndexItem`
+  * `PagesIndex`
+    * `PagesIndexItem`
+  * `OnlineFriendsIndex`
+    * `OnlineFriendsIndexItem`
+    * `Chat`
