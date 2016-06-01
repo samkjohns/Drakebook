@@ -30,7 +30,22 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
   after_initialize :ensure_photos
-  # before_validation :generate_password_digest
+
+  has_many(
+    :requested_drakeships,
+    class_name: "Drakeship",
+    foreign_key: :requester_id
+  )
+
+  has_many :requested_drakes, through: :requested_drakeships, source: :recipient
+
+  has_many(
+    :received_drakeships,
+    class_name: "Drakeship",
+    foreign_key: :recipient_id
+  )
+
+  has_many :received_drakes, through: :received_drakeships, source: :requester
 
   # Auth methods
   def self.generate_session_token
@@ -53,7 +68,7 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(password)
-    BCrypt::Password.new(password) == password
+    BCrypt::Password.new(password_digest) == password
   end
 
   def reset_session_token
@@ -63,5 +78,24 @@ class User < ActiveRecord::Base
   def ensure_photos
     self.profile_photo_path ||= "drake.png"
     self.cover_photo_path ||= "drake.png"
+  end
+
+  # Other
+  def drakeships
+    requested_drakes_sql = self.requested_drakes.to_sql
+    received_drakes_sql = self.received_drakes.to_sql
+
+    superquery = <<-SQL
+      SELECT
+        requested.* AND received.*
+      FROM (
+        :requested_drakes_subquery
+      ) AS requested
+      JOIN (
+        :received_drakes_subquery
+      ) received
+    SQL
+
+    self.class.find_by_sql
   end
 end

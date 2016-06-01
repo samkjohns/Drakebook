@@ -22,7 +22,7 @@ var SessionForm = module.exports = React.createClass({
   },
 
   submit: function () {
-    if (this.props.type === "login")
+    if (this.props.formType === "login")
     { SessionActions.login(this._info()); }
     else if (this.state.password === this.state.confirm) {
       SessionActions.signup(this._info());
@@ -36,9 +36,13 @@ var SessionForm = module.exports = React.createClass({
   },
 
   buttonElement: function () {
+    var _helper = function() {
+      return this.props.formType === "login" ? "Log In" : "Sign Up";
+    }.bind(this);
+
     return(
       <button onClick={this.submit}>
-        {this.props.formType}
+        {_helper()}
       </button>
     );
   },
@@ -48,24 +52,45 @@ var SessionForm = module.exports = React.createClass({
     if (this.props.formType === "login") {
       form = (
         <form>
-          <input id="username" type="text" onChange={this.handleChange} />
-          <input id="password" type="password" onChange={this.handleChange} />
-          {this.buttonElement()}
+          <table>
+            <tbody>
+              <tr>
+                <td><label htmlFor="username">Username</label></td>
+                <td><label htmlFor="password">Password</label></td>
+              </tr>
+              <tr>
+                <td><input id="username" type="text" onChange={this.handleChange} /></td>
+                <td><input id="password" type="password" onChange={this.handleChange} /></td>
+                <td>{this.buttonElement()}</td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       );
     } else {
       form = (
         <form>
-          <input id="username" type="text" onChange={this.handleChange} />
-          <input id="password" type="password" onChange={this.handleChange} />
-          <input id="confirm" type="password" onChange={this.handleChange} />
-          {this.buttonElement()}
+          <table>
+            <tbody>
+              <tr>
+                <td><label htmlFor="username">Username</label></td>
+                <td><label htmlFor="password">Password</label></td>
+                <td><label htmlFor="confirm">Confirm Password</label></td>
+              </tr>
+              <tr>
+                <td><input id="username" type="text" onChange={this.handleChange} /></td>
+                <td><input id="password" type="password" onChange={this.handleChange} /></td>
+                <td><input id="confirm" type="password" onChange={this.handleChange} /></td>
+                <td>{this.buttonElement()}</td>
+              </tr>
+            </tbody>
+          </table>
         </form>
       );
     }
 
     return(
-      <div className={this.props.formType + "-pane"}>
+      <div className={this.props.formType + "-pane group"}>
         {form}
       </div>
     );

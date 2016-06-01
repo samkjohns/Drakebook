@@ -5,14 +5,25 @@ var React = require('react'),
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute,
     HashHistory = ReactRouter.HashHistory,
-    SessionForm = require('./components/SessionForm');
+    SessionView = require('./components/SessionView'),
+    SessionStore = require('./stores/SessionStore');
 
 var App = React.createClass({
+  getInitialState: function () {
+    return {message: "logged out"};
+  },
+
+  componentDidMount: function () {
+    SessionStore.addListener(function () {
+      var message = SessionStore.isUserLoggedIn() ?
+      "logged in" : "logged out";
+      this.setState({message: message});
+    }.bind(this));
+  },
+
   render: function () {
     return(
       <div>
-        <h1>Drakebook</h1>
-        < SessionForm type="login" />
         {this.props.children}
       </div>
     );
@@ -20,20 +31,34 @@ var App = React.createClass({
 });
 
 var Router = (
-  < Router hashHistory={HashHistory} >
-    < Route path="/" component={App} >
-    </ Route >
-  </ Router >
+  <Router history={HashHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={SessionView}/>
+      <Route path="/signin" component={SessionView} />
+    </Route>
+  </Router>
 );
+// <Route path="/users/:userId" component={Profile} onEnter={_ensureLoggedIn} />
+
+
+function _ensureLoggedIn(nextState, replace, asyncDoneCallback) {
+  if (SessionStore.currentUserHasBeenFetched()) {
+    redirectIfNotLoggedIn();
+  } else {
+    SessionApiUtil.fetchCurrentUser(redirectIfNotLoggedIn);
+  }
+
+  function redirectIfNotLoggedIn() {
+    if (!SessionStore.isUserLoggedIn()) { replace('/login'); }
+    asyncDoneCallback();
+  }
+}
 
 document.addEventListener(
   "DOMContentLoaded",
   function () {
     ReactDOM.render(
-      <div>
-        < SessionForm formType="login" />
-        < SessionForm formType="signup" />
-      </div>,
+      Router,
       document.getElementById('drakebook')
     );
   }

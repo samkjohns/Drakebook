@@ -58,7 +58,6 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] setup `ApiUtil` to interact with the API
 - [ ] test out API interaction in the console.
 - [ ] user signup/signin (both on the same page)
-- [ ] blank landing page after signin
 
 ### Phase 2: Profile View and Drakeships Model (1 day)
 

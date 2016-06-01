@@ -18,7 +18,7 @@ column name       | data type | details
 id                | integer   | not null, primary key
 requester_id      | integer   | not null, foreign key (references users), indexed
 recipient_id      | integer   | not null, foreign key (references users), indexed
-relationship_type | string    | not null
+relationship_type | string    | 
 request_status    | string    | not null ("accepted", "rejected", or "pending")
 
 ## posts

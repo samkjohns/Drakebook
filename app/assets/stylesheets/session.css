@@ -1,0 +1,127 @@
+.session-view {
+  position: relative;
+  background: #edf0f5;
+  width: 100%;
+  height: 100%;
+}
+
+.session-header {
+  position: relative;
+  display: block;
+  background: #3b5998;
+  height: 82px;
+  width: 100%;
+}
+
+.session-nav {
+  width: 950px;
+  margin: auto;
+  color: white;
+}
+
+.session-nav h1 {
+  display: block;
+  width: 300px;
+  vertical-align: middle;
+  font-family: Verdana;
+  font-size: 32px;
+  font-weight: bold;
+  float: left;
+
+  position: relative;
+  top: 21px;
+}
+
+.login-pane {
+  display: block;
+  position: relative;
+  float: right;
+  top: 15px;
+  font-size: 12px;
+}
+
+.login-pane div, button {
+  position: absolute;
+  float: left;
+  margin: 10px;
+}
+
+td {
+  width: 50px;
+  text-align: left;
+}
+
+input {
+  width: 100px;
+}
+
+.login-pane button {
+  background: #5973a8;
+  border: .5px solid gray;
+  border-style: outset;
+  padding: 2px 5px;
+  margin-left: 5px;
+  margin-top: -10px;
+  font-weight: bold;
+}
+
+.session-body {
+  display: block;
+  margin: auto;
+  width: 950px;
+}
+
+.propaganda {
+  margin-top: 60px;
+  float: left;
+  width: 550px;
+}
+
+.propaganda div {
+  display: block;
+  margin-top: 10px;
+}
+
+.propaganda img, strong, p {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 20px;
+  margin-left: 0px;
+}
+
+.propaganda strong {
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.propaganda p {
+  font-size: 14px;
+}
+
+.signup-wrapper {
+  margin-top: 30px;
+  float: right;
+}
+
+.propaganda h2 {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  font-family: Verdana;
+  overflow: wrap;
+}
+
+.search-fix div {
+  position: absolute;
+  left: -9px;
+}
+
+.search-fix strong {
+  margin-left: -5px;
+}
+
+.signup-wrapper h2 {
+  color: black;
+  font-size: 36px;
+  font-family: Verdana;
+}

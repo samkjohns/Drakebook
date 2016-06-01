@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531160437) do
+ActiveRecord::Schema.define(version: 20160601154232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drakeships", force: :cascade do |t|
+    t.integer  "requester_id",                          null: false
+    t.integer  "recipient_id",                          null: false
+    t.string   "relationship_type"
+    t.string   "request_status",    default: "pending", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "drakeships", ["recipient_id"], name: "index_drakeships_on_recipient_id", using: :btree
+  add_index "drakeships", ["requester_id"], name: "index_drakeships_on_requester_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",           null: false
