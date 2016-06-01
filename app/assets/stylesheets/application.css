@@ -10,12 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 
 html, body, header, div, ul, li, p,
-strong, img, h1, h2, h3, h4, button {
+strong, img, h1, h2, h3, h4, button, input {
   font: inherit;
   font-family: sans-serif;
   text-decoration: none;
@@ -27,6 +27,10 @@ strong, img, h1, h2, h3, h4, button {
 
   color: inherit;
   background: transparent;
+}
+
+button {
+  cursor: pointer;
 }
 
 .group:after {

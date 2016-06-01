@@ -70,21 +70,10 @@ var SessionForm = module.exports = React.createClass({
     } else {
       form = (
         <form>
-          <table>
-            <tbody>
-              <tr>
-                <td><label htmlFor="username">Username</label></td>
-                <td><label htmlFor="password">Password</label></td>
-                <td><label htmlFor="confirm">Confirm Password</label></td>
-              </tr>
-              <tr>
-                <td><input id="username" type="text" onChange={this.handleChange} /></td>
-                <td><input id="password" type="password" onChange={this.handleChange} /></td>
-                <td><input id="confirm" type="password" onChange={this.handleChange} /></td>
-                <td>{this.buttonElement()}</td>
-              </tr>
-            </tbody>
-          </table>
+          <input id="username" type="text" onChange={this.handleChange} placeholder="Username" />
+          <input id="password" type="password" onChange={this.handleChange} placeholder="Password" />
+          <input id="confirm" type="password" onChange={this.handleChange} placeholder="Confirm Password" />
+          {this.buttonElement()}
         </form>
       );
     }

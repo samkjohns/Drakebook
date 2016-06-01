@@ -81,21 +81,64 @@ class User < ActiveRecord::Base
   end
 
   # Other
+  # currently returns an array, not an association :(
   def drakeships
-    requested_drakes_sql = self.requested_drakes.to_sql
-    received_drakes_sql = self.received_drakes.to_sql
-
-    superquery = <<-SQL
-      SELECT
-        requested.* AND received.*
-      FROM (
-        :requested_drakes_subquery
-      ) AS requested
-      JOIN (
-        :received_drakes_subquery
-      ) received
+    subquery = <<-SQL
+      (SELECT (
+         CASE WHEN drakeships.requester_id = #{self.id}
+         THEN drakeships.recipient_id
+         ELSE drakeships.requester_id
+         END
+       ) AS id
+      FROM
+        drakeships
+      WHERE
+        (drakeships.requester_id = #{self.id} OR drakeships.recipient_id = #{self.id})
+        AND (drakeships.request_status = 'accepted')
+      )
     SQL
 
-    self.class.find_by_sql
+    # subquery = <<-SQL
+    #   (SELECT (
+    #      CASE WHEN requested.id = #{self.id}
+    #      THEN received.id
+    #      ELSE requested.id
+    #      END
+    #    ) AS id
+    #   FROM
+    #     users AS requested
+    #   JOIN
+    #     drakeships ON drakeships.requester_id = requested.id
+    #   JOIN
+    #     users AS received ON drakeships.recipient_id = received.id
+    #   WHERE
+    #     requested.id = #{self.id} OR received.id = #{self.id}
+    #   )
+    # SQL
+
+    query = <<-SQL
+      SELECT
+        users.*
+      FROM
+        users
+      JOIN
+        #{subquery} AS drakes ON users.id = drakes.id
+    SQL
+
+    User.find_by_sql(query)
   end
 end
+
+# SELECT (
+#   CASE WHEN requested.id = 1
+#   THEN received.*
+#   ELSE requested.*
+#   END
+# ) FROM
+#   users AS requested
+# JOIN
+#   drakeships ON drakeships.requester_id = requested.id
+# JOIN
+#   users AS received ON drakeships.recipient_id = received.id
+#   WHERE
+#     requested.id = 1 OR received.id = 1

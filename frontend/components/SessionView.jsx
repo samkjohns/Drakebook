@@ -33,6 +33,7 @@ var SessionView = module.exports = React.createClass({
           </div>
           <div className="signup-wrapper">
             <h2>Sign Up</h2>
+            <p>It's free and always will be.</p>
             < SessionForm formType="signup" />
           </div>
         </div>

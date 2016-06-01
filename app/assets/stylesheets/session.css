@@ -1,5 +1,5 @@
 .session-view {
-  position: relative;
+  position: absolute;
   background: #edf0f5;
   width: 100%;
   height: 100%;
@@ -52,17 +52,23 @@ td {
 }
 
 input {
-  width: 100px;
+  background: white;
 }
 
 .login-pane button {
   background: #5973a8;
   border: .5px solid gray;
   border-style: outset;
-  padding: 2px 5px;
+  padding: 3px 5px;
   margin-left: 5px;
   margin-top: -10px;
   font-weight: bold;
+  width: 50px;
+}
+
+.login-pane input {
+  padding: 3px 5px;
+  border: 1px solid black;
 }
 
 .session-body {
@@ -98,11 +104,6 @@ input {
   font-size: 14px;
 }
 
-.signup-wrapper {
-  margin-top: 30px;
-  float: right;
-}
-
 .propaganda h2 {
   color: black;
   font-weight: bold;
@@ -120,8 +121,50 @@ input {
   margin-left: -5px;
 }
 
+.signup-wrapper {
+  margin-top: 15px;
+  float: right;
+  width: 400px;
+}
+
 .signup-wrapper h2 {
   color: black;
   font-size: 36px;
   font-family: Verdana;
+}
+
+.signup-wrapper p {
+  color: black;
+  font-size: 18px;
+  font-family: Verdana;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.signup-pane input {
+  display: block;
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  vertical-align: center;
+  margin: 10px 0;
+  border: 1px solid #BFC7D6;
+}
+
+.signup-pane button {
+  border: 1px solid #3b6e22;
+  border-radius: 5px;
+  border-style: outset;
+  background-color: #69a74e;
+  background: linear-gradient(#67ae55, #578843);
+  padding: 10px;
+  width: 200px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  letter-spacing: 1px;
+}
+
+.signup-pane button:hover {
+  background: linear-gradient(#7fab6f, #578843);
 }
