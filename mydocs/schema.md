@@ -22,12 +22,13 @@ relationship_type | string    | not null
 request_status    | string    | not null ("accepted", "rejected", or "pending")
 
 ## posts
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-postable_id | integer   | not null, foreign key (polymorphic reference), indexed
-body        | text      | not null
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+author_id     | integer   | not null, foreign key (references users), indexed
+postable_id   | integer   | not null, foreign key (polymorphic reference), indexed
+postable_type | string    | not null, polymorphic type
+body          | text      | not null
 
 ## photos
 column name | data type | details

@@ -48,42 +48,47 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Frontend User Authentication (with API) (1 day)
+### Phase 1: Backend Setup and Frontend User Authentication (with API) (1 day)
 
 **Objective:** Functioning rails project with Authentication
 
 - [ ] create new project
 - [ ] create `User` model
-- [ ] authentication
+- [ ] Flux auth architecture (including a SessionForm component and SessionStore)
+- [ ] setup `ApiUtil` to interact with the API
+- [ ] test out API interaction in the console.
 - [ ] user signup/signin (both on the same page)
 - [ ] blank landing page after signin
 
-### Phase 2: Profile View and Drakeships Model (1.5 days)
+### Phase 2: Profile View and Drakeships Model (1 day)
 
-**Objective:** Notes can be created, read, edited and destroyed through
-the API.
+**Objective:** "Drakeship" requests can be made and responded to. Profiles
+have a link to a display page for the user's drakeships.
 
-- [ ] create `Note` model
+- [ ] create Profile jBuilder view, component, and route
+- [ ] create Drakeship model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
-- [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [ ] CRUD API for Drakeships (`DrakeshipsController`)
+- [ ] jBuilder views for Drakeships
+- implement the following components (with flux loops):
+  - [ ] ProfileDetail
+  - [ ] DrakeshipsIndex
+  - [ ] DrakeshipsIndexItem
 
-### Phase 3: Flux Architecture and Router (1.5 days)
+### Phase 3: User Interface and Router (1 day)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
-user interface.
+**Objective:** "Drakeship" requests can be made by users through an interface.
+(Namely, buttons on profiles and in notifications)
 
-- [ ] setup the flux loop with skeleton files
 - [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
+- Components and loops
+  - [ ] `DrakeshipRequestsIndex`
+  - [ ] `DrakeshipRequestsIndexItem`
   - [ ] `NoteIndexItem`
   - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle
-  after editing.
+- [ ] ProfileDetail should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
+- [ ] Navbar should include a drakeship requests notification dropdown menu, from which requests can be accepted or rejected. (PATCH)
+- [ ] Style profile page and subpages
 
 ### Phase 4: Start Styling (0.5 days)
 
@@ -93,11 +98,11 @@ user interface.
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
-### Phase 5: Notebooks (1 day)
+### Phase 5: Posts (1 day)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Users can author posts, either on a user profile or as a reply to another post.
 
-- [ ] create `Notebook` model
+- [ ] create `Post` model
 - build out API, Flux loop, and components for:
   - [ ] Notebook CRUD
   - [ ] adding notes requires a notebook
