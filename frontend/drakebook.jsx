@@ -29,6 +29,12 @@ var Router = (
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-    ReactDOM.render(Router, document.getElementById('drakebook'));
+    ReactDOM.render(
+      <div>
+        < SessionForm formType="login" />
+        < SessionForm formType="signup" />
+      </div>,
+      document.getElementById('drakebook')
+    );
   }
 );

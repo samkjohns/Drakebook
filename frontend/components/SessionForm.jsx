@@ -14,17 +14,25 @@ var SessionForm = module.exports = React.createClass({
 
   },
 
-  submit: function () {
-    if (this.props.type === "login" || (this.state.password === this.state.confirm))
-    {
-      SessionActions.login({
-        user: {
-          username: this.state.username,
-          password: this.state.password
-        }
-      });
-    }
+  _info: function () {
+    return {
+      username: this.state.username,
+      password: this.state.password
+    };
+  },
 
+  submit: function () {
+    if (this.props.type === "login")
+    { SessionActions.login(this._info()); }
+    else if (this.state.password === this.state.confirm) {
+      SessionActions.signup(this._info());
+    }
+  },
+
+  handleChange: function (event) {
+    newState = {};
+    newState[event.currentTarget.id] = event.currentTarget.value;
+    this.setState(newState);
   },
 
   buttonElement: function () {
@@ -36,23 +44,21 @@ var SessionForm = module.exports = React.createClass({
   },
 
   render: function () {
-    // var submitText = this
-
     var form;
     if (this.props.formType === "login") {
       form = (
         <form>
-          <input type="text" value={this.state.username} />
-          <input type="password" value={this.state.password} />
+          <input id="username" type="text" onChange={this.handleChange} />
+          <input id="password" type="password" onChange={this.handleChange} />
           {this.buttonElement()}
         </form>
       );
     } else {
       form = (
         <form>
-          <input type="text" value={this.state.username} />
-          <input type="password" value={this.state.password} />
-          <input type="password" value={this.state.confirm} />
+          <input id="username" type="text" onChange={this.handleChange} />
+          <input id="password" type="password" onChange={this.handleChange} />
+          <input id="confirm" type="password" onChange={this.handleChange} />
           {this.buttonElement()}
         </form>
       );

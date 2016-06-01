@@ -4,24 +4,28 @@ var SessionConstants = require('../constants/SessionConstants'),
 var SessionApiUtil = module.exports = {
 
   login: function (userData) {
-    var request = Ajax({
+    console.log("in login");
+    $.ajax({
       type: "POST",
       url: "api/session",
-      data: {
-        user: {
-          username: "testthing",
-          password: "password"
-        }
-      },
+      dataType: "JSON",
+      data: userData,
       success: function () {
         console.log(this);
       }
     });
-    // debugger
-    // request();
   },
 
   signup: function (userData) {
-
+    console.log("in signup");
+    $.ajax({
+      type: "POST",
+      url: "api/users",
+      dataType: "JSON",
+      data: userData,
+      success: function () {
+        console.log(this);
+      }
+    });
   }
 };

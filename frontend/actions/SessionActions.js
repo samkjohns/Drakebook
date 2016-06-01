@@ -4,10 +4,12 @@ var SessionConstants = require('../constants/SessionConstants'),
 var SessionActions = module.exports = {
 
   login: function (userData) {
-    SessionApiUtil.login(userData);
+    console.log("logging in");
+    SessionApiUtil.login({user: userData});
   },
 
   signup: function (userData) {
-    SessionApiUtil.signup(userData);
+    console.log("signing up");
+    SessionApiUtil.signup({user: userData});
   }
 };
