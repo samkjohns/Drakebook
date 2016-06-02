@@ -1,5 +1,6 @@
 var React = require('react');
-    SessionActions = require('../actions/SessionActions');
+    SessionActions = require('../actions/SessionActions'),
+    SessionStore = require('../stores/SessionStore');
 
 var SessionForm = module.exports = React.createClass({
   getInitialState: function () {
@@ -10,9 +11,9 @@ var SessionForm = module.exports = React.createClass({
     };
   },
 
-  componentDidMount: function () {
-
-  },
+  // componentDidMount: function () {
+  //   SessionStore.addListener(this.redirectOnSubmit)
+  // },
 
   _info: function () {
     return {

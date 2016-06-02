@@ -1,0 +1,37 @@
+.search-header {
+  position: relative;
+  display: block;
+  background: #3b5998;
+  height: 45px;
+  width: 100%;
+}
+
+.search-nav {
+  width: 950px;
+}
+
+.search-nav input {
+  display: block;
+  float: left;
+  border: 1px solid gray;
+  border-radius: 3px;
+  background: white;
+  padding: 3px;
+  width: 200px;
+
+  margin: 10px 60px;
+
+  font-size: 14px;
+  vertical-align: center;
+}
+
+.search-nav ul {
+  float: right;
+}
+
+.search-nav li {
+  display: block;
+  float: left;
+  margin-top: 14px;
+  margin-right: 5px;
+}

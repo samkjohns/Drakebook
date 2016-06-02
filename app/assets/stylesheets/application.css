@@ -19,6 +19,7 @@ strong, img, h1, h2, h3, h4, button, input {
   font: inherit;
   font-family: sans-serif;
   text-decoration: none;
+  list-style: none;
 
   border: 0;
   padding: 0;

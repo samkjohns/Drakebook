@@ -73,6 +73,8 @@ class User < ActiveRecord::Base
 
   def reset_session_token
     self.session_token = self.class.generate_session_token
+    self.save!
+    self.session_token
   end
 
   def ensure_photos
@@ -81,7 +83,6 @@ class User < ActiveRecord::Base
   end
 
   # Other
-  # currently returns an array, not an association :(
   def drakeships
     subquery = <<-SQL
       (SELECT (
@@ -98,23 +99,6 @@ class User < ActiveRecord::Base
       )
     SQL
 
-    # subquery = <<-SQL
-    #   (SELECT (
-    #      CASE WHEN requested.id = #{self.id}
-    #      THEN received.id
-    #      ELSE requested.id
-    #      END
-    #    ) AS id
-    #   FROM
-    #     users AS requested
-    #   JOIN
-    #     drakeships ON drakeships.requester_id = requested.id
-    #   JOIN
-    #     users AS received ON drakeships.recipient_id = received.id
-    #   WHERE
-    #     requested.id = #{self.id} OR received.id = #{self.id}
-    #   )
-    # SQL
 
     query = <<-SQL
       SELECT
@@ -126,8 +110,28 @@ class User < ActiveRecord::Base
     SQL
 
     User.find_by_sql(query)
+
+    # User.joins("#{subquery} AS drakes ON users.id = drakes.id")
   end
 end
+
+# subquery = <<-SQL
+#   (SELECT (
+#      CASE WHEN requested.id = #{self.id}
+#      THEN received.id
+#      ELSE requested.id
+#      END
+#    ) AS id
+#   FROM
+#     users AS requested
+#   JOIN
+#     drakeships ON drakeships.requester_id = requested.id
+#   JOIN
+#     users AS received ON drakeships.recipient_id = received.id
+#   WHERE
+#     requested.id = #{self.id} OR received.id = #{self.id}
+#   )
+# SQL
 
 # SELECT (
 #   CASE WHEN requested.id = 1

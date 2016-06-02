@@ -1,5 +1,6 @@
 var SessionConstants = require('../constants/SessionConstants'),
-    SessionApiUtil = require('../util/SessionApiUtil');
+    SessionApiUtil = require('../util/SessionApiUtil'),
+    AppDispatcher = require('../dispatcher/Dispatcher')
 
 var SessionActions = module.exports = {
 
@@ -9,5 +10,9 @@ var SessionActions = module.exports = {
 
   signup: function (userData) {
     SessionApiUtil.signup({user: userData});
+  },
+
+  logout: function () {
+    SessionApiUtil.logout();
   }
 };

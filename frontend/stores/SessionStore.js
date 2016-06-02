@@ -36,11 +36,12 @@ SessionStore.__onDispatch = function (payload) {
 
 
 SessionStore.currentUser = function () {
-	var dup = {};
-  Object.keys(_currentUser).forEach(function (key) {
-    dup[key] = _currentUser[key];
-  });
-  return dup;
+	// var dup = {};
+  // Object.keys(_currentUser).forEach(function (key) {
+  //   dup[key] = _currentUser[key];
+  // });
+  // return dup;
+  return $.extend({}, _currentUser);
 };
 
 
@@ -49,7 +50,7 @@ SessionStore.currentUserHasBeenFetched = function () {
 };
 
 SessionStore.isUserLoggedIn = function () {
-  return _currentUser !== {};
+  return !$.isEmptyObject(_currentUser);
 };
 
 window.SessionStore = SessionStore;

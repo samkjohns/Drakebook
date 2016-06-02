@@ -5,10 +5,10 @@ var SessionConstants = require('../constants/SessionConstants'),
 
 var SessionApiUtil = module.exports = {
 
-  registerLogin: function (user) {
+  registerUser: function (user) {
     AppDispatcher.dispatch({
       actionType: 'LOGIN',
-      user: user
+      currentUser: user
     });
   },
 
@@ -18,7 +18,7 @@ var SessionApiUtil = module.exports = {
       url: "api/session",
       dataType: "JSON",
       data: userData,
-      success: this.registerLogin
+      success: this.registerUser
     });
   },
 
@@ -28,18 +28,30 @@ var SessionApiUtil = module.exports = {
       url: "api/users",
       dataType: "JSON",
       data: userData,
-      success: this.registerLogin
+      success: this.registerUser
     });
   },
 
   fetchCurrentUser: function (success) {
     $.ajax({
+      type: 'GET',
 			url: '/api/session',
-			method: 'GET',
 			success: function (currentUser) {
-			  SessionActions.receiveCurrentUser(currentUser);
+			  SessionApiUtil.registerUser(currentUser)
         success && success();
 			},
 		});
+  },
+
+  logout: function () {
+    $.ajax({
+      type: "DELETE",
+      url: "api/session",
+      success: function (user) {
+        AppDispatcher.dispatch({
+          actionType: "LOGOUT"
+        });
+      }
+    });
   }
 };
