@@ -14,7 +14,7 @@
  *= require_tree .
  */
 
-html, body, header, div, ul, li, p,
+html, body, header, div, ul, li, p, a,
 strong, img, h1, h2, h3, h4, button, input, nav {
   font: inherit;
   font-family: sans-serif;
@@ -30,7 +30,7 @@ strong, img, h1, h2, h3, h4, button, input, nav {
   background: transparent;
 }
 
-button {
+button, a {
   cursor: pointer;
 }
 

@@ -84,11 +84,15 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute + "/photos")}
         className="">Photos</a>
 
+    console.log(this.state.profile);
+    var drakeCount = this.state.profile.drakeships ?
+      this.state.profile.drakeships.length : 0;
+    console.log("drake count: " + drakeCount);
     drakes = selectedRoute.endsWith('drakes') ?
       <a onClick={this.linkTo.bind(this, profileRoute + "/drakes")}
-        className="selected">Drakes</a> :
+        className="selected">Drakes <span className="count">{drakeCount}</span></a> :
       <a onClick={this.linkTo.bind(this, profileRoute + "/drakes")}
-        className="">Drakes</a>
+        className="">Drakes <span className="count">{drakeCount}</span></a>
 
     about = selectedRoute.endsWith('about') ?
       <a onClick={this.linkTo.bind(this, profileRoute + "/about")}
@@ -96,7 +100,8 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute + "/about")}
         className="">About</a>
 
-    timeline = selectedRoute.endsWith('no') ?
+    var timeRegxp = /^\/users\/[0-9]+$/;
+    timeline = timeRegxp.test(selectedRoute) ?
       <a onClick={this.linkTo.bind(this, profileRoute)}
         className="selected">Timeline</a> :
       <a onClick={this.linkTo.bind(this, profileRoute )}
@@ -117,10 +122,12 @@ var Profile = module.exports = React.createClass({
           <h2 className="username">{this.state.profile.username}</h2>
 
           <nav className="profile-nav group">
-            {photos}
-            {drakes}
-            {about}
-            {timeline}
+            <ul className="profile-nav-links group">
+              {photos}
+              {drakes}
+              {about}
+              {timeline}
+            </ul>
           </nav>
         </div>
 
