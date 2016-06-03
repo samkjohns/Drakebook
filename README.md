@@ -52,99 +52,84 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] Flux auth architecture (including a SessionForm component and SessionStore)
-- [ ] setup `ApiUtil` to interact with the API
-- [ ] test out API interaction in the console.
-- [ ] user signup/signin (both on the same page)
+- [x] create new project
+- [x] create `User` model
+- [x] Flux auth architecture (including a SessionForm component and SessionStore)
+- [x] setup `ApiUtil` to interact with the API
+- [x] test out API interaction in the console.
+- [x] user signup/signin (both on the same page)
 
 ### Phase 2: Profile View and Drakeships Model (1 day)
 
 **Objective:** "Drakeship" requests can be made and responded to. Profiles
 have a link to a display page for the user's drakeships.
 
-- [ ] create Profile jBuilder view, component, and route
-- [ ] create Drakeship model
-- [ ] seed the database with a small amount of test data
+- [x] setup React Router
+- [x] create Profile jBuilder view, component, and route
+- [x] create Drakeship model
 - [ ] CRUD API for Drakeships (`DrakeshipsController`)
-- [ ] jBuilder views for Drakeships
+- [x] jBuilder views for Drakeships
 - implement the following components (with flux loops):
-  - [ ] ProfileDetail
-  - [ ] DrakeshipsIndex
-  - [ ] DrakeshipsIndexItem
+  - [x] `Profile`
+  - [ ] `ProfileDetail`
+  - [ ] `DrakeshipsIndex`
+  - [ ] `DrakeshipsIndexItem`
 
 ### Phase 3: User Interface and Router (1 day)
 
 **Objective:** "Drakeship" requests can be made by users through an interface.
 (Namely, buttons on profiles and in notifications)
 
-- [ ] setup React Router
 - Components and loops
   - [ ] `DrakeshipRequestsIndex`
   - [ ] `DrakeshipRequestsIndexItem`
   - [ ] `NoteIndexItem`
   - [ ] `NoteForm`
 - [ ] ProfileDetail should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
+- [ ] Profile should include an "edit" function that allows the user to enter more information. (PATCH)
+  - [ ] Add more columns to the users table for more user data. Also add these columns to the users#show jBuilder view.
 - [ ] Navbar should include a drakeship requests notification dropdown menu, from which requests can be accepted or rejected. (PATCH)
-- [ ] Style profile page and subpages
 
-### Phase 4: Start Styling (0.5 days)
+### Phase 4 Photo upload (1 day)
+**Objective:** Users can upload profile and cover photos through the browser.
 
-**Objective:** Existing pages (including singup/signin) will look good.
+(Steps to be filled out after I've watched the video lecture, but presumably there will need to be a way to store files. Database may need to be adjusted. And user input will of course be necessary.)
 
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
-
-### Phase 5: Posts (1 day)
+### Phase 5: Posts (2 days)
 
 **Objective:** Users can author posts, either on a user profile or as a reply to another post.
 
 - [ ] create `Post` model
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
-- Use CSS to style new views
+  - [ ] Post CRUD
+  - [ ] Posts go on a user's Timeline
+    - [ ] Build `PostIndex` and `PostIndexItem`
+  - [ ] Posts optionally include a photo
+  - [ ] Use `PostIndex` to build a `Feed` component as well.
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
-which has its own `Index` view.
+### Phase 6: Search (0.5 days)
 
-### Phase 6: Tags (1.5 days)
+**Objective:** Users should be able to find each other through the search bar, which should display real-time search results.
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+- [ ] Write a users_controller#index action that will find all users that match a given search.
+- [ ] Build out Flux loop for the `Search` component
+- [ ] Each `SearchIndexItem` should be selectable, and link to that user's profile page.
 
-- [ ] create `Tag` model and join table
+### Phase 7: Likes and Tags (1.5 days)
+
+**Objective:** Users can like photos and posts, and tag them with/by their drakes.
+
+- [ ] create models and tables for `Like` and `Tag`
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
-- [ ] Style new elements
-
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
-
-**objective:** Enable complex styling of notes.
-
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
-
-### Phase 8: Styling Cleanup and Seeding (1 day)
-
-**objective:** Make the site feel more cohesive and awesome.
-
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
+  - [ ] Like toggles
+  - [ ] Tag CRUD
+  - [ ] Liking and tagging send notifications to the relevant user(s)
+    - [ ] Create a `Notifications` table, model, API, and Flux loop
+    - [ ] This should display new notifications
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
+- [ ] Private, instant messaging.
+- [ ] Infinite scroll for the PostIndex component (ie the Feed and Timeline)
 - [ ] Multiple sessions
 
 [phase-one]: ./mydocs/phases/phase1.md
