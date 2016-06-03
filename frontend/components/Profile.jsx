@@ -41,10 +41,24 @@ var Profile = module.exports = React.createClass({
 
   render: function () {
     return(
-      <div>
+      <div className="profile-parent-container">
         < Search />
-        <div>
-          {this.state.profile.username} profile
+        <div className="profile-pane">
+          <div className="cover-photo-pane" >
+            <img src={window.drakeImages.default.cover} className="cover-photo" />
+          </div>
+
+          <div className="avatar-photo-pane">
+            <img src={window.drakeImages.default.profile} className="avatar-photo" />
+          </div>
+
+          <h2 className="username">{this.state.profile.username}</h2>
+
+          <nav className="profile-nav group">
+            <li>Photos</li>
+            <li>Friends</li>
+            <li>About</li>
+          </nav>
         </div>
       </div>
     );

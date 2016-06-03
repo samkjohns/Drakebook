@@ -1,0 +1,69 @@
+.profile-parent-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #edf0f5;
+}
+
+.profile-pane {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.cover-photo-pane {
+  height: 315px;
+  width: 80%;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, .4);
+}
+
+.avatar-photo-pane {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, .4);
+  border-radius: 3px;
+
+  width: 160px;
+  height: 160px;
+  background: white;
+
+  left: 15px;
+  bottom: -25px;
+  z-index: 2;
+}
+
+.avatar-photo {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.username {
+  position: absolute;
+  color: white;
+  left: 200px;
+  bottom: 15px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.profile-nav {
+  position: absolute;
+  z-index: 1;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
+  border-left: 1px solid rgba(0, 0, 0, .4);
+  border-right: 1px solid rgba(0, 0, 0, .4);
+  width: 80%;
+  height: 45px;
+}
+
+.profile-nav li {
+  display: block;
+  float: right;
+  padding: 10px;
+  border-left: 1px solid rgba(0, 0, 0, .4);
+  color: #365899;
+}

@@ -7,19 +7,38 @@
 }
 
 .search-nav {
-  width: 950px;
+  min-width: 300px;
+  width: 80%;
+}
+
+.search-nav div {
+  position: relative;
+  display: block;
+  float: left;
+  margin-left: 75px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  width: 70%;
+  min-width: 400px;
+  overflow: visible;
+}
+
+.search-nav img {
+  display: block;
+  float: left;
+  width: 25px;
 }
 
 .search-nav input {
   display: block;
   float: left;
+  margin-left: 5px;
   border: 1px solid gray;
   border-radius: 3px;
   background: white;
-  padding: 3px;
-  width: 200px;
-
-  margin: 10px 60px;
+  padding: 4px;
+  width: 100%;
+  max-width: 400px;
 
   font-size: 14px;
   vertical-align: center;

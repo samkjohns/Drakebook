@@ -10,7 +10,10 @@ var Search = module.exports = React.createClass({
     return(
       <header className="search-header">
         <nav className="search-nav">
-          <input type="text" onChange={this.handleSearchChange} placeholder="Search Drakes" />
+          <div>
+            <img src={window.drakeImages.iconDrakebook} />
+            <input type="text" onChange={this.handleSearchChange} placeholder="Search Drakes" />
+          </div>
           <ul className="group">
             <li><img src={window.drakeImages.iconDrakes} /></li>
             <li><img src={window.drakeImages.iconMessages} /></li>
