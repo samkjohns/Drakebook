@@ -16,8 +16,8 @@
   * `PostForm`
   * `Profile`
     * `ProfileDetail`
-      * `DrakeshipsIndex`
-        * `DrakeshipsIndexItem`
+    * `DrakesIndex`
+      * `DrakesIndexItem`
   * `PostsIndex`
     * `PostsIndexItem`
       * `Photo`

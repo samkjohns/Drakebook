@@ -15,7 +15,9 @@
   height: 315px;
   width: 80%;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, .4);
+  border-left: 1px solid rgba(0, 0, 0, .4);
+  border-right: 1px solid rgba(0, 0, 0, .4);
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
 }
 
 .avatar-photo-pane {
@@ -34,10 +36,10 @@
 }
 
 .avatar-photo {
-  width: 150px;
-  height: 150px;
+  width: 151px;
+  height: 151px;
+  margin: 4px;
   overflow: hidden;
-  margin: 5px;
 }
 
 .username {
@@ -60,10 +62,11 @@
   height: 45px;
 }
 
-.profile-nav li {
+.profile-nav a {
   display: block;
   float: right;
   padding: 10px;
   border-left: 1px solid rgba(0, 0, 0, .4);
   color: #365899;
+  cursor: pointer;
 }

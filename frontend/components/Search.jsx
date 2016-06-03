@@ -6,12 +6,20 @@ var Search = module.exports = React.createClass({
     return { search: "" };
   },
 
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  redirectToHome: function () {
+    this.context.push("/");
+  },
+
   render: function () {
     return(
       <header className="search-header">
         <nav className="search-nav">
           <div>
-            <img src={window.drakeImages.iconDrakebook} />
+            <a href="/"><img src={window.drakeImages.iconDrakebook} /></a>
             <input type="text" onChange={this.handleSearchChange} placeholder="Search Drakes" />
           </div>
           <ul className="group">

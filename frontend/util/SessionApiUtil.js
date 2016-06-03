@@ -6,6 +6,7 @@ var SessionConstants = require('../constants/SessionConstants'),
 var SessionApiUtil = module.exports = {
 
   registerUser: function (user) {
+    // debugger
     AppDispatcher.dispatch({
       actionType: 'LOGIN',
       currentUser: user

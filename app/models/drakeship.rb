@@ -1,4 +1,4 @@
-class Drakeship < ActiveRecord::Base
+  class Drakeship < ActiveRecord::Base
   validates :requester_id, :recipient_id, presence: true
   validates :request_status, inclusion: [ "pending", "accepted", "rejected" ]
 

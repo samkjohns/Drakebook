@@ -1,7 +1,7 @@
 var React = require('react'),
     SessionStore = require('../stores/SessionStore'),
     SessionApiUtil = require('../util/SessionApiUtil'),
-    Profile = require('./Profile'),
+    Feed = require('./Feed'),
     SessionView = require('./SessionView');
 
 var Home = module.exports = React.createClass({
@@ -10,8 +10,18 @@ var Home = module.exports = React.createClass({
   },
 
   getStateFromStore: function () {
-    return SessionStore.isUserLoggedIn() ?
-    { component: "Profile" } : { component : "SessionView" };
+    var component;
+    // debugger
+    if (!SessionStore.currentUserHasBeenFetched()) {
+      component = "None";
+    } else if (SessionStore.isUserLoggedIn()) {
+      component = "Feed";
+    } else {
+      component = "SessionView";
+    }
+    return { component: component };
+    // return SessionStore.isUserLoggedIn() ?
+    // { component: "Feed" } : { component : "SessionView" };
   },
 
   onChange: function () {
@@ -29,8 +39,8 @@ var Home = module.exports = React.createClass({
     this.sessionListener.remove();
   },
 
-  buildProfile: function () {
-    return < Profile userId={SessionStore.currentUser().id} />;
+  buildFeed: function () {
+    return < Feed />;
   },
 
   buildSessionView: function() {
@@ -38,7 +48,16 @@ var Home = module.exports = React.createClass({
   },
 
   render: function () {
-    component = this.state.component === "Profile" ? this.buildProfile() : this.buildSessionView();
-    return component;
+    // debugger
+    // component = this.state.component === "Feed" ? this.buildFeed() : this.buildSessionView();
+
+    switch (this.state.component) {
+      case "None":
+        return <div></div>;
+      case "Feed":
+        return this.buildFeed();
+      default:
+        return this.buildSessionView();
+    }
   }
 });

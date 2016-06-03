@@ -22,7 +22,8 @@ var SessionForm = module.exports = React.createClass({
     };
   },
 
-  submit: function () {
+  submit: function (event) {
+    event.preventDefault();
     if (this.props.formType === "login")
     { SessionActions.login(this._info()); }
     else if (this.state.password === this.state.confirm) {

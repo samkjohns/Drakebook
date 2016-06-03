@@ -9,20 +9,29 @@ var React = require('react'),
     SessionStore = require('./stores/SessionStore'),
     SessionView = require('./components/SessionView'),
     Profile = require("./components/Profile"),
-    Home = require('./components/Home');
+    ProfileDetail = require('./components/ProfileDetail'),
+    Home = require('./components/Home'),
+    PostsIndex = require('./components/PostsIndex'),
+    DrakesIndex = require('./components/DrakesIndex');
 
 var App = React.createClass({
   getInitialState: function () {
     return {message: "logged out"};
   },
 
-  // componentDidMount: function () {
-  //   SessionStore.addListener(function () {
-  //     var message = SessionStore.isUserLoggedIn() ?
-  //     "logged in" : "logged out";
-  //     this.setState({message: message});
-  //   }.bind(this));
-  // },
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  redirectToSignup: function () {
+    if (SessionStore.currentUserHasBeenFetched() && !SessionStore.isUserLoggedIn()) {
+      this.context.router.push("/");
+    }
+  },
+
+  componentDidMount: function () {
+    SessionStore.addListener(this.redirectToSignup);
+  },
 
   render: function () {
     return(
@@ -36,9 +45,16 @@ var App = React.createClass({
 var Router = (
   <Router history={HashHistory}>
     <Route path="/" component={App}>
+
       <IndexRoute component={Home}/>
       <Route path="/signin" component={SessionView} onEnter={_ensureLoggedOut} />
-      <Route path="/users/:userId" component={Profile} onEnter={_ensureLoggedIn} />
+
+      <Route path="/users/:userId" component={Profile} onEnter={_ensureLoggedIn} >
+        < IndexRoute component={PostsIndex} />
+        < Route path="/users/:userId/about" component={ProfileDetail} />
+        < Route path="/users/:userId/drakes" component={DrakesIndex} />
+      </ Route >
+
     </Route>
   </Router>
 );
