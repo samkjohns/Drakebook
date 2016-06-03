@@ -13,17 +13,22 @@
 
 .cover-photo-pane {
   height: 315px;
-  width: 80%;
+  width: 815px;
   overflow: hidden;
   border-left: 1px solid rgba(0, 0, 0, .4);
   border-right: 1px solid rgba(0, 0, 0, .4);
   border-bottom: 1px solid rgba(0, 0, 0, .4);
 }
 
+.cover-photo-pane img {
+  height: 100%;
+  width: 100%;
+}
+
 .avatar-photo-pane {
   position: absolute;
   display: block;
-  border: 1px solid rgba(0, 0, 0, .4);
+  border: 1px solid rgba(50, 50, 50, .4);
   border-radius: 3px;
 
   width: 160px;
@@ -55,10 +60,10 @@
   position: absolute;
   z-index: 1;
   background: white;
-  border-bottom: 1px solid rgba(0, 0, 0, .4);
-  border-left: 1px solid rgba(0, 0, 0, .4);
-  border-right: 1px solid rgba(0, 0, 0, .4);
-  width: 80%;
+  border-bottom: 1px solid rgba(150, 150, 150, .4);
+  border-left: 1px solid rgba(150, 150, 150, .4);
+  border-right: 1px solid rgba(150, 150, 150, .4);
+  width: 815px;
   height: 40px;
 }
 
@@ -66,14 +71,14 @@
   position: absolute;
   display: block;
   left: 195px;
-  border-right: 1px solid rgba(0, 0, 0, .4);
+  border-right: 1px solid rgba(150, 150, 150, .4);
 }
 
 .profile-nav-links a {
   display: block;
   float: right;
   padding: 12px 15px;
-  border-left: 1px solid rgba(0, 0, 0, .4);
+  border-left: 1px solid rgba(150, 150, 150, .4);
   color: #365899;
   text-align: center;
   font-size: 14px;
@@ -88,4 +93,13 @@
 .count {
   font-size: 12px;
   color: gray;
+}
+
+.profile-children {
+  position: absolute;
+  display: block;
+  width: 815px;
+  min-height: 200px;
+  top: 420px;
+  left: 55px;
 }

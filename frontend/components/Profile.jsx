@@ -110,12 +110,12 @@ var Profile = module.exports = React.createClass({
     return(
       <div className="profile-parent-container">
         < Search />
-        <div className="profile-pane">
-          <div className="cover-photo-pane" >
+        <div className="profile-pane group">
+          <div className="cover-photo-pane group" >
             <img src={window.drakeImages.default.cover} className="cover-photo" />
           </div>
 
-          <div className="avatar-photo-pane">
+          <div className="avatar-photo-pane group">
             <img src={window.drakeImages.default.profile} className="avatar-photo" />
           </div>
 
@@ -131,7 +131,9 @@ var Profile = module.exports = React.createClass({
           </nav>
         </div>
 
-        {this.props.children}
+        <div className="profile-children">
+          {this.props.children}
+        </div>
       </div>
     );
   }
