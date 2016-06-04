@@ -4,19 +4,21 @@ var React = require('react'),
 
 var DrakesIndex = module.exports = React.createClass({
   getInitialState: function () {
-    return {
-      drakes: []
-    }
+    return this.getStateFromStore();
   },
 
   getStateFromStore: function () {
-    // console.log(ProfileStore.profile());
-    this.setState({ drakes: ProfileStore.profile().drakeships });
+    var drakes = ProfileStore.profile().drakeships || []
+    return { drakes: drakes };
+  },
+
+  onChange: function () {
+    this.setState(this.getStateFromStore());
   },
 
   componentDidMount: function () {
-    this.profileListener = ProfileStore.addListener(this.getStateFromStore);
-    // ProfileApiUtil.fetchProfileInfo();
+    console.log("in component did mount");
+    this.profileListener = ProfileStore.addListener(this.onChange);
   },
 
   componentWillUnmount: function () {
@@ -33,7 +35,7 @@ var DrakesIndex = module.exports = React.createClass({
         </header>
         <ul className="drakes-index">
           {this.state.drakes.map(function (drake) {
-            return < DrakesIndexItem user={drake} />;
+            return < DrakesIndexItem user={drake} key={drake.id} />;
           })}
         </ul>
       </div>

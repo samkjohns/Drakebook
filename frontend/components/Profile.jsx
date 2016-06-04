@@ -20,32 +20,13 @@ var Profile = module.exports = React.createClass({
     return props.params ? props.params.userId : props.userId;
   },
 
-  // setSelectedSubroute: function (route) {
-  //   var nonIndexRoutes = [
-  //     "about", "drakes", "photos"
-  //   ];
-  //
-  //   var isNonIndex = false;
-  //   nonIndexRoutes.forEach(function (nonIndex) {
-  //     if (route.endsWith(nonIndex)) {
-  //       this.setState({ selected: route });
-  //       isNonIndex = true;
-  //       return;
-  //     }
-  //   }.bind(this));
-  //
-  //   if (!isNonIndex) {
-  //     this.setState({ selected: "timeline "});
-  //   }
-  // },
-
   componentDidMount: function () {
     this.profileListener = ProfileStore.addListener(
       this.getStateFromStore
     );
 
     var userId = this.getUserId(this.props);
-    if (userId){
+    if (userId) {
       ProfileApiUtil.fetchProfileInfo(this.getUserId(this.props));
     }
   },
@@ -76,7 +57,7 @@ var Profile = module.exports = React.createClass({
     var profileRoute = "/users/" + this.getUserId(this.props);
     var photos, drakes, about, timeline;
     var selectedRoute = this.props.location.pathname;
-    console.log(selectedRoute);
+    // console.log(selectedRoute);
 
     photos = selectedRoute.endsWith('photos') ?
       <a onClick={this.linkTo.bind(this, profileRoute + "/photos")}
@@ -84,10 +65,10 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute + "/photos")}
         className="">Photos</a>
 
-    console.log(this.state.profile);
+    // console.log(this.state.profile);
     var drakeCount = this.state.profile.drakeships ?
       this.state.profile.drakeships.length : 0;
-    console.log("drake count: " + drakeCount);
+    // console.log("drake count: " + drakeCount);
     drakes = selectedRoute.endsWith('drakes') ?
       <a onClick={this.linkTo.bind(this, profileRoute + "/drakes")}
         className="selected">Drakes <span className="count">{drakeCount}</span></a> :

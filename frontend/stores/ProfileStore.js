@@ -29,5 +29,5 @@ ProfileStore.__onDispatch = function (payload) {
   }
 };
 
-
+window.ProfileStore = ProfileStore;
 module.exports = ProfileStore;
