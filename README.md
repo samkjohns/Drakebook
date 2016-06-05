@@ -67,7 +67,7 @@ have a link to a display page for the user's drakeships.
 - [x] setup React Router
 - [x] create Profile jBuilder view, component, and route
 - [x] create Drakeship model
-- [ ] CRUD API for Drakeships (`DrakeshipsController`)
+- [x] CRUD API for Drakeships (`DrakeshipsController`)
 - [x] jBuilder views for Drakeships
 - implement the following components (with flux loops):
   - [x] `Profile`
@@ -75,7 +75,7 @@ have a link to a display page for the user's drakeships.
   - [ ] `DrakeshipsIndex`
   - [ ] `DrakeshipsIndexItem`
 
-### Phase 3: User Interface and Router (1 day)
+### Phase 3: User Interface (1 day)
 
 **Objective:** "Drakeship" requests can be made by users through an interface.
 (Namely, buttons on profiles and in notifications)
@@ -83,8 +83,6 @@ have a link to a display page for the user's drakeships.
 - Components and loops
   - [ ] `DrakeshipRequestsIndex`
   - [ ] `DrakeshipRequestsIndexItem`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
 - [ ] ProfileDetail should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
 - [ ] Profile should include an "edit" function that allows the user to enter more information. (PATCH)
   - [ ] Add more columns to the users table for more user data. Also add these columns to the users#show jBuilder view.

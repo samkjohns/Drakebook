@@ -11,7 +11,7 @@
   font-size: 20px;
 }
 
-.drakes-index-pane img, .drakes-index-pane h3 {
+.drakes-index-header img, .drakes-index-header h3 {
   display: block;
   float: left;
   padding: 5px;
@@ -20,15 +20,53 @@
   margin-left: 5px;
 }
 
+.drakes-index {
+  background: white;
+  border-left: 1px solid rgba(150, 150, 150, .4);
+  border-right: 1px solid rgba(150, 150, 150, .4);
+  border-bottom: 1px solid rgba(150, 150, 150, .4);
+}
+
 .drakes-item-pane {
   display: block;
   float: left;
   width: 400px;
   height: 100px;
   border: 1px solid rgba(150, 150, 150, .4);
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
-.drakes-item-pane img {
-  height: 90px;
-  width: 90px;
+.drakes-item-left {
+  display: block;
+  float: left;
+  height: 100px;
+}
+
+.drakes-item-left img {
+  display: block;
+  float: left;
+  width: 100px;
+  height: 100%;
+}
+
+.drakes-item-left a {
+  display: block;
+  float: left;
+  color: #365899;
+  font-weight: bold;
+  margin-left: 10px;
+  line-height: 100px;
+  vertical-align: middle;
+}
+
+.drakes-item-right {
+  display: block;
+  float: right;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.drakes-item-right button {
+  border: 1px solid rgba(150, 150, 150, .4);
 }

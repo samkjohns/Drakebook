@@ -34,6 +34,10 @@ button, a {
   cursor: pointer;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .group:after {
   content: "";
   clear: both;

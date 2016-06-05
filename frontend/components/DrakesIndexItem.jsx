@@ -12,9 +12,15 @@ var DrakesIndexItem = module.exports = React.createClass({
 
   render: function () {
     return(
-      <div className="drakes-item-pane">
-        <img src={window.drakeImages.default.profile} />
-        <a onClick={this.goToProfile}>{this.props.user.username}</a>
+      <div className="drakes-item-pane group">
+        <div className="drakes-item-left group">
+          <img src={window.drakeImages.default.profile} />
+          <a onClick={this.goToProfile}>{this.props.user.username}</a>
+        </div>
+
+        <div className="drakes-item-right group">
+          <button onClick={this.handleUndrakeship}>Undrake</button>
+        </div>
       </div>
     );
   }

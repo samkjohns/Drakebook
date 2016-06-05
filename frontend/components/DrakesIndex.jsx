@@ -33,7 +33,7 @@ var DrakesIndex = module.exports = React.createClass({
           <img src={window.drakeImages.iconDrakesGray} />
           <h3>Drakes</h3>
         </header>
-        <ul className="drakes-index">
+        <ul className="drakes-index group">
           {this.state.drakes.map(function (drake) {
             return < DrakesIndexItem user={drake} key={drake.id} />;
           })}
