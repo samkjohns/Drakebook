@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
     resource :session, only: [ :show, :create, :destroy ]
 
-    resources :drakeships, only: [ :show, :create, :update, :destroy ]
+    resources :drakeships, only: [ :show, :create ]
+    get 'drakeships/:user_id/undrake/:drake_id', to: "drakeships#undrake"
+    get 'drakeships/:user_id/update/:drake_id', to: "drakeships#update"
   end
 end

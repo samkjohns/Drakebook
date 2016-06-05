@@ -61,6 +61,27 @@ class Api::DrakeshipsController < ApplicationController
     end
   end
 
+  def undrake
+    @user = User.find(params[:user_id])
+    @drake = User.find(params[:drake_id])
+    @drakeship = Drakeship.find_by(
+      requester_id: params[:user_id],
+      recipient_id: params[:drake_id]
+    ) || Drakeship.find_by(
+      requester_id: params[:drake_id],
+      recipient_id: params[:user_id]
+    )
+
+    if @drakeship && @drakeship.destroy
+      render :show
+    else
+      render json: {
+        base: ["You can't destroy Drakeship #{params[:id]}"],
+        status: 422
+      }
+    end
+  end
+
   private
   def create_drakeship_params
     params.require(:drakeship).permit(:recipient_id)

@@ -1,5 +1,6 @@
 var React = require('react'),
-    ProfileStore = require('../stores/ProfileStore');
+    ProfileStore = require('../stores/ProfileStore'),
+    DrakeshipActions = require('../actions/DrakeshipActions');
 
 var DrakesIndexItem = module.exports = React.createClass({
   contextTypes: {
@@ -8,6 +9,10 @@ var DrakesIndexItem = module.exports = React.createClass({
 
   goToProfile: function () {
     this.context.router.push("/users/" + this.props.user.id);
+  },
+
+  handleUndrakeship: function () {
+    DrakeshipActions.undrake(this.props.params.userId, this.props.user.id);
   },
 
   render: function () {
