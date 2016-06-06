@@ -21,26 +21,43 @@ function _setErrors(errors) {
   _currentUser = {};
 }
 
+function updateDrakeships(fullDrakeship) {
+  if (fullDrakeship.user.id === _currentUser.id) {
+    _currentUser = fullDrakeship.user;
+
+  } else if (fullDrakeship.drake.id === _currentUser.id) {
+    _currentUser = fullDrakeship.drake;
+  }
+}
+
 SessionStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
+
     case "LOGIN":
       _login(payload.currentUser);
       SessionStore.__emitChange();
       break;
+
     case "LOGOUT":
     	_logout();
       SessionStore.__emitChange();
       break;
+
+    case "ADD_DRAKE":
+      updateDrakeships(payload.fullDrakeship);
+      SessionStore.__emitChange();
+      break;
+
+    case "UNDRAKE":
+      updateDrakeships(payload.fullDrakeship);
+      SessionStore.__emitChange();
+      break;
+
   }
 };
 
 
 SessionStore.currentUser = function () {
-	// var dup = {};
-  // Object.keys(_currentUser).forEach(function (key) {
-  //   dup[key] = _currentUser[key];
-  // });
-  // return dup;
   return $.extend({}, _currentUser);
 };
 

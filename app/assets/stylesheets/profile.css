@@ -7,7 +7,7 @@
 
 .profile-pane {
   position: relative;
-  width: 90%;
+  width: 815px;
   margin: 0 auto;
 }
 
@@ -97,10 +97,26 @@
 }
 
 .profile-children {
-  position: absolute;
   display: block;
-  width: 815px;
+  width: 817px;
   min-height: 200px;
-  top: 420px;
-  left: 55px;
+  margin: 60px auto;
+}
+
+.drake-toggle-button {
+  position: absolute;
+  right: 50px;
+  bottom: 15px;
+  z-index: 2;
+  background: #edf0f5;
+  border: 1px solid rgba(250, 250, 250, .4);
+}
+
+.drake-toggle-button button {
+  position: relative;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #4b4f56;
+  padding: 5px 20px;
 }

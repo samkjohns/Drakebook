@@ -1,4 +1,4 @@
-json.drakeship @drakeship do
+json.drakeship do
   json.requester do
     json.username @drakeship.requester.username
     json.id @drakeship.requester_id
@@ -12,16 +12,25 @@ json.drakeship @drakeship do
   json.extract! @drakeship, :request_status, :relationship_type
 end
 
-json.user @user do
-  json.extract! :id, :username
-  json.drakeships @user.drakeships do |drake|
+json.user do
+  json.extract! current_user, :id, :username
+  json.drakeships current_user.drakeships do |drake|
+    json.extract! drake, :id, :username, :profile_photo_path
+  end
+
+  json.pendingDrakeships current_user.pending_drakeships do |drake|
     json.extract! drake, :id, :username, :profile_photo_path
   end
 end
 
-json.user @drake do
-  json.extract! :id, :username
+json.drake do
+  json.extract! @drake, :id, :username
+
   json.drakeships @drake.drakeships do |drake|
+    json.extract! drake, :id, :username, :profile_photo_path
+  end
+
+  json.pendingDrakeships @drake.pending_drakeships do |drake|
     json.extract! drake, :id, :username, :profile_photo_path
   end
 end

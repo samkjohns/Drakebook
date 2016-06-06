@@ -1,5 +1,8 @@
 .drakes-index-pane {
-  width: 815px;
+  /*position: relative;
+  display: block;
+  width: 816px;
+  margin: 60px auto;*/
 }
 
 .drakes-index-pane header {
@@ -69,7 +72,7 @@
   margin-right: 20px;
 }
 
-.drakes-item-right button {
+.drakes-toggle-button {
   font-size: 13px;
   font-weight: bold;
   background: #f6f7f9;
@@ -78,6 +81,9 @@
   border-radius: 3px;
   width: 90px;
   height: 24px;
+}
+
+.drakes-item-right button {
   vertical-align: middle;
   margin-top: 40px;
 }

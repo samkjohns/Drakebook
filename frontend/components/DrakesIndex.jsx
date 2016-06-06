@@ -26,17 +26,17 @@ var DrakesIndex = module.exports = React.createClass({
   },
 
   render: function () {
-    console.log("Drakes: " + this.state.drakes);
+    // console.log("Drakes: " + this.state.drakes);
     return(
-      <div className="drakes-index-pane">
+      <div className="drakes-index-pane group">
         <header className="drakes-index-header group">
           <img src={window.drakeImages.iconDrakesGray} />
           <h3>Drakes</h3>
         </header>
         <ul className="drakes-index group">
           {this.state.drakes.map(function (drake) {
-            return < DrakesIndexItem user={drake} key={drake.id} />;
-          })}
+            return < DrakesIndexItem user={drake} key={drake.id} userId={this.props.params.userId} />;
+          }.bind(this))}
         </ul>
       </div>
     );

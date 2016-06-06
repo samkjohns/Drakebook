@@ -84,6 +84,16 @@ class User < ActiveRecord::Base
 
   # Other
   def drakeships
+    # accepted_statuses ||= ['accepted', 'pending']
+    # accepted_statuses_filter = accepted_statuses.map do |status|
+    #   <<-SQL
+    #     (drakeship.request_status = ?)
+    #   SQL
+    # end.join(' OR ')
+
+    # accepted_statuses_filter = '(drakeships.request_status IN (' +
+    #   (statuses.map { |status| "'#{status}'" } .join(', ')) + ')'
+
     subquery = <<-SQL
       (SELECT (
          CASE WHEN drakeships.requester_id = #{self.id}
@@ -99,7 +109,6 @@ class User < ActiveRecord::Base
       )
     SQL
 
-
     query = <<-SQL
       SELECT
         users.*
@@ -112,6 +121,34 @@ class User < ActiveRecord::Base
     User.find_by_sql(query)
 
     # User.joins("#{subquery} AS drakes ON users.id = drakes.id")
+  end
+
+  def pending_drakeships
+    subquery = <<-SQL
+      (SELECT (
+         CASE WHEN drakeships.requester_id = #{self.id}
+         THEN drakeships.recipient_id
+         ELSE drakeships.requester_id
+         END
+       ) AS id
+      FROM
+        drakeships
+      WHERE
+        (drakeships.requester_id = #{self.id} OR drakeships.recipient_id = #{self.id})
+        AND (drakeships.request_status = 'pending')
+      )
+    SQL
+
+    query = <<-SQL
+      SELECT
+        users.*
+      FROM
+        users
+      JOIN
+        #{subquery} AS drakes ON users.id = drakes.id
+    SQL
+
+    User.find_by_sql(query)
   end
 end
 

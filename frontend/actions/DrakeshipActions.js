@@ -4,5 +4,9 @@ var React = require('react'),
 var DrakeshipActions = module.exports = {
   undrake: function (userId, drakeId) {
     DrakeshipApiUtil.undrake(userId, drakeId);
+  },
+
+  requestDrake: function (userId, drakeId) {
+    DrakeshipApiUtil.requestDrake(userId, drakeId);
   }
 };

@@ -5,10 +5,11 @@ class Api::DrakeshipsController < ApplicationController
     @drakeship = Drakeship.new(create_drakeship_params)
     @drakeship.requester = current_user
     @drakeship.request_status = "pending"
+    @drake = @drakeship.recipient
 
     if @drakeship.save
       # make a notification here
-      render :show
+      render :users
     else
       render json: @drakeship.errors.full_messages
     end
@@ -38,17 +39,6 @@ class Api::DrakeshipsController < ApplicationController
     end
   end
 
-  def update
-    @drakeship = Drakeship.find params[:id]
-
-    if @drakeship.update(update_drakeship_params)
-      # make a notification here
-      render :show
-    else
-      render json: @drakeship.errors.full_messages
-    end
-  end
-
   def destroy
     @drakeship = Drakeship.find params[:id]
     if user_has_drakeship(@drakeship) && @drakeship.destroy
@@ -61,9 +51,7 @@ class Api::DrakeshipsController < ApplicationController
     end
   end
 
-  def undrake
-    @user = User.find(params[:user_id])
-    @drake = User.find(params[:drake_id])
+  def update
     @drakeship = Drakeship.find_by(
       requester_id: params[:user_id],
       recipient_id: params[:drake_id]
@@ -72,8 +60,29 @@ class Api::DrakeshipsController < ApplicationController
       recipient_id: params[:user_id]
     )
 
-    if @drakeship && @drakeship.destroy
+    if @drakeship.update(update_drakeship_params)
+      # make a notification here
       render :show
+    else
+      render json: @drakeship.errors.full_messages
+    end
+  end
+
+  def undrake
+    # @user = User.find(params[:user_id])
+    # @drake = User.find(params[:drake_id])
+    @drakeship = Drakeship.find_by(
+      requester_id: params[:user_id],
+      recipient_id: params[:drake_id]
+    ) || Drakeship.find_by(
+      requester_id: params[:drake_id],
+      recipient_id: params[:user_id]
+    )
+    @drake = current_user.id === @drakeship.requester_id ?
+      @drakeship.recipient : @drakeship.requester
+
+    if @drakeship && @drakeship.destroy
+      render :users
     else
       render json: {
         base: ["You can't destroy Drakeship #{params[:id]}"],
@@ -88,7 +97,7 @@ class Api::DrakeshipsController < ApplicationController
   end
 
   def update_drakeship_params
-    params.require(:drakeship).permit(:id, :request_status, :relationship_type)
+    params.require(:drakeship).permit(:request_status, :relationship_type)
   end
 
   def user_has_drakeship(drakeship)

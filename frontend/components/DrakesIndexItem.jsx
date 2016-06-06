@@ -12,7 +12,7 @@ var DrakesIndexItem = module.exports = React.createClass({
   },
 
   handleUndrakeship: function () {
-    DrakeshipActions.undrake(this.props.params.userId, this.props.user.id);
+    DrakeshipActions.undrake(this.props.userId, this.props.user.id);
   },
 
   render: function () {
@@ -24,7 +24,7 @@ var DrakesIndexItem = module.exports = React.createClass({
         </div>
 
         <div className="drakes-item-right group">
-          <button onClick={this.handleUndrakeship}>Undrake</button>
+          <button className="drake-toggle-button" onClick={this.handleUndrakeship}>Undrake</button>
         </div>
       </div>
     );

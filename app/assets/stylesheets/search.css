@@ -8,14 +8,15 @@
 
 .search-nav {
   min-width: 300px;
-  width: 80%;
+  max-width: 950px;
+  margin: auto;
 }
 
 .search-nav div {
   position: relative;
   display: block;
   float: left;
-  margin-left: 75px;
+  margin-left: 20px;
   margin-top: 9px;
   margin-bottom: 9px;
   width: 70%;

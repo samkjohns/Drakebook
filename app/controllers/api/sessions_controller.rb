@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
 			login @user
-			render :show
+			render "api/users/profile"
 		else
 			render(
         json: { base: ["Invalid username/password combination"] },
@@ -35,7 +35,7 @@ class Api::SessionsController < ApplicationController
 	def show
 		if current_user
 			@user = current_user
-			render :show
+			render "api/users/profile"
 		else
 			render json: {}
 		end

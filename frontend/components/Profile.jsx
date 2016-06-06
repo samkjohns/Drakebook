@@ -1,7 +1,8 @@
 var React = require('react'),
     ProfileApiUtil = require('../util/ProfileApiUtil'),
     ProfileStore = require("../stores/ProfileStore"),
-    Search = require('./Search');
+    Search = require('./Search'),
+    DrakeToggle = require('./DrakeToggle');
 
 var Profile = module.exports = React.createClass({
   getInitialState: function () {
@@ -65,10 +66,11 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute + "/photos")}
         className="">Photos</a>
 
-    // console.log(this.state.profile);
+
+    // the tabs for subroutes
     var drakeCount = this.state.profile.drakeships ?
       this.state.profile.drakeships.length : 0;
-    // console.log("drake count: " + drakeCount);
+
     drakes = selectedRoute.endsWith('drakes') ?
       <a onClick={this.linkTo.bind(this, profileRoute + "/drakes")}
         className="selected">Drakes <span className="count">{drakeCount}</span></a> :
@@ -89,7 +91,7 @@ var Profile = module.exports = React.createClass({
         className="">Timeline</a>
 
     return(
-      <div className="profile-parent-container">
+      <div className="profile-parent-container group">
         < Search />
         <div className="profile-pane group">
           <div className="cover-photo-pane group" >
@@ -102,6 +104,8 @@ var Profile = module.exports = React.createClass({
 
           <h2 className="username">{this.state.profile.username}</h2>
 
+          < DrakeToggle userId={this.props.userId} />
+
           <nav className="profile-nav group">
             <ul className="profile-nav-links group">
               {photos}
@@ -112,15 +116,10 @@ var Profile = module.exports = React.createClass({
           </nav>
         </div>
 
-        <div className="profile-children">
+        <div className="profile-children group">
           {this.props.children}
         </div>
       </div>
     );
   }
 });
-
-// <a onClick={this.linkTo.bind(this, profileRoute + "/photos")}>Photos</a>
-// <a onClick={this.linkTo.bind(this, profileRoute + "/drakes")}>Drakes</a>
-// <a onClick={this.linkTo.bind(this, profileRoute + "/about")}>About</a>
-// <a onClick={this.linkTo.bind(this, profileRoute)}>Timeline</a>
