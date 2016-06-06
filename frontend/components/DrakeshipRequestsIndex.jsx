@@ -4,7 +4,10 @@ var React = require('react'),
 
 var DrakeshipRequestsIndex = module.exports = React.createClass({
   getInitialState: function () {
-    return { requests: [] };
+    return {
+      potentialDrakes: [],
+      displayed: false
+    };
   },
 
   componentDidMount: function () {
@@ -16,17 +19,38 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
   },
 
   onChange: function () {
+    // pendingDrakeships is a list of users
     this.setState({
-      requests: SessionStore.currentUser().pendingDrakeships;
+      potentialDrakes: SessionStore.currentUser().pendingDrakeships
     });
   },
 
+  display: function () {
+    this.setState({ displayed: !this.state.displayed });
+  },
+
   render: function () {
+    console.log(this.state.displayed);
+    var index;
+    if (this.state.displayed) {
+      index = (
+        <div className="drakeship-requests-index-display group">
+          <h4>Friend Requests</h4>
+          <ul>
+            {this.state.potentialDrakes.map(function (potDrake) {
+              return < DrakeshipRequestsIndexItem key={potDrake.id} potentialDrake={potDrake} />;
+            })}
+          </ul>
+        </div>
+      );
+    } else {
+      index = <ul></ul>;
+    }
+
     return(
-      <div className="drakeship-requests-index group">
-        {this.state.requests.map(function (request) {
-          return < DrakeshipRequestsIndexItem key={request.id} request={request} />;
-        })}
+      <div className="drakeship-requests-index group" onClick={this.display}>
+        <img src={window.drakeImages.iconDrakes} />
+        {index}
       </div>
     );
   }

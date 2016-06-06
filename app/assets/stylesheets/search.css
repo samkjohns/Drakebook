@@ -12,7 +12,7 @@
   margin: auto;
 }
 
-.search-nav div {
+.search-nav > div {
   position: relative;
   display: block;
   float: left;
@@ -24,7 +24,7 @@
   overflow: visible;
 }
 
-.search-nav img {
+.search-nav > img {
   display: block;
   float: left;
   width: 25px;

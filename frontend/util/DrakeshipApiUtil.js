@@ -25,5 +25,33 @@ var DrakeshipApiUtil = module.exports = {
       dataType: "json",
       success: ServerActions.addDrake
     });
+  },
+
+  confirmRequest: function (requester, recipient) {
+    $.ajax({
+      type: "GET",
+      url: "api/drakeships/" + requester.id + "/update/" + recipient.id,
+      dataType: "json",
+      data: {
+        drakeship: {
+          request_status: "accepted"
+        }
+      },
+      success: ServerActions.addDrake
+    });
+  },
+
+  deleteRequest: function (requester, recipient) {
+    $.ajax({
+      type: "GET",
+      url: "api/drakeships/" + requester.id + "/update/" + recipient.id,
+      dataType: "json",
+      data: {
+        drakeship: {
+          request_status: "rejected"
+        }
+      },
+      success: ServerActions.addDrake
+    });
   }
 };

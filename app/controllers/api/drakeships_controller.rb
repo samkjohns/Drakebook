@@ -60,9 +60,12 @@ class Api::DrakeshipsController < ApplicationController
       recipient_id: params[:user_id]
     )
 
+    @drake = current_user.id === @drakeship.requester_id ?
+      @drakeship.recipient : @drakeship.requester
+
     if @drakeship.update(update_drakeship_params)
       # make a notification here
-      render :show
+      render :users
     else
       render json: @drakeship.errors.full_messages
     end

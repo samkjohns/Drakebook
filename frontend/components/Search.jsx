@@ -1,5 +1,6 @@
 var React = require('react'),
-    SessionActions = require('../actions/SessionActions');
+    SessionActions = require('../actions/SessionActions'),
+    DrakeshipRequestsIndex = require('./DrakeshipRequestsIndex');
 
 var Search = module.exports = React.createClass({
   getInitialState: function () {
@@ -23,7 +24,7 @@ var Search = module.exports = React.createClass({
             <input type="text" onChange={this.handleSearchChange} placeholder="Search Drakes" />
           </div>
           <ul className="group">
-            <li><img src={window.drakeImages.iconDrakes} /></li>
+            <li>< DrakeshipRequestsIndex /></li>
             <li><img src={window.drakeImages.iconMessages} /></li>
             <li><img src={window.drakeImages.iconNotifications} /></li>
             <li><button onClick={SessionActions.logout}>Logout</button></li>

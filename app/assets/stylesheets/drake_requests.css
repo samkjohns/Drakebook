@@ -1,0 +1,48 @@
+.drakeship-requests-index {
+  position: relative;
+  width: 30px;
+}
+
+.drakeship-requests-index-display {
+  position: absolute;
+  top: 31px;
+  right: -50px;
+  z-index: 5;
+
+  background: white;
+  border: 1px solid rgba(100, 100, 100, .4);
+}
+
+.drakeship-requests-index-display h4 {
+  font-size: 12px;
+  padding: 10px;
+  font-weight: bold
+}
+
+.drakeship-request-item {
+  width: 420px;
+  height: 60px;
+  padding: 5px;
+  border-top: 1px solid rgba(100, 100, 100, .4);
+}
+
+.drakeship-requester {
+  display: block;
+  float: left;
+}
+
+.drakeship-requester img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.drakeship-requester a {
+  color: blue;
+  vertical-align: middle;
+}
+
+.drakeship-buttons {
+  display: block;
+  float: right;
+}
