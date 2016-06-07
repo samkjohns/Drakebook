@@ -12,6 +12,7 @@ var React = require('react'),
     ProfileDetail = require('./components/ProfileDetail'),
     Home = require('./components/Home'),
     PostsIndex = require('./components/PostsIndex'),
+    Timeline = require('./components/Timeline'),
     DrakesIndex = require('./components/DrakesIndex');
 
 var App = React.createClass({
@@ -50,7 +51,7 @@ var Router = (
       <Route path="/signin" component={SessionView} onEnter={_ensureLoggedOut} />
 
       <Route path="/users/:userId" component={Profile} onEnter={_ensureLoggedIn} >
-        < IndexRoute component={PostsIndex} />
+        < IndexRoute component={Timeline} />
         < Route path="/users/:userId/about" component={ProfileDetail} />
         < Route path="/users/:userId/drakes" component={DrakesIndex} />
       </ Route >

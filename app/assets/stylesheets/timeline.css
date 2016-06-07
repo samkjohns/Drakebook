@@ -1,0 +1,43 @@
+.timeline-pane {
+  display: block;
+  width: 815px;
+  margin: auto;
+  background: transparent;
+}
+
+.left-timeline-pane {
+  display: block;
+  float: left;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid rgba(150, 150, 150, .4);
+  background: white;
+}
+
+.intro-blurb-form li,
+.intro-blurb-form input,
+.intro-blurb-form label {
+  display: inline-block;
+  margin-right: auto;
+  padding: 5px 0px;
+}
+
+.intro-blurb-form label {
+  color: #365899;
+}
+
+.intro-blurb-form label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.intro-blurb-form label:before {
+  content: "+";
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.intro-blurb-form input {
+  border: 1px solid rgba(150, 150, 150, .4);
+}

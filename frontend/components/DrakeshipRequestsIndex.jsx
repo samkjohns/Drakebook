@@ -30,7 +30,7 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
   },
 
   render: function () {
-    console.log(this.state.displayed);
+    // console.log(this.state.displayed);
     var index;
     if (this.state.displayed) {
       index = (
@@ -47,9 +47,17 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
       index = <ul></ul>;
     }
 
+    var reqBadge;
+    if (this.state.potentialDrakes.length > 0) {
+      reqBadge = <label className="requests-badge">{this.state.potentialDrakes.length}</label>;
+    } else {
+      reqBadge = <label/>;
+    }
+
     return(
       <div className="drakeship-requests-index group" onClick={this.display}>
         <img src={window.drakeImages.iconDrakes} />
+        {reqBadge}
         {index}
       </div>
     );

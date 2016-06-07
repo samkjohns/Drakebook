@@ -24,13 +24,14 @@
   overflow: visible;
 }
 
-.search-nav > img {
+.search-nav-left img {
   display: block;
   float: left;
   width: 25px;
+  cursor: pointer;
 }
 
-.search-nav input {
+.search-nav-left input {
   display: block;
   float: left;
   margin-left: 5px;
@@ -45,13 +46,37 @@
   vertical-align: center;
 }
 
-.search-nav ul {
+.search-icons {
   float: right;
 }
 
-.search-nav li {
+.search-icons > li {
   display: block;
   float: left;
   margin-top: 14px;
   margin-right: 5px;
+
+  font-size: 12px;
+  color: white;
+  vertical-align: middle;
+}
+
+.current-user-thumb {
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.current-user-thumb img {
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, .4);
+  margin-top: -5px;
+  margin-right: 5px;
+}
+
+.current-user-thumb label,
+.current-user-thumb img {
+  display: block;
+  float: left;
 }

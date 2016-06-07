@@ -12,6 +12,15 @@
 #  workplace          :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  email              :string
+#  phone_number       :string
+#  hometown           :string
+#  current_city       :string
+#  high_school        :string
+#  college            :string
+#  college_major      :string
+#  intro              :text
+#  name_pronunciation :string
 #
 
 require 'test_helper'

@@ -1,7 +1,6 @@
 var ProfileConstants = require('../constants/ProfileConstants'),
     ProfileStore = require('../stores/ProfileStore'),
-    ProfileActions = require('../actions/ProfileActions'),
-    AppDispatcher = require('../dispatcher/Dispatcher');
+    ServerActions = require('../actions/ServerActions');
 
 var ProfileApiUtil = module.exports = {
   fetchProfileInfo: function (userId) {
@@ -9,7 +8,17 @@ var ProfileApiUtil = module.exports = {
       type: "GET",
       url: "api/users/" + userId,
       dataType: "json",
-      success: ProfileActions.receiveProfile
+      success: ServerActions.receiveProfile
+    });
+  },
+
+  updateProfileInfo: function (profile) {
+    $.ajax({
+      type: "PATCH",
+      url: "api/users/" + profile.id,
+      dataType: "json",
+      data: { user: profile },
+      success: ServerActions.receiveProfile
     });
   }
 };

@@ -25,8 +25,8 @@ var DrakeshipRequestsIndexItem = module.exports = React.createClass({
         </div>
 
         <div className="drakeship-buttons group">
-          <button onClick={this.confirmRequest}>Confirm</button>
-          <button onClick={this.deleteRequest}>Delete Request</button>
+          <button onClick={this.confirmRequest} className="drakeship-buttons-confirm">Confirm</button>
+          <button onClick={this.deleteRequest} className="drakeship-buttons-delete">Delete Request</button>
         </div>
       </div>
     )

@@ -72,8 +72,8 @@ have a link to a display page for the user's drakeships.
 - implement the following components (with flux loops):
   - [x] `Profile`
   - [ ] `ProfileDetail`
-  - [ ] `DrakeshipsIndex`
-  - [ ] `DrakeshipsIndexItem`
+  - [x] `DrakeshipsIndex`
+  - [x] `DrakeshipsIndexItem`
 
 ### Phase 3: User Interface (1 day)
 
@@ -81,12 +81,12 @@ have a link to a display page for the user's drakeships.
 (Namely, buttons on profiles and in notifications)
 
 - Components and loops
-  - [ ] `DrakeshipRequestsIndex`
-  - [ ] `DrakeshipRequestsIndexItem`
-- [ ] ProfileDetail should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
+  - [x] `DrakeshipRequestsIndex`
+  - [x] `DrakeshipRequestsIndexItem`
+- [x] Profile should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
 - [ ] Profile should include an "edit" function that allows the user to enter more information. (PATCH)
   - [ ] Add more columns to the users table for more user data. Also add these columns to the users#show jBuilder view.
-- [ ] Navbar should include a drakeship requests notification dropdown menu, from which requests can be accepted or rejected. (PATCH)
+- [x] Navbar should include a drakeship requests notification dropdown menu, from which requests can be accepted or rejected. (PATCH)
 
 ### Phase 4 Photo upload (1 day)
 **Objective:** Users can upload profile and cover photos through the browser.

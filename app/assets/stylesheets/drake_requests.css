@@ -9,8 +9,21 @@
   right: -50px;
   z-index: 5;
 
+  color: black;
   background: white;
   border: 1px solid rgba(100, 100, 100, .4);
+}
+
+.requests-badge {
+  position: absolute;
+  top: -5px;
+  left: 13px;
+  font-size: 12px;
+  background: red;
+  border-radius: 50%;
+  padding: 2px 6px;
+  color: white;
+  font-weight: bold;
 }
 
 .drakeship-requests-index-display h4 {
@@ -24,25 +37,52 @@
   height: 60px;
   padding: 5px;
   border-top: 1px solid rgba(100, 100, 100, .4);
+  background: #edf0f5;
 }
 
 .drakeship-requester {
   display: block;
   float: left;
+  margin-top: 5px;
 }
 
-.drakeship-requester img {
+.drakeship-requester > img {
   display: block;
+  float: left;
   width: 50px;
   height: 50px;
 }
 
-.drakeship-requester a {
-  color: blue;
+.drakeship-requester > a {
+  display: block;
+  float: left;
+  color: #365899;
+  font-weight: bold;
+  padding-left: 10px;
   vertical-align: middle;
+  margin-top: 15px;
 }
 
 .drakeship-buttons {
   display: block;
   float: right;
+}
+
+.drakeship-buttons button {
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  margin: 15px 5px;
+}
+
+.drakeship-buttons-confirm {
+  color: white;
+  background: #3b5998;
+  border: 1px solid rgba(100, 100, 100, .4);
+}
+
+.drakeship-buttons-delete {
+  color: #4b4f56;
+  background: white;
+  border: 1px solid rgba(100, 100, 100, .4);
 }

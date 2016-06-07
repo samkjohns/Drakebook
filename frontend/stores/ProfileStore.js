@@ -14,7 +14,7 @@ ProfileStore.profile = function () {
   var dup = {};
   Object.keys(_profile).forEach(function (key) {
     dup[key] = _profile[key];
-  })
+  });
   return dup;
 };
 

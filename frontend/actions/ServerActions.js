@@ -1,4 +1,5 @@
-var AppDispatcher = require('../dispatcher/Dispatcher');
+var AppDispatcher = require('../dispatcher/Dispatcher'),
+    ProfileConstants = require('../constants/ProfileConstants');
 
 var ServerActions = module.exports = {
   undrake: function (fullDrakeship) {
@@ -12,6 +13,13 @@ var ServerActions = module.exports = {
     AppDispatcher.dispatch({
       actionType: "ADD_DRAKE",
       fullDrakeship: fullDrakeship
+    });
+  },
+
+  receiveProfile: function (userProfile) {
+    AppDispatcher.dispatch({
+      actionType: ProfileConstants.USER_RECEIVED,
+      profile: userProfile
     });
   }
 };

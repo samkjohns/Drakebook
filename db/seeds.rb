@@ -5,3 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all
+Drakeship.destroy_all
+
+usernames = [
+  "Godzilla", "Sam", "Ambush Drake", "Drake", "Drake2", "Drake3", "Drake4", "Drake the Dragon",
+  "Drakonia", "Drake Drake", "Ekardrake", "Draken", "Honorable Drake", "Dishonorable Drake"
+]
+
+usernames.each do |username|
+  User.create!(
+    username: username,
+    password: "password"
+  )
+end
+
+usernames.each_with_index do |username, i|
+  usernames[i+1..-1].each_with_index do |drakename, j|
+    requester = User.find_by(username: username)
+    recipient = User.find_by(username: drakename)
+    Drakeship.create!(
+      requester_id: requester.id,
+      recipient_id: recipient.id,
+      request_status: "accepted"
+    )
+  end
+end

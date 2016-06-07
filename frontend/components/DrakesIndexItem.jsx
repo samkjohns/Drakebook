@@ -16,6 +16,15 @@ var DrakesIndexItem = module.exports = React.createClass({
   },
 
   render: function () {
+    var undrake = <div></div>;
+    if (SessionStore.currentUser().id === ProfileStore.profile().id) {
+      undrake = (
+        <div className="drakes-item-right group">
+          <button className="undrake-button" onClick={this.handleUndrakeship}>Undrake</button>
+        </div>
+      );
+    }
+
     return(
       <div className="drakes-item-pane group">
         <div className="drakes-item-left group">
@@ -23,9 +32,7 @@ var DrakesIndexItem = module.exports = React.createClass({
           <a onClick={this.goToProfile}>{this.props.user.username}</a>
         </div>
 
-        <div className="drakes-item-right group">
-          <button className="drake-toggle-button" onClick={this.handleUndrakeship}>Undrake</button>
-        </div>
+        {undrake}
       </div>
     );
   }

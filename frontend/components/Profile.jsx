@@ -1,5 +1,6 @@
 var React = require('react'),
     ProfileApiUtil = require('../util/ProfileApiUtil'),
+    ProfileActions = require('../actions/ProfileActions'),
     ProfileStore = require("../stores/ProfileStore"),
     Search = require('./Search'),
     DrakeToggle = require('./DrakeToggle');
@@ -28,7 +29,7 @@ var Profile = module.exports = React.createClass({
 
     var userId = this.getUserId(this.props);
     if (userId) {
-      ProfileApiUtil.fetchProfileInfo(this.getUserId(this.props));
+      ProfileActions.fetchProfileInfo(this.getUserId(this.props));
     }
   },
 
@@ -41,7 +42,7 @@ var Profile = module.exports = React.createClass({
     newUserId = this.getUserId(newProps);
 
     if (oldUserId !== newUserId) {
-      ProfileApiUtil.fetchProfileInfo(newUserId);
+      ProfileActions.fetchProfileInfo(newUserId);
     }
   },
 
@@ -90,6 +91,11 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute )}
         className="">Timeline</a>
 
+    var drakeToggle = <div/>;
+    if (SessionStore.currentUser().id !== ProfileStore.profile().id) {
+      drakeToggle = < DrakeToggle userId={this.props.userId} />;
+    }
+
     return(
       <div className="profile-parent-container group">
         < Search />
@@ -104,7 +110,7 @@ var Profile = module.exports = React.createClass({
 
           <h2 className="username">{this.state.profile.username}</h2>
 
-          < DrakeToggle userId={this.props.userId} />
+          {drakeToggle}
 
           <nav className="profile-nav group">
             <ul className="profile-nav-links group">
