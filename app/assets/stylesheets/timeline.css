@@ -9,35 +9,89 @@
   display: block;
   float: left;
   width: 300px;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid rgba(150, 150, 150, .4);
   background: white;
 }
 
-.intro-blurb-form li,
-.intro-blurb-form input,
-.intro-blurb-form label {
-  display: inline-block;
-  margin-right: auto;
-  padding: 5px 0px;
+.intro-blurb-header {
+  display: block;
+  padding-bottom: 20px;
 }
 
-.intro-blurb-form label {
+.intro-blurb-header-left {
+  display: block;
+  float: left;
+}
+
+.intro-blurb-header-right {
+  display: block;
+  float: right;
+  width: 200px;
+}
+
+.intro-blurb-header img {
+  float: left;
+  width: 25px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.intro-blurb-header h4 {
+  float: left;
+  display: block;
+}
+
+.blurb-intro {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+.blurb-line-item {
+  float: left;
+  display: block;
+  /*margin-right: auto;*/
+  padding: 5px 0px;
+  font-size: 12px;
+}
+
+.blurb-line-item:after {
+  display: inline-block;
+  content: "";
+  width: 100px;
+}
+
+.blurb-line-item img {
+  float: left;
+  display: inline-block;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.blurb-line-item label {
   color: #365899;
 }
 
-.intro-blurb-form label:hover {
+.blurb-line-item label:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.intro-blurb-form label:before {
+.blurb-line-item label:before {
   content: "+";
   font-size: 16px;
   font-weight: bold;
   margin-right: 5px;
 }
 
-.intro-blurb-form input {
+.blurb-line-item input {
   border: 1px solid rgba(150, 150, 150, .4);
+}
+
+.blurb-line-item li,
+.blurb-line-item input,
+.blurb-line-item label {
+  display: inline-block;
+  float: left;
 }

@@ -12,6 +12,7 @@ var React = require('react'),
     ProfileDetail = require('./components/ProfileDetail'),
     Home = require('./components/Home'),
     PostsIndex = require('./components/PostsIndex'),
+    IntroBlurb = require('./components/IntroBlurb'),
     Timeline = require('./components/Timeline'),
     DrakesIndex = require('./components/DrakesIndex');
 
@@ -52,7 +53,7 @@ var Router = (
 
       <Route path="/users/:userId" component={Profile} onEnter={_ensureLoggedIn} >
         < IndexRoute component={Timeline} />
-        < Route path="/users/:userId/about" component={ProfileDetail} />
+        < Route path="/users/:userId/about" component={IntroBlurb} />
         < Route path="/users/:userId/drakes" component={DrakesIndex} />
       </ Route >
 
