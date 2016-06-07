@@ -76,7 +76,7 @@ var IntroBlurb = module.exports = React.createClass({
   },
 
   _blurbKeys: function () {
-    return Object.keys(this.displayNames).slice(0, 5);
+    return Object.keys(this.displayNames);
   },
 
   buildBlurbForm: function () {
@@ -163,14 +163,14 @@ var IntroBlurb = module.exports = React.createClass({
   },
 
   buildIntroForm: function () {
-    if (this.state.profile.intro && this.state.focused !== "intro") {
+    if (this.state.profile.intro && this.state.focused !== "blurb-intro") {
       return(
         <div className="blurb-intro" onClick={this.handleClick}>
           {this.state.profile.intro}
         </div>
       );
 
-    } else if (this.state.focused === "intro") {
+    } else if (this.state.focused === "blurb-intro") {
       return(
         <div className="blurb-intro" onBlur={this.handleBlur} onSubmit={this.handleBlur}>
           <input type="textarea" defaultValue={this.state.profile.intro} />
@@ -179,8 +179,8 @@ var IntroBlurb = module.exports = React.createClass({
 
     } else {
       return(
-        <div className="blurb-edit-link" onClick={this.handleClick}>
-          Introduce yourself
+        <div className="blurb-intro" onClick={this.handleClick}>
+          <a>Introduce yourself</a>
         </div>
       );
 
@@ -215,18 +215,22 @@ var IntroBlurb = module.exports = React.createClass({
     }
 
     return(
-      <div className="intro-blurb-box group">
-        <header className="intro-blurb-header group">
-          <div className="intro-blurb-header-left">
-            <img src={window.drakeImages.iconIntroGlobe}/>
-            <h4>Intro</h4>
-          </div>
-          <div className="intro-blurb-header-right">
-            {intro}
-          </div>
-        </header>
+      <div className="intro-pane">
+        <div className="intro-blurb-box group">
+          <header className="intro-blurb-header group">
+            <div className="intro-blurb-header-left">
+              <img src={window.drakeImages.iconIntroGlobe}/>
+              <h4>Intro</h4>
+            </div>
+            <div className="intro-blurb-header-right">
+              {intro}
+            </div>
+          </header>
 
-        {form}
+          <section className="blurb-items">
+            {form}
+          </section>
+        </div>
       </div>
     );
   }

@@ -1,8 +1,12 @@
-.timeline-pane {
+.intro-pane {
   display: block;
   width: 815px;
   margin: auto;
   background: transparent;
+}
+
+.intro-blurb-box {
+  position: relative;
 }
 
 .left-timeline-pane {
@@ -27,6 +31,7 @@
 .intro-blurb-header-right {
   display: block;
   float: right;
+  margin-right: 20px;
   width: 200px;
 }
 
@@ -38,14 +43,22 @@
 }
 
 .intro-blurb-header h4 {
-  float: left;
+  position: absolute;
+  left: 20px;
   display: block;
+  padding-left: 20px;
 }
 
 .blurb-intro {
   display: block;
   text-align: center;
   font-size: 14px;
+}
+
+.blurb-items {
+  position: absolute;
+  top: 100px;
+  left: 20px;
 }
 
 .blurb-line-item {
@@ -85,7 +98,8 @@
   margin-right: 5px;
 }
 
-.blurb-line-item input {
+.blurb-line-item input,
+.blurb-intro input {
   border: 1px solid rgba(150, 150, 150, .4);
 }
 
@@ -94,4 +108,12 @@
 .blurb-line-item label {
   display: inline-block;
   float: left;
+}
+
+.blurb-intro input {
+  position: absolute;
+  right: 20px;
+  background: white;
+  height: 100px;
+  width: 500px;
 }
