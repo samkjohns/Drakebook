@@ -2,6 +2,7 @@ var React = require('react'),
     PostsActions = require('../actions/PostsActions'),
     ProfileStore = require('../stores/ProfileStore'),
     Post = require('./Post'),
+    PostForm = require('./PostForm'),
     PostsStore = require('../stores/PostsStore');
 
 var PostsIndex = module.exports = React.createClass({
@@ -11,7 +12,9 @@ var PostsIndex = module.exports = React.createClass({
   },
 
   getInitialState: function () {
-    return { posts: [] }
+    return {
+      posts: PostsStore.posts()
+    }
   },
 
   componentDidMount: function () {
@@ -26,16 +29,7 @@ var PostsIndex = module.exports = React.createClass({
     this.profileListener.remove();
   },
 
-  // componentWillReceiveProps: function () {
-  //   // call a new fetch
-  //   if (ProfileStore.profile()) {
-  //     PostsActions.fetchPostsForUser(ProfileStore.profile().id)
-  //   } else {
-  //     this.profileListener = ProfileStore.addListener(function () {
-  //       PostsActions.fetchPostsForUser(ProfileStore.profile().id);
-  //     });
-  //   }
-  // },
+  componentWillReceiveProps: this.componentDidMount,
 
   onChange: function () {
     this.setState({ posts: PostsStore.posts() });
@@ -45,6 +39,7 @@ var PostsIndex = module.exports = React.createClass({
     // debugger
     return(
       <div className="posts-index-pane">
+        < PostForm type={this.getType()} />
         <ul className="posts-index group">
           {this.state.posts.map(function (post, key) {
             return(

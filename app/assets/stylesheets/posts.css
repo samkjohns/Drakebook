@@ -16,6 +16,7 @@
   border-radius: 3px;
   background: white;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .post-content-pane {
@@ -66,7 +67,7 @@
 
 .comment-pane {
   border-top: 1px solid rgba(150, 150, 150, .4);
-  background: #edf0f5;
+  background: #f6f7f9;
 }
 
 .comment-pane img {

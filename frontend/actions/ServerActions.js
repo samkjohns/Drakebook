@@ -29,5 +29,12 @@ var ServerActions = module.exports = {
       actionType: PostConstants.POSTS_RECEIVED,
       index: index
     });
+  },
+
+  receiveSinglePost: function (post) {
+    AppDispatcher.dispatch({
+      actionType: PostConstants.ADD_POST,
+      post: post
+    });
   }
 };

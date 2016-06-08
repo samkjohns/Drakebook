@@ -1,0 +1,32 @@
+.post-form-pane {
+  border: 1px solid rgba(150, 150, 150, .4);
+  width: 489px;
+  height: 150px;
+  background: #f6f7f9;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+
+.post-form textarea {
+  border: none;
+  border-bottom: 1px solid rgba(150, 150, 150, .4);
+  width: 449px;
+  height: 70px;
+  padding: 20px;
+  background: white;
+  font-size: 14px;
+}
+
+.buttons-pane button {
+  display: block;
+  float: right;
+  border: 1px solid #4267b2;
+  background: #4267b2;
+  margin-top: 4px;
+  margin-right: 5px;
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  padding: 4px 15px;
+}

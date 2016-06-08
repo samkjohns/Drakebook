@@ -12,12 +12,12 @@ var DrakeToggle = module.exports = React.createClass({
 
   componentDidMount: function () {
     this.sessionListener = SessionStore.addListener(function () {
-      console.log("Setting currentUser state");
+      // console.log("Setting currentUser state");
       this.setState({ currentUser: SessionStore.currentUser() });
     }.bind(this));
 
     this.profileListener = ProfileStore.addListener(function () {
-      console.log("Setting profile state");
+      // console.log("Setting profile state");
       this.setState({ viewingUser: ProfileStore.profile() });
     }.bind(this));
   },
@@ -85,7 +85,7 @@ var DrakeToggle = module.exports = React.createClass({
       if (status === "accepted") { message = "Remove Drake"; }
       else if (status === "pending") { message = "Cancel Drake Request"; }
       else { message = "Request Drake"; }
-      console.log(status + " :: " + message);
+      // console.log(status + " :: " + message);
 
       return(
         <div className="drake-toggle-button" onClick={this.handleClick}>

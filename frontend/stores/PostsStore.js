@@ -25,7 +25,7 @@ var PostsStore = new Store(AppDispatcher);
 // --- CODE FOR OPTION 2 ---
 var _posts = [];
 
-PostsStore.posts = function () { return _posts.slice(); };
+PostsStore.posts = function () { return _posts.slice().reverse(); };
 
 PostsStore.commentsForPost = function (id) {
   for (var i = 0; i < _posts.length; i++) {
@@ -36,6 +36,18 @@ PostsStore.commentsForPost = function (id) {
   return null;
 }
 
+function addOrUpdatePost (post) {
+  for (var i = 0; i < _posts.length; i++) {
+    if (_posts[i].id === post.id) {
+      _posts[i] = post;
+      return i;
+    }
+  }
+
+  _posts.push(post);
+  return -1;
+}
+
 PostsStore.__onDispatch = function (payload) {
   // debugger
   switch (payload.actionType) {
@@ -44,7 +56,8 @@ PostsStore.__onDispatch = function (payload) {
         PostsStore.__emitChange();
         break;
 
-      case PostConstants.POST_ADDED:
+      case PostConstants.ADD_POST:
+        addOrUpdatePost(payload.post);
         PostsStore.__emitChange();
         break;
 
@@ -53,80 +66,6 @@ PostsStore.__onDispatch = function (payload) {
         break;
     }
 };
-
-// --- CODE FOR OPTION 1 ---
-// _posts = {};
-// function _keyFor (postable) {
-//   return postable.id + "|" + postable.postableType;
-// }
-//
-// function _getPosts (payload) {
-//   var postIndex = payload.postIndex;
-//   return _posts[_keyFor(postIndex.postable)];
-// }
-//
-// PostsStore.posts = function (postable) {
-//   return _posts[_keyFor(postable)].slice();
-// };
-//
-//
-//
-// function _removePost (posts, postId) {
-//   for (var i = 0; i < posts.length; i++) {
-//     if (posts[i].id === postId) {
-//       posts.splice(i, 1);
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-
-// PostsStore.__onDispatch = function (payload) {
-//   switch (payload.actionType) {
-//     /*
-//     payload: {
-//       actionType: PostConstants.POSTS_RECEIVED,
-//
-//       postIndex: {
-//         postable: {
-//           postableId: :postableId,
-//           postableType: :postableType
-//         },
-//
-//         posts: [array of posts]
-//       }
-//     }
-//     */
-//     case PostConstants.POSTS_RECEIVED:
-//       var postIndex = payload.postIndex;
-//       _posts[_keyFor(postIndex.postable)] = postIndex.posts;
-//       PostsStore.__emitChange();
-//       break;
-//
-//       /*
-//       payload: {
-//         actionType: PostConstants.POSTS_ADDED,
-//
-//         post: {
-//           postableId: :postableId,
-//           postableType: :postableType,
-//           (other post content)
-//         }
-//       }
-//       */
-//     case PostConstants.POST_ADDED:
-//       var posts = _posts[_keyFor(payload.postable)];
-//       posts.push(payload.post);
-//       PostsStore.__emitChange();
-//       break;
-//
-//     case PostConstants.POST_REMOVED:
-//       var posts = _posts[_keyFor(payload.postable)];
-//       _removePost(posts, payload.post.id);
-//       PostsStore.__emitChange();
-//       break;
-//   }
-// };
 
 window.PostsStore = PostsStore;
 module.exports = PostsStore;

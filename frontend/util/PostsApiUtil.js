@@ -8,5 +8,15 @@ var PostsApiUtil = module.exports = {
       dataType: "json",
       success: ServerActions.receivePosts
     });
+  },
+
+  createPost: function (postData) {
+    $.ajax({
+      type: "POST",
+      url: "api/posts",
+      dataType: "json",
+      data: postData,
+      success: ServerActions.receiveSinglePost
+    });
   }
 };
