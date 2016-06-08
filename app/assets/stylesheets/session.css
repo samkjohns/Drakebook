@@ -89,7 +89,9 @@ input {
   margin-top: 10px;
 }
 
-.propaganda img, strong, p {
+.propaganda img,
+.propaganda strong,
+.propaganda p {
   display: inline-block;
   vertical-align: middle;
   margin: 20px;

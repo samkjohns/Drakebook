@@ -1,20 +1,25 @@
 .timeline-pane {
   display: block;
-  width: 816px;
+  width: 818px;
 }
 
 .main-timeline-pane {
   display: block;
   float: right;
-  width: 490px;
+  width: 491px;
   position: relative;
   margin: 0;
 }
 
 .post-pane {
-  background: white;
-  padding: 5px;
   border: 1px solid rgba(150, 150, 150, .4);
+  border-radius: 3px;
+  background: white;
+  font-size: 14px;
+}
+
+.post-content-pane {
+  padding: 10px;
 }
 
 .post-author {
@@ -36,7 +41,65 @@
   float: left;
   line-height: 42px;
   color: #365899;
-  font-size: 14px;
   font-weight: bold;
   vertical-align: middle;
+}
+
+.post-buttons-pane {
+  margin: 0 10px;
+  border-top: 1px solid rgba(150, 150, 150, .4);
+}
+
+.post-buttons {
+  display: block;
+  float: left;
+}
+
+.post-buttons li {
+  display: block;
+  float: left;
+  color: #7f7f7f;
+  padding: 5px 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.comment-pane {
+  border-top: 1px solid rgba(150, 150, 150, .4);
+  background: #edf0f5;
+}
+
+.comment-pane img {
+  display: block;
+  float: left;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.comment-box {
+  display: block;
+  float: left;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.comment-content a, .comment-content p {
+  display: inline-block;
+}
+
+.comment-content a {
+  color: #365899;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.comment-buttons a {
+  float: left;
+  display: inline-block;
+  padding-top: 2px;
+  padding-right: 10px;
+  color: #365899;
 }

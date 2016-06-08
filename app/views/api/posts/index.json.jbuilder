@@ -1,5 +1,7 @@
 json.userId @postable_id
 json.array! @posts do |post|
+  json.id post.id
+
   json.author do
     json.username post.author.username
     json.authorId post.author.id
@@ -9,8 +11,8 @@ json.array! @posts do |post|
 
   json.comments post.comments do |comment|
     json.author do
-      json.username post.author.username
-      json.authorId post.author.id
+      json.username comment.author.username
+      json.authorId comment.author.id
     end
 
     json.body comment.body

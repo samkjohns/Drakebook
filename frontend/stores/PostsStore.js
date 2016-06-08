@@ -27,7 +27,14 @@ var _posts = [];
 
 PostsStore.posts = function () { return _posts.slice(); };
 
-
+PostsStore.commentsForPost = function (id) {
+  for (var i = 0; i < _posts.length; i++) {
+    if (_posts[i].id === id) {
+      return _posts[i].comments;
+    }
+  }
+  return null;
+}
 
 PostsStore.__onDispatch = function (payload) {
   // debugger
