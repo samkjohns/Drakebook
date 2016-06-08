@@ -38,8 +38,8 @@ var Profile = module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function (newProps) {
-    oldUserId = this.getUserId(this.props);
-    newUserId = this.getUserId(newProps);
+    var oldUserId = this.getUserId(this.props);
+    var newUserId = this.getUserId(newProps);
 
     if (oldUserId !== newUserId) {
       ProfileActions.fetchProfileInfo(newUserId);

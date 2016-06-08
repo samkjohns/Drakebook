@@ -1,4 +1,5 @@
 var AppDispatcher = require('../dispatcher/Dispatcher'),
+    PostConstants = require('../constants/PostConstants'),
     ProfileConstants = require('../constants/ProfileConstants');
 
 var ServerActions = module.exports = {
@@ -20,6 +21,13 @@ var ServerActions = module.exports = {
     AppDispatcher.dispatch({
       actionType: ProfileConstants.USER_RECEIVED,
       profile: userProfile
+    });
+  },
+
+  receivePosts: function (index) {
+    AppDispatcher.dispatch({
+      actionType: PostConstants.POSTS_RECEIVED,
+      index: index
     });
   }
 };

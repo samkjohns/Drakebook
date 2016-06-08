@@ -56,6 +56,9 @@ class User < ActiveRecord::Base
 
   has_many :received_drakes, through: :received_drakeships, source: :requester
 
+  has_many :authored_posts, class_name: "Post", foreign_key: :author_id
+  has_many :wall_posts, class_name: "Post", as: :postable
+
   # Auth methods
   def self.generate_session_token
     SecureRandom::urlsafe_base64

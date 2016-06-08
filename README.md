@@ -71,7 +71,7 @@ have a link to a display page for the user's drakeships.
 - [x] jBuilder views for Drakeships
 - implement the following components (with flux loops):
   - [x] `Profile`
-  - [ ] `ProfileDetail`
+  - [x] `ProfileDetail` (as IntroBlurb)
   - [x] `DrakeshipsIndex`
   - [x] `DrakeshipsIndexItem`
 
@@ -84,20 +84,15 @@ have a link to a display page for the user's drakeships.
   - [x] `DrakeshipRequestsIndex`
   - [x] `DrakeshipRequestsIndexItem`
 - [x] Profile should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
-- [ ] Profile should include an "edit" function that allows the user to enter more information. (PATCH)
-  - [ ] Add more columns to the users table for more user data. Also add these columns to the users#show jBuilder view.
+- [x] Profile should include an "edit" function that allows the user to enter more information. (PATCH)
+  - [x] Add more columns to the users table for more user data. Also add these columns to the users#show jBuilder view.
 - [x] Navbar should include a drakeship requests notification dropdown menu, from which requests can be accepted or rejected. (PATCH)
 
-### Phase 4 Photo upload (1 day)
-**Objective:** Users can upload profile and cover photos through the browser.
-
-(Steps to be filled out after I've watched the video lecture, but presumably there will need to be a way to store files. Database may need to be adjusted. And user input will of course be necessary.)
-
-### Phase 5: Posts (2 days)
+### Phase 4: Posts (2 days)
 
 **Objective:** Users can author posts, either on a user profile or as a reply to another post.
 
-- [ ] create `Post` model
+- [x] create `Post` model
 - build out API, Flux loop, and components for:
   - [ ] Post CRUD
   - [ ] Posts go on a user's Timeline
@@ -105,13 +100,18 @@ have a link to a display page for the user's drakeships.
   - [ ] Posts optionally include a photo
   - [ ] Use `PostIndex` to build a `Feed` component as well.
 
-### Phase 6: Search (0.5 days)
+### Phase 5: Search (0.5 days)
 
 **Objective:** Users should be able to find each other through the search bar, which should display real-time search results.
 
 - [ ] Write a users_controller#index action that will find all users that match a given search.
 - [ ] Build out Flux loop for the `Search` component
 - [ ] Each `SearchIndexItem` should be selectable, and link to that user's profile page.
+
+### Phase 6: Photo upload (1 day)
+**Objective:** Users can upload profile and cover photos through the browser.
+
+(Steps to be filled out after I've watched the video lecture, but presumably there will need to be a way to store files. Database may need to be adjusted. And user input will of course be necessary.)
 
 ### Phase 7: Likes and Tags (1.5 days)
 

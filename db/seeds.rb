@@ -32,3 +32,15 @@ usernames.each_with_index do |username, i|
     )
   end
 end
+
+p1 = Post.new
+p1.author = User.first
+p1.postable = User.last
+p1.body = "This is my first post...__/~~~*^^^*~~~\\__"
+p1.save!
+
+p2 = Post.new
+p2.author = User.last
+p2.postable = p1
+p2.body = "This is a reSPONse to your FIRST posT"
+p2.save!

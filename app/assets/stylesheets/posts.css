@@ -1,0 +1,42 @@
+.timeline-pane {
+  display: block;
+  width: 816px;
+}
+
+.main-timeline-pane {
+  display: block;
+  float: right;
+  width: 490px;
+  position: relative;
+  margin: 0;
+}
+
+.post-pane {
+  background: white;
+  padding: 5px;
+  border: 1px solid rgba(150, 150, 150, .4);
+}
+
+.post-author {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.post-author img {
+  display: block;
+  float: left;
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgba(200, 200, 200, .4);
+  margin-right: 5px;
+}
+
+.post-author a {
+  display: block;
+  float: left;
+  line-height: 42px;
+  color: #365899;
+  font-size: 14px;
+  font-weight: bold;
+  vertical-align: middle;
+}

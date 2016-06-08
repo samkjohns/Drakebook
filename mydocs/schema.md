@@ -18,7 +18,7 @@ column name       | data type | details
 id                | integer   | not null, primary key
 requester_id      | integer   | not null, foreign key (references users), indexed
 recipient_id      | integer   | not null, foreign key (references users), indexed
-relationship_type | string    | 
+relationship_type | string    |
 request_status    | string    | not null ("accepted", "rejected", or "pending")
 
 ## posts
@@ -27,7 +27,7 @@ column name   | data type | details
 id            | integer   | not null, primary key
 author_id     | integer   | not null, foreign key (references users), indexed
 postable_id   | integer   | not null, foreign key (polymorphic reference), indexed
-postable_type | string    | not null, polymorphic type
+postable_type | string    | not null, polymorphic type (Post and User)
 body          | text      | not null
 
 ## photos

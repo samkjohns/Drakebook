@@ -173,7 +173,7 @@ var IntroBlurb = module.exports = React.createClass({
     } else if (this.state.focused === "blurb-intro") {
       return(
         <div className="blurb-intro" onBlur={this.handleBlur} onSubmit={this.handleBlur}>
-          <input type="textarea" defaultValue={this.state.profile.intro} />
+          <textarea rows={3} defaultValue={this.state.profile.intro} />
         </div>
       );
 
@@ -227,7 +227,7 @@ var IntroBlurb = module.exports = React.createClass({
             </div>
           </header>
 
-          <section className="blurb-items">
+          <section className="blurb-items group">
             {form}
           </section>
         </div>
