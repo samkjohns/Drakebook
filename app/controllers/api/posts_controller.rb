@@ -6,7 +6,7 @@ class Api::PostsController < ApplicationController
 
     if user
       @postable_id = user.id
-      @posts = user.wall_posts
+      @posts = user.wall_posts.includes(:comments)
       render :index
     else
       render json: {

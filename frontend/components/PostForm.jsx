@@ -37,7 +37,7 @@ var PostForm = module.exports = React.createClass({
     }
 
     this.setState({ body: "" });
-    this.props.finishEditing();
+    this.props.finishEditing && this.props.finishEditing();
   },
 
   render: function () {

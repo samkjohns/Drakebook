@@ -12,7 +12,8 @@ var Post = module.exports = React.createClass({
 
   getInitialState: function () {
     return {
-      editing: false
+      editing: false,
+      commentEditing: null
     };
   },
 
@@ -24,32 +25,17 @@ var Post = module.exports = React.createClass({
     this.setState({ editing: false });
   },
 
-  commentRender: function (comment, key) {
-    return(
-      <li key={key} className="comment-pane group">
-        <img src={window.drakeImages.default.profile} />
-        <div className="comment-box">
-          <span className="comment-content group">
-            <a>{comment.author.username}</a>
-            <p>{comment.body}</p>
-          </span>
-
-          <span className="comment-buttons">
-            <a>Like</a>
-            <a>Reply</a>
-          </span>
-        </div>
-      </li>
-    );
+  finishCommentEditing: function () {
+    this.setState({ commentEditing: null });
   },
 
   goToProfile: function (event) {
     this.context.router.push("/users/" + this.props.post.author.authorId);
   },
 
-  handleDelete: function (event) {
+  handleDelete: function (post, event) {
     event.preventDefault();
-    PostsActions.removePost(this.props.post.id);
+    PostsActions.removePost(post.id);
   },
 
   handleEdit: function (event) {
@@ -57,15 +43,68 @@ var Post = module.exports = React.createClass({
     this.setState({ editing: true });
   },
 
+  handleCommentEdit: function (comment, event) {
+    this.setState({ commentEditing: comment });
+  },
+
+  isPostAuthor: function (post) {
+    return post.author.authorId === SessionStore.currentUser().id;
+  },
+
+  commentRender: function (comment, key) {
+    var buttons = <div/>;
+    if (this.isPostAuthor(comment)) {
+      buttons = (
+        <div className="comment-buttons">
+          <a onClick={this.handleCommentEdit.bind(this, comment)}>
+            Edit
+          </a>
+
+          <a onClick={this.handleDelete.bind(this, comment)}>
+            Delete
+          </a>
+        </div>
+      );
+    }
+
+    var postBody;
+    if (this.state.commentEditing && this.state.commentEditing.id === comment.id) {
+      postBody = (
+        <CommentForm
+          type="edit"
+          post={comment}
+          finishEditing={this.finishCommentEditing}
+        />
+      );
+    } else {
+      postBody = (
+        <span className="comment-content group">
+          <a>{comment.author.username}</a>
+          <p>{comment.body}</p>
+        </span>
+      );
+    }
+
+    return(
+      <li key={key} className="comment-pane group">
+        <img src={window.drakeImages.default.profile} />
+        <div className="comment-box">
+          {postBody}
+        </div>
+        {buttons}
+      </li>
+    );
+  },
+
   render: function () {
     var buttons = <div/>;
-    if (this.props.post.author.authorId === SessionStore.currentUser().id) {
+    if (this.isPostAuthor(this.props.post)) {
       buttons = (
         <div className="modify-post-buttons group">
           <button className="edit-post-button" onClick={this.handleEdit}>
             Edit
           </button>
-          <button className="delete-post-button" onClick={this.handleDelete}>
+          <button className="delete-post-button" onClick={this.handleDelete.bind(this, this.props.post)}>
             Delete
           </button>
         </div>
@@ -113,7 +152,7 @@ var Post = module.exports = React.createClass({
           }.bind(this) )}
         </section>
 
-        < CommentForm post={this.props.post} finishEditing={this.finishEditing} />
+        < CommentForm post={this.props.post} finishEditing={this.finishCommentEditing} />
       </li>
     );
   }

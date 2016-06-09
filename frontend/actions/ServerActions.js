@@ -1,4 +1,5 @@
 var AppDispatcher = require('../dispatcher/Dispatcher'),
+    SearchConstants = require('../constants/SearchConstants'),
     PostConstants = require('../constants/PostConstants'),
     ProfileConstants = require('../constants/ProfileConstants');
 
@@ -43,5 +44,12 @@ var ServerActions = module.exports = {
       actionType: PostConstants.REMOVE_POST,
       post: post
     });
-  }
+  },
+
+  receiveSearchResults: function (results) {
+    AppDispatcher.dispatch({
+      actionType: SearchConstants.RESULTS_RECEIVED,
+      results: results
+    });
+  },
 };

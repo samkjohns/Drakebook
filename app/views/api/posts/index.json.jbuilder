@@ -9,7 +9,9 @@ json.array! @posts do |post|
 
   json.body post.body
 
-  json.comments post.comments do |comment|
+  json.comments post.comments.order(:created_at) do |comment|
+    json.id comment.id
+
     json.author do
       json.username comment.author.username
       json.authorId comment.author.id

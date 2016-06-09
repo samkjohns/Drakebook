@@ -8,16 +8,16 @@ var CommentForm = module.exports = React.createClass({
       { body: this.props.post.body } : { body: "" };
   },
 
-  onChange: function () {
+  onChange: function (event) {
     this.setState({ body: event.currentTarget.value });
   },
 
   submit: function (event) {
     event.preventDefault();
 
-    console.log("submitting?");
     var postableId = this.props.post.id;
 
+    debugger
     if (this.props.type === "edit"){
       PostsActions.updatePost({
         id: postableId,
@@ -34,7 +34,7 @@ var CommentForm = module.exports = React.createClass({
     }
 
     this.setState({ body: "" });
-    this.props.finishEditing();
+    this.props.finishEditing && this.props.finishEditing();
   },
 
   render: function () {

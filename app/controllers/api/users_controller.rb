@@ -31,6 +31,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.where("username ~ ?", search_params[:query])
+    render :search
+  end
+
   private
   def user_params
     params.require(:user).permit(
@@ -41,5 +46,9 @@ class Api::UsersController < ApplicationController
       :high_school, :college, :college_major,
       :intro, :name_pronunciation
     )
+  end
+
+  def search_params
+    params.require(:search).permit(:query)
   end
 end

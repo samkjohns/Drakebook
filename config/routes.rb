@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :drakeships, only: [ :index ]
       resources :posts, only: [ :index ]
     end
+    get 'search', to: "users#search"
 
     resource :session, only: [ :show, :create, :destroy ]
 

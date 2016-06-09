@@ -107,6 +107,8 @@
 
 .comment-content a, .comment-content p {
   display: inline-block;
+  margin-top: 2px;
+  line-height: 30px;
 }
 
 .comment-content a {
@@ -115,10 +117,22 @@
   padding-right: 5px;
 }
 
+.comment-buttons {
+  display: block;
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
 .comment-buttons a {
   float: left;
   display: inline-block;
-  padding-top: 2px;
-  padding-right: 10px;
-  color: #365899;
+  padding: 3px 5px;
+  margin-right: 5px;
+  color: #7f7f7f;
+  font-size: 12px;
+  border: 1px solid rgba(150, 150, 150, .4);
+  background: white;
 }
+
+.comment-buttons a:hover { text-decoration: none; }

@@ -71,6 +71,18 @@
   display: block;
   float: left;
   background: #f6f7f9;
-  padding-left: 10px;
-  padding-right: 9px;
+  width: 85px;
+  height: 37px;
+}
+
+.comment-buttons-pane button {
+  margin-top: 3px;
+  margin-left: 12px;
+  border: 1px solid rgba(150, 150, 150, .4);
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-size: 12px;
+  color: white;
+  background: #4267b2;
+  padding: 4px 15px;
 }

@@ -7,7 +7,14 @@ end
 
 json.body @post.body
 
+json.postable do
+  json.id @post.postable_id
+  json.type @post.postable_type
+end
+
 json.comments @post.comments do |comment|
+  json.id comment.id
+
   json.author do
     json.username comment.author.username
     json.authorId comment.author.id
