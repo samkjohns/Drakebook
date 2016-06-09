@@ -37,3 +37,40 @@
   letter-spacing: 1px;
   padding: 4px 15px;
 }
+
+.post-comment-pane,
+.edit-comment-pane {
+  background: #f6f7f9;
+}
+
+.post-comment img,
+.edit-comment img {
+  display: block;
+  float: left;
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border: 1px solid rgba(150, 150, 150, .4);
+}
+
+.post-comment textarea,
+.edit-comment textarea {
+  display: block;
+  float: left;
+  width: 350px;
+  height: 20px;
+  line-height: 20px;
+  padding: 5px 5px;
+  background: white;
+  margin-left: 5px;
+  border: 1px solid rgba(150, 150, 150, .4);
+}
+
+.comment-buttons-pane {
+  display: block;
+  float: left;
+  background: #f6f7f9;
+  padding-left: 10px;
+  padding-right: 9px;
+}

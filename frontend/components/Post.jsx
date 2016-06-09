@@ -2,6 +2,7 @@ var React = require('react'),
     PostsStore = require('../stores/PostsStore'),
     PostsActions = require('../actions/PostsActions'),
     SessionStore = require('../stores/SessionStore'),
+    CommentForm = require('./CommentForm'),
     PostForm = require('./PostForm');
 
 var Post = module.exports = React.createClass({
@@ -111,6 +112,8 @@ var Post = module.exports = React.createClass({
             return this.commentRender(comment, key);
           }.bind(this) )}
         </section>
+
+        < CommentForm post={this.props.post} finishEditing={this.finishEditing} />
       </li>
     );
   }
