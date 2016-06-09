@@ -48,7 +48,7 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
     }
 
     var reqBadge;
-    if (this.state.potentialDrakes.length > 0) {
+    if (this.state.potentialDrakes && this.state.potentialDrakes.length > 0) {
       reqBadge = <label className="requests-badge">{this.state.potentialDrakes.length}</label>;
     } else {
       reqBadge = <label/>;

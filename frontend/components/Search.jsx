@@ -16,15 +16,14 @@ var Search = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
-    this.searchListener = SearchStore.addListener(this.onChange);
+    this.searchListener = SearchStore.addListener(this.setStateFromStore);
   },
 
   componentWillUnmount: function () {
     this.searchListener.remove();
   },
 
-  onChange: function () {
-    console.log("in on change");
+  setStateFromStore: function () {
     this.setState({ results: SearchStore.searchResults() });
   },
 
@@ -37,21 +36,48 @@ var Search = module.exports = React.createClass({
   },
 
   handleSearchChange: function (event) {
-    this.setState({ search: event.currentTarget.value });
+    this.setState(
+      { search: event.currentTarget.value },
+      this.makeSearchQuery
+    );
+  },
+
+  handleBlur: function (event) {
+    debugger
+    this.setState({ results: [] });
+  },
+
+  handleFocus: function () {
+    this.makeSearchQuery();
+  },
+
+  makeSearchQuery: function () {
+    console.log("in makeSearchQuery; search is " + this.state.search);
     if (this.state.search) {
       SearchActions.searchUsers(this.state.search);
+    } else {
+      this.setState({ results: [] })
     }
   },
 
   render: function () {
-    console.log("results length: " + this.state.results);
+    var searchResults = <div/>;
+    if (this.state.search) {
+      searchResults = < SearchResultsIndex results={this.state.results} />;
+    }
+
     return(
       <header className="search-header">
         <nav className="search-nav">
           <div className="search-nav-left">
             <img onClick={this.redirectToHome} src={window.drakeImages.iconDrakebook} />
-            <input type="text" onChange={this.handleSearchChange} placeholder="Search Drakes" />
-            < SearchResultsIndex results={this.state.results} />
+            <input
+              type="text"
+              onChange={this.handleSearchChange}
+              onFocus={this.handleFocus}
+              placeholder="Search Drakes"
+            />
+            {searchResults}
           </div>
 
           <ul className="search-icons group">
@@ -59,7 +85,7 @@ var Search = module.exports = React.createClass({
               <img src={window.drakeImages.default.profile}/>
               <label>{SessionStore.currentUser().username}</label>
             </li>
-            <li>< DrakeshipRequestsIndex /></li>
+            <li><DrakeshipRequestsIndex/></li>
             <li><img src={window.drakeImages.iconMessages} /></li>
             <li><img src={window.drakeImages.iconNotifications} /></li>
             <li><button onClick={SessionActions.logout}>Logout</button></li>

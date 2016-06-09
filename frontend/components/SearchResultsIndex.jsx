@@ -8,9 +8,9 @@ var SearchResultsIndex = module.exports = React.createClass({
     }
 
     return(
-      <div className="search-results-pane">
-        {this.props.results.map(function (result) {
-          return <SearchResultsIndexItem result={result} />;
+      <div className="search-results-pane group">
+        {this.props.results.map(function (result, idx) {
+          return <SearchResultsIndexItem result={result} key={idx} />;
         })}
       </div>
     );
