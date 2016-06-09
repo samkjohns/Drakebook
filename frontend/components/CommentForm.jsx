@@ -11,6 +11,31 @@ var CommentForm = module.exports = React.createClass({
     this.setState({ body: event.currentTarget.value });
   },
 
+  submit: function (event) {
+    event.preventDefault();
+
+    var postableId = this.props.type === "Feed" ?
+      SessionStore.currentUser().id : ProfileStore.profile().id;
+
+    if (this.props.type === "edit"){
+      PostsActions.updatePost({
+        id: this.props.post.id,
+        body: this.state.body
+      });
+    } else {
+      PostsActions.createPost({
+        post: {
+          body: this.state.body,
+          postable_type: "User",
+          postable_id: postableId
+        }
+      });
+    }
+
+    this.setState({ body: "" });
+    this.props.finishEditing();
+  },
+
   render: function () {
     return(
       <div className="comment-form-pane">

@@ -18,7 +18,6 @@ var PostForm = module.exports = React.createClass({
   submit: function (event) {
     event.preventDefault();
 
-    console.log(this.props.type);
     var postableId = this.props.type === "Feed" ?
       SessionStore.currentUser().id : ProfileStore.profile().id;
 

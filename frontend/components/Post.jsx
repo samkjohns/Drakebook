@@ -110,8 +110,6 @@ var Post = module.exports = React.createClass({
           {this.getComments().map(function (comment, key){
             return this.commentRender(comment, key);
           }.bind(this) )}
-
-          < CommentForm post={this.props.post} />
         </section>
       </li>
     );
