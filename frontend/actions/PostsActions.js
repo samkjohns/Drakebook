@@ -15,5 +15,9 @@ var PostsActions = module.exports = {
 
   updatePost: function (post) {
     PostsApiUtil.updatePost(post);
+  },
+
+  fetchFeedForUser: function (id) {
+    PostsApiUtil.fetchFeedForUser(id);
   }
 };

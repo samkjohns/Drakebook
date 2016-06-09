@@ -1,0 +1,9 @@
+.feed-parent-pane {
+  background: #edf0f5;
+}
+
+.feed-pane {
+  display: block;
+  width: 500px;
+  margin: 10px auto;
+}

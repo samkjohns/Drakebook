@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
     # posts#show will send down all comments if the params request it
     resources :posts, only: [ :create, :show, :destroy, :update ]
+    get 'feed', to: "posts#feed"
   end
 end

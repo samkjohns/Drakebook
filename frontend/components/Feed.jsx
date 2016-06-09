@@ -6,10 +6,11 @@ var React = require('react'),
 var Feed = module.exports = React.createClass({
   render: function () {
     return(
-      <div>
+      <div className="feed-parent-pane">
         < Search />
-        < a href={"#/users/" + SessionStore.currentUser().id}>(profile link)</a>
-        < PostsIndex />
+        <div className="feed-pane">
+          < PostsIndex type={"Feed"} />
+        </div>
       </div>
     );
   }

@@ -7,6 +7,11 @@ json.array! @posts do |post|
     json.authorId post.author.id
   end
 
+  json.postable do
+    json.id post.postable_id
+    json.type post.postable_type
+  end
+
   json.body post.body
 
   json.comments post.comments.order(:created_at) do |comment|

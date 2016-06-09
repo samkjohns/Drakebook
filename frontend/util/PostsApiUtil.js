@@ -39,5 +39,14 @@ var PostsApiUtil = module.exports = {
       },
       success: ServerActions.receiveSinglePost
     });
+  },
+
+  fetchFeedForUser: function (id) {
+    $.ajax({
+      type: "GET",
+      url: "api/feed",
+      dataType: "json",
+      success: ServerActions.receivePosts
+    });
   }
 };

@@ -13,27 +13,49 @@ var PostsIndex = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
-    this.postsListener = PostsStore.addListener(this.onChange);
+    this.listenSwitch(this.props);
+  },
+
+  componentWillUnmount: function () {
+    this.postsListener.remove();
+    this.profileListener && this.profileListener.remove();
+  },
+
+  componentWillReceiveProps: function (newProps) {
+    this.componentWillUnmount();
+    this.listenSwitch(newProps);
+  },
+
+  listenSwitch: function (props) {
+    if (props.type === "Timeline") {
+      this.listenToPostsStore();
+    } else {
+      this.listenToFeedStore();
+    }
+  },
+
+  onPostsChange: function () {
+    this.setState({ posts: PostsStore.posts() });
+  },
+
+  listenToPostsStore: function () {
+    this.postsListener = PostsStore.addListener(this.onPostsChange);
     this.profileListener = ProfileStore.addListener(function () {
       PostsActions.fetchPostsForUser(ProfileStore.profile().id);
     });
   },
 
-  componentWillUnmount: function () {
-    this.postsListener.remove();
-    this.profileListener.remove();
-  },
-
-  componentWillReceiveProps: this.componentDidMount,
-
-  onChange: function () {
-    this.setState({ posts: PostsStore.posts() });
+  // Temporarily using PostsStore
+  // while I check to see if I need a FeedStore at all
+  listenToFeedStore: function () {
+    this.postsListener = PostsStore.addListener(this.onPostsChange);
+    PostsActions.fetchFeedForUser(SessionStore.currentUser().id);
   },
 
   render: function () {
     return(
       <div className="posts-index-pane">
-        < PostForm type={this.props.type} />
+        < PostForm type={"post"} location={this.props.type} />
         <ul className="posts-index group">
           {this.state.posts.map(function (post, key) {
             return(
