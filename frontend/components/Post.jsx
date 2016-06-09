@@ -67,6 +67,10 @@ var Post = module.exports = React.createClass({
       );
     }
 
+    var goToCommenter = function () {
+      this.context.router.push("/users/" + comment.author.authorId);
+    }.bind(this);
+
     var postBody;
     if (this.state.commentEditing && this.state.commentEditing.id === comment.id) {
       postBody = (
@@ -79,7 +83,7 @@ var Post = module.exports = React.createClass({
     } else {
       postBody = (
         <span className="comment-content group">
-          <a>{comment.author.username}</a>
+          <a onClick={goToCommenter}>{comment.author.username}</a>
           <p>{comment.body}</p>
         </span>
       );

@@ -13,6 +13,7 @@ var PostsIndex = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
+    console.log("PostsIndex (" + this.props.type + ") mounting");
     this.listenSwitch(this.props);
   },
 

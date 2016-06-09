@@ -11,8 +11,9 @@
 #  updated_at        :datetime         not null
 #
 
-  class Drakeship < ActiveRecord::Base
+class Drakeship < ActiveRecord::Base
   validates :requester_id, :recipient_id, presence: true
+  validates :requester_id, uniqueness: {scope: :recipient_id}
   validates :request_status, inclusion: [ "pending", "accepted", "rejected" ]
 
   belongs_to :requester, class_name: "User"

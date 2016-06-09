@@ -43,7 +43,6 @@ var Search = module.exports = React.createClass({
   },
 
   handleBlur: function (event) {
-    debugger
     this.setState({ results: [] });
   },
 

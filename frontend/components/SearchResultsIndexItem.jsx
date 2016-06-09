@@ -5,7 +5,8 @@ var SearchResultIndexItem = module.exports = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
-  goToProfile: function () {
+  goToProfile: function (event) {
+    event.stopPropagation();
     this.context.router.push("/users/" + this.props.result.id);
   },
 

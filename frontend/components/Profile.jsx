@@ -2,6 +2,7 @@ var React = require('react'),
     ProfileApiUtil = require('../util/ProfileApiUtil'),
     ProfileActions = require('../actions/ProfileActions'),
     ProfileStore = require("../stores/ProfileStore"),
+    PostsActions = require('../actions/PostsActions'),
     Search = require('./Search'),
     DrakeToggle = require('./DrakeToggle');
 
@@ -38,11 +39,13 @@ var Profile = module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function (newProps) {
+    console.log("receiving props");
     var oldUserId = this.getUserId(this.props);
     var newUserId = this.getUserId(newProps);
-
+    debugger
     if (oldUserId !== newUserId) {
       ProfileActions.fetchProfileInfo(newUserId);
+      PostsActions.fetchPostsForUser(newUserId);
     }
   },
 

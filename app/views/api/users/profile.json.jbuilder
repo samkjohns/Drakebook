@@ -9,6 +9,10 @@ json.extract!(
 json.drakeships @user.drakeships do |drake|
   json.extract! drake, :id, :username, :profile_photo_path
 end
-json.pendingDrakeships @user.pending_drakeships do |drake|
-  json.extract! drake, :id, :username, :profile_photo_path
+
+json.pendingDrakeships(
+  @user.received_drakeships.where(request_status: "pending").includes(:requester)
+) do |drakeship|
+  # json.extract! drake, :id, :username, :profile_photo_path
+  json.extract! drakeship.requester, :id, :username, :profile_photo_path
 end
