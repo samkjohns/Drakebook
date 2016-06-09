@@ -30,11 +30,49 @@ class Api::PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find params[:id]
+    if @post && @post.destroy
+      render :show
+    elsif @post
+      render json: {
+        errors: @post.errors.full_messages,
+        status: 422
+      }
+    else
+      render json: {
+        base: ["Could not find post with id #{params[:id]}"],
+        status: 404
+      }
+    end
+  end
+
+  def update
+    @post = Post.find params[:id]
+    if @post && @post.update(update_post_params)
+      render :show
+    elsif @post
+      render json: {
+        errors: @post.errors.full_messages,
+        status: 422
+      }
+    else
+      render json: {
+        base: ["Could not find post with id #{params[:id]}"],
+        status: 404
+      }
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(
       :body, :postable_id, :postable_type
     )
+  end
+
+  def update_post_params
+    params.require(:post).permit(:body)
   end
 
 end

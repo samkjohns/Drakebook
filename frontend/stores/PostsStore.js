@@ -48,6 +48,16 @@ function addOrUpdatePost (post) {
   return -1;
 }
 
+function removePost (post) {
+  for (var i = 0; i < _posts.length; i++) {
+    if (_posts[i].id === post.id) {
+      _posts.splice(i, 1);
+      return i;
+    }
+  }
+  return -1;
+}
+
 PostsStore.__onDispatch = function (payload) {
   // debugger
   switch (payload.actionType) {
@@ -61,7 +71,8 @@ PostsStore.__onDispatch = function (payload) {
         PostsStore.__emitChange();
         break;
 
-      case PostConstants.POST_REMOVED:
+      case PostConstants.REMOVE_POST:
+        removePost(payload.post);
         PostsStore.__emitChange();
         break;
     }

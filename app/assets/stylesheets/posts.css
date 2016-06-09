@@ -35,6 +35,7 @@
   width: 40px;
   border: 1px solid rgba(200, 200, 200, .4);
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .post-author a {
@@ -44,6 +45,22 @@
   color: #365899;
   font-weight: bold;
   vertical-align: middle;
+}
+
+.modify-post-buttons {
+  display: block;
+  float: right;
+  margin-top: 10px;
+}
+
+.modify-post-buttons button {
+  float: left;
+  padding: 3px 7px;
+  color: #7f7f7f;
+  background: white;
+  font-size: 12px;
+  margin-left: 5px;
+  border: 1px solid rgba(150, 150, 150, .4);
 }
 
 .post-buttons-pane {

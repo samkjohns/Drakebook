@@ -21,11 +21,11 @@ Drakebook will allow users to do the following:
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account. (MVP)
+- [x] Create an account. (MVP)
 - [ ] Log in / Log out, including as a Guest. (MVP)
-- [ ] Edit profile info at will. (MVP)
+- [x] Edit profile info at will. (MVP)
 - [ ] Upload profile and cover photos. (MVP)
-- [ ] Befriend other users. (MVP)
+- [x] Befriend other users. (MVP)
 - [ ] Create, edit, and delete posts on their own wall or their friends' walls. (MVP)
 - [ ] Like posts. (MVP)
 - [ ] Include photos in their posts. (MVP)
@@ -95,8 +95,8 @@ have a link to a display page for the user's drakeships.
 - [x] create `Post` model
 - build out API, Flux loop, and components for:
   - [ ] Post CRUD
-  - [ ] Posts go on a user's Timeline
-    - [ ] Build `PostIndex` and `PostIndexItem`
+  - [x] Posts go on a user's Timeline
+    - [x] Build `PostIndex` and `PostIndexItem`
   - [ ] Posts optionally include a photo
   - [ ] Use `PostIndex` to build a `Feed` component as well.
 

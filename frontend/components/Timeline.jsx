@@ -29,7 +29,7 @@ var Timeline = module.exports = React.createClass({
         </section>
 
         <section className="main-timeline-pane group">
-          < PostsIndex />
+          < PostsIndex type={"Timeline"} />
         </section>
       </div>
     );

@@ -36,5 +36,12 @@ var ServerActions = module.exports = {
       actionType: PostConstants.ADD_POST,
       post: post
     });
+  },
+
+  removeSinglePost: function (post) {
+    AppDispatcher.dispatch({
+      actionType: PostConstants.REMOVE_POST,
+      post: post
+    });
   }
 };

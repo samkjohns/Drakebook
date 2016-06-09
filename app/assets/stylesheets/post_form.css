@@ -1,21 +1,28 @@
-.post-form-pane {
+.post-form-pane,
+.edit-form-pane {
   border: 1px solid rgba(150, 150, 150, .4);
-  width: 489px;
   height: 150px;
   background: #f6f7f9;
   border-radius: 3px;
   margin-bottom: 30px;
 }
 
-.post-form textarea {
+.post-form-pane { width: 489px; }
+.edit-form-pane { width: 467px; }
+
+.post-form textarea,
+.edit-form textarea {
   border: none;
   border-bottom: 1px solid rgba(150, 150, 150, .4);
-  width: 449px;
   height: 70px;
+  width: 100%;
   padding: 20px;
   background: white;
   font-size: 14px;
 }
+
+.post-form { width: 449px; }
+.edit-form { width: 427px; }
 
 .buttons-pane button {
   display: block;

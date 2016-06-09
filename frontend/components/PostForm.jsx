@@ -1,12 +1,14 @@
 var React = require('react'),
     SessionStore = require('../stores/SessionStore'),
     ProfileStore = require('../stores/ProfileStore'),
+    PostsActions = require('../actions/PostsActions'),
     PostsApiUtil = require("../util/PostsApiUtil");
 
 // props should have either "Feed" or "Timeline"
 var PostForm = module.exports = React.createClass({
   getInitialState: function () {
-    return { body: "" };
+    return this.props.type === "edit" ?
+      { body: this.props.post.body } : { body: "" };
   },
 
   onChange: function (event) {
@@ -16,25 +18,41 @@ var PostForm = module.exports = React.createClass({
   submit: function (event) {
     event.preventDefault();
 
+    console.log(this.props.type);
     var postableId = this.props.type === "Feed" ?
       SessionStore.currentUser().id : ProfileStore.profile().id;
 
-    PostsApiUtil.createPost({
-      post: {
-        body: this.state.body,
-        postable_type: "User",
-        postable_id: postableId
-      }
-    });
+    if (this.props.type === "edit"){
+      PostsActions.updatePost({
+        id: this.props.post.id,
+        body: this.state.body
+      });
+    } else {
+      PostsActions.createPost({
+        post: {
+          body: this.state.body,
+          postable_type: "User",
+          postable_id: postableId
+        }
+      });
+    }
+
+    this.setState({ body: "" });
+    this.props.finishEditing();
   },
 
   render: function () {
+    var paneClass = this.props.type === "edit" ? "edit-form-pane" : "post-form-pane";
+    var mainClass = this.props.type === "edit" ? "edit-form" : "post-form";
+
     return(
-      <div className="post-form-pane">
-        <form className="post-form">
-          <textarea onChange={this.onChange} rows={3} />
+      <div className={paneClass}>
+        <form className={mainClass}>
+          <textarea onChange={this.onChange} rows={3} value={this.state.body} />
           <div className="buttons-pane">
-            <button onClick={this.submit}>Post</button>
+            <button onClick={this.submit}>
+              {this.props.type === "edit" ? "Save" : "Post"}
+            </button>
           </div>
         </form>
       </div>

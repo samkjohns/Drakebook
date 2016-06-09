@@ -6,11 +6,6 @@ var React = require('react'),
     PostsStore = require('../stores/PostsStore');
 
 var PostsIndex = module.exports = React.createClass({
-  getType: function () {
-    if (this.props.params && this.props.params.userId) { return "Timeline" }
-    return "Feed";
-  },
-
   getInitialState: function () {
     return {
       posts: PostsStore.posts()
@@ -36,10 +31,9 @@ var PostsIndex = module.exports = React.createClass({
   },
 
   render: function () {
-    // debugger
     return(
       <div className="posts-index-pane">
-        < PostForm type={this.getType()} />
+        < PostForm type={this.props.type} />
         <ul className="posts-index group">
           {this.state.posts.map(function (post, key) {
             return(

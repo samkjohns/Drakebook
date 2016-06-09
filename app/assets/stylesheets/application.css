@@ -14,15 +14,17 @@
  *= require_tree .
  */
 
-html, body, header, div, ul, li, p, a,
+html, body, header, div, ul, li, p, a, textarea,
 strong, img, h1, h2, h3, h4, button, input, nav {
   font: inherit;
   text-decoration: none;
   list-style: none;
+  resize: none;
 
   border: 0;
   padding: 0;
   margin: 0;
+  outline: none;
   size: inherit;
 
   color: inherit;

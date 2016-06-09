@@ -18,5 +18,26 @@ var PostsApiUtil = module.exports = {
       data: postData,
       success: ServerActions.receiveSinglePost
     });
+  },
+
+  removePost: function (postId) {
+    $.ajax({
+      type: "DELETE",
+      url: "api/posts/" + postId,
+      dataType: "json",
+      success: ServerActions.removeSinglePost
+    });
+  },
+
+  updatePost: function (post) {
+    $.ajax({
+      type: "PATCH",
+      url: "api/posts/" + post.id,
+      dataType: "json",
+      data: {
+        post: {body: post.body}
+      },
+      success: ServerActions.receiveSinglePost
+    });
   }
 };
