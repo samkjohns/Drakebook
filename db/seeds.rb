@@ -24,7 +24,7 @@ usernames.each_with_index do |username, i|
     usernames[i+1..-1].each_with_index do |drakename, j|
       requester = user
       recipient = User.find_by(username: drakename)
-      Drakeship.create!(
+      Drakeship.create(
         requester_id: requester.id,
         recipient_id: recipient.id,
         request_status: "accepted"
@@ -40,7 +40,7 @@ usernames.each_with_index do |username, i|
         "mice are meat", 'tell no one', 'tell everyone', 'si se puede', 'thanks obama'
       ].shuffle.first
 
-      Post.create!(
+      Post.create(
         author_id: user.id,
         postable_type: "User",
         postable_id: userWall.id,
@@ -49,7 +49,7 @@ usernames.each_with_index do |username, i|
 
       # find a random Post and comment on it
       randomPost = Post.all.shuffle.first
-      Post.create!(
+      Post.create(
         author_id: user.id,
         postable_type: "Post",
         postable_id: randomPost.id,
