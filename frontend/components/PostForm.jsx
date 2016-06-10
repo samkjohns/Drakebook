@@ -42,11 +42,12 @@ var PostForm = module.exports = React.createClass({
 
   render: function () {
     var paneClass = this.props.type === "edit" ? "edit-form-pane" : "post-form-pane";
-    var mainClass = this.props.type === "edit" ? "edit-form" : "post-form";
+    var mainClass = this.props.type === "edit" ? "edit-form group" : "post-form group";
 
     return(
       <div className={paneClass}>
         <form className={mainClass}>
+          <img src={window.drakeImages.default.profile} />
           <textarea onChange={this.onChange} rows={3} value={this.state.body} />
           <div className="buttons-pane">
             <button onClick={this.submit}>
@@ -58,3 +59,13 @@ var PostForm = module.exports = React.createClass({
     );
   }
 });
+
+/*
+
+<div className="buttons-pane">
+  <button onClick={this.submit}>
+    {this.props.type === "edit" ? "Save" : "Post"}
+  </button>
+</div>
+
+*/

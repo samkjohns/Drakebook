@@ -1,32 +1,61 @@
 .post-form-pane,
 .edit-form-pane {
-  border: 1px solid rgba(150, 150, 150, .4);
-  height: 150px;
+  border: 1px solid rgba(150, 150, 150, .2);
+  border-style: outset;
+  height: 115px;
   background: #f6f7f9;
   border-radius: 3px;
   margin-bottom: 30px;
 }
 
-.post-form-pane { width: 489px; }
-.edit-form-pane { width: 467px; }
+/*.post-form-pane { width: 489px; }
+.edit-form-pane { width: 467px; }*/
+.post-form-pane, .edit-form-pane {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/*.post-form { width: 449px; }
+.edit-form { width: 427px; }*/
+
+.post-form, .edit-form {
+  position: relative;
+  height: 115px;
+}
+
+.post-form img,
+.edit-form img {
+  position: absolute;
+  background: white;
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  /*padding: 10px 10px 15px 10px;
+  border-bottom: 1px solid rgba(150, 150, 150, .4);*/
+}
 
 .post-form textarea,
 .edit-form textarea {
+  position: absolute;
+  display: block;
   border: none;
-  border-bottom: 1px solid rgba(150, 150, 150, .4);
-  height: 70px;
+  border-bottom: 1px solid rgba(150, 150, 150, .2);
+  box-sizing: border-box;
+  height: 75px;
   width: 100%;
-  padding: 20px;
+  padding: 20px 10px 25px 60px;
   background: white;
   font-size: 14px;
+  z-index: 1;
 }
 
-.post-form { width: 449px; }
-.edit-form { width: 427px; }
-
 .buttons-pane button {
+  position: absolute;
   display: block;
-  float: right;
+  bottom: 10px;
+  right: 15px;
   border: 1px solid #4267b2;
   background: #4267b2;
   margin-top: 4px;
@@ -36,6 +65,7 @@
   border-radius: 3px;
   letter-spacing: 1px;
   padding: 4px 15px;
+  z-index: 2;
 }
 
 .post-comment-pane,

@@ -12,7 +12,8 @@
 }
 
 .post-pane {
-  border: 1px solid rgba(150, 150, 150, .4);
+  border: 1px solid rgba(150, 150, 150, .2);
+  border-style: outset;
   border-radius: 3px;
   background: white;
   font-size: 14px;
@@ -33,7 +34,7 @@
   float: left;
   height: 40px;
   width: 40px;
-  border: 1px solid rgba(200, 200, 200, .4);
+  border: 1px solid rgba(200, 200, 200, .2);
   margin-right: 5px;
   cursor: pointer;
 }
@@ -60,12 +61,12 @@
   background: white;
   font-size: 12px;
   margin-left: 5px;
-  border: 1px solid rgba(150, 150, 150, .4);
+  border: 1px solid rgba(150, 150, 150, .2);
 }
 
 .post-buttons-pane {
   margin: 0 10px;
-  border-top: 1px solid rgba(150, 150, 150, .4);
+  border-top: 1px solid rgba(150, 150, 150, .2);
 }
 
 .post-buttons {
@@ -83,7 +84,7 @@
 }
 
 .comment-pane {
-  border-top: 1px solid rgba(150, 150, 150, .4);
+  border-top: 1px solid rgba(150, 150, 150, .2);
   background: #f6f7f9;
 }
 
@@ -95,7 +96,7 @@
   margin-bottom: 5px;
   width: 30px;
   height: 30px;
-  border: 1px solid rgba(150, 150, 150, .4);
+  border: 1px solid rgba(150, 150, 150, .2);
 }
 
 .comment-box {
@@ -131,7 +132,7 @@
   margin-right: 5px;
   color: #7f7f7f;
   font-size: 12px;
-  border: 1px solid rgba(150, 150, 150, .4);
+  border: 1px solid rgba(150, 150, 150, .2);
   background: white;
 }
 
