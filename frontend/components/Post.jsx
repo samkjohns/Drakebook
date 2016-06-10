@@ -29,8 +29,12 @@ var Post = module.exports = React.createClass({
     this.setState({ commentEditing: null });
   },
 
-  goToProfile: function (event) {
+  goToProfile: function (evnt) {
     this.context.router.push("/users/" + this.props.post.author.authorId);
+  },
+
+  goToWall: function (evnt) {
+    this.context.router.push("/users/" + this.props.post.postable.id);
   },
 
   handleDelete: function (post, event) {
@@ -129,6 +133,18 @@ var Post = module.exports = React.createClass({
       );
     }
 
+    var wallArrow = <div/>;
+    if (this.props.post.postable.username &&
+        this.props.post.author.authorId !== this.props.post.postable.id)
+    {
+      wallArrow = (
+        <div className="">
+          <span className="wall-arrow"></span>
+          <a onClick={this.goToWall}>{this.props.post.postable.username}</a>
+        </div>
+      );
+    }
+
     return(
       <li className="post-pane group">
         <section className="post-content-pane group">
@@ -137,6 +153,7 @@ var Post = module.exports = React.createClass({
             <a onClick={this.goToProfile} className="post-author">
               {this.props.post.author.username}
             </a>
+            {wallArrow}
             {buttons}
           </section>
 

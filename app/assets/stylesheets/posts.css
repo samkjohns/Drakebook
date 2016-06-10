@@ -137,3 +137,15 @@
 }
 
 .comment-buttons a:hover { text-decoration: none; }
+
+.wall-arrow {
+  float: left;
+  margin-top: 12px;
+}
+
+.wall-arrow:before {
+  content: "\25BA"; /* right point triangle in escaped unicode */
+  color: #90949c;
+  margin: 0 6px;
+  font-size: 10px;
+}

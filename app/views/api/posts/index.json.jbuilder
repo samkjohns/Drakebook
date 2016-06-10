@@ -10,6 +10,9 @@ json.array! @posts do |post|
   json.postable do
     json.id post.postable_id
     json.type post.postable_type
+    if (post.postable_type == "User")
+      json.username post.postable.username
+    end
   end
 
   json.body post.body

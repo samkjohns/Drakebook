@@ -8,11 +8,11 @@
 
 Drakebook is a web application inspired by Facebook that will be built using Ruby on Rails and React.js. This app, at minumum, should satisfy the following criteria:
 
-- [ ] New account creation, login, and a guest login.
+- [x] New account creation, login, and a guest login.
 - [ ] Seed data to demonstrate the site's features.
-- [ ] Editable profile info, the ability to befriend other users and post on their walls, the ability to upload photos and tag them, display notifications, and the ability to comment on and like posts and photos.
-- [ ] Hosting on Heroku.
-- [ ] CSS styling that mirrors Facebook.
+- [x] Editable profile info, the ability to befriend other users and post on their walls, the ability to upload photos and tag them, display notifications, and the ability to comment on and like posts and photos.
+- [x] Hosting on Heroku.
+- [x] CSS styling that mirrors Facebook.
 
 ## Product Goals and Priorities
 
@@ -22,7 +22,7 @@ Drakebook will allow users to do the following:
 progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [x] Create an account. (MVP)
-- [ ] Log in / Log out, including as a Guest. (MVP)
+- [x] Log in / Log out, including as a Guest. (MVP)
 - [x] Edit profile info at will. (MVP)
 - [ ] Upload profile and cover photos. (MVP)
 - [x] Befriend other users. (MVP)
