@@ -21,6 +21,13 @@ The page listens to a `SessionStore`, which stores the user's logged-in status. 
   Rendering a user's profile (in the `Profile` component) requires a `ProfileStore`;
   when the component mounts, the user's relevant profile information is fetched from the server. This includes the user's `drakes` and `pendingDrakeships`; both of these lists are necessary to calculate the `SessionStore.currentUser()`'s relationship with the user whose profile is being viewed. Because there are many places where the current user's list of `drakes` becomes necessary, the server also sends those lists when rendering the current user.
 
+### Posts
+
+  Posts have a corresponding posts table in the database. They have an `author_id` pointing to the User who authored the post, a `body`, and also a polymorphic `postable_id` and `postable_type` pointing to the thing the post was posted to (either a User / User's wall or on a Post, making it a comment).
+
+  On the frontend, I have the following components: `PostsIndex`, `Post`, `PostForm`,
+  and `CommentForm`. Because posts can appear on either a `Feed` or a `Timeline`, and because posts can be edited as well as created,
+
 Drakebook will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your

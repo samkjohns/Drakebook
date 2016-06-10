@@ -6,15 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.destroy_all
-Drakeship.destroy_all
-
 usernames = [
-  "Godzilla", "Sam", "Ambush Drake", "Drake", "Drake2", "Drake3", "Drake4", "Drake the Dragon",
+  "Ambush Drake", "Drake the Dragon",
   "Drakonia", "Drake Drake", "Ekardrake", "Draken", "Honorable Drake", "Dishonorable Drake"
 ]
 
-usernames.each do |username|
+seededUsers = usernames.map do |username|
   User.create!(
     username: username,
     password: "password"
@@ -22,8 +19,9 @@ usernames.each do |username|
 end
 
 usernames.each_with_index do |username, i|
+  user = User.find_by(username: username)
   usernames[i+1..-1].each_with_index do |drakename, j|
-    requester = User.find_by(username: username)
+    requester = user
     recipient = User.find_by(username: drakename)
     Drakeship.create!(
       requester_id: requester.id,
@@ -31,16 +29,30 @@ usernames.each_with_index do |username, i|
       request_status: "accepted"
     )
   end
+
+  5.times do
+    # create a post
+    userWall = usernames.shuffle.first
+    randomWord = [
+      "banana", "apple", "NOT THE BEEEES", "whatever", "IF YOU REALLY WANNA KNOW CLAP YOUR hands",
+      "seed", "wat", "no", "yes", "how you doin", "fun!", "sennacy is great", "buses",
+      "mice are meat", 'tell no one', 'tell everyone', 'si se puede', 'thanks obama'
+    ].shuffle.first
+
+    Post.create!(
+      author_id: user.id,
+      postable_type: "User",
+      postable_id: userWall.id,
+      body: "I am #{user.username} and I'm posting on #{userWall}'s wall. #{randomWord}"
+    )
+
+    # find a random Post and comment on it
+    randomPost = Post.all.shuffle.first
+    Post.create!(
+      author_id: user.id,
+      postable_type: "Post",
+      postable_id: randomPost.id,
+      body: "Comment comment #{randomWord} commenting on the post!!!"
+    )
+  end
 end
-
-p1 = Post.new
-p1.author = User.first
-p1.postable = User.last
-p1.body = "This is my first post...__/~~~*^^^*~~~\\__"
-p1.save!
-
-p2 = Post.new
-p2.author = User.last
-p2.postable = p1
-p2.body = "This is a reSPONse to your FIRST posT"
-p2.save!
