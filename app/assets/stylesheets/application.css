@@ -31,7 +31,12 @@ strong, img, h1, h2, h3, h4, button, input, nav {
   background: transparent;
 }
 
-body { font-family: sans-serif; }
+body {
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  min-height: 1000px;
+}
 
 button, a {
   cursor: pointer;

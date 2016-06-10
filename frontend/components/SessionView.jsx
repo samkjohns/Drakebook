@@ -1,6 +1,7 @@
 var React = require('react'),
     ErrorsStore = require('../stores/ErrorsStore'),
     ErrorActions = require('../actions/ErrorActions'),
+    SessionActions = require('../actions/SessionActions'),
     SessionForm = require('./SessionForm');
 
 var SessionView = module.exports = React.createClass({

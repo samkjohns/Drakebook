@@ -95,6 +95,7 @@ class User < ActiveRecord::Base
   end
 
   # Other
+
   def drakeships
     # accepted_statuses ||= ['accepted', 'pending']
     # accepted_statuses_filter = accepted_statuses.map do |status|

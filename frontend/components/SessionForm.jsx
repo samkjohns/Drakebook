@@ -42,13 +42,21 @@ var SessionForm = module.exports = React.createClass({
     this.setState(newState);
   },
 
+  handleGuestLogin: function (evnt) {
+    evnt.preventDefault();
+    SessionActions.login({
+      username: "Aubrey Drake Graham",
+      password: "password"
+    });
+  },
+
   buttonElement: function () {
     var _helper = function() {
       return this.props.formType === "login" ? "Log In" : "Sign Up";
     }.bind(this);
 
     return(
-      <button onClick={this.submit}>
+      <button onClick={this.submit} className={this.props.formType+"-button"}>
         {_helper()}
       </button>
     );
@@ -56,24 +64,48 @@ var SessionForm = module.exports = React.createClass({
 
   render: function () {
     var form;
+    // if (this.props.formType === "login") {
+    //   form = (
+    //     <form>
+    //       <table>
+    //         <tbody>
+    //           <tr>
+    //             <td><label htmlFor="username">Username</label></td>
+    //             <td><label htmlFor="password">Password</label></td>
+    //           </tr>
+    //           <tr>
+    //             <td><input id="username" type="text" onChange={this.handleChange} /></td>
+    //             <td><input id="password" type="password" onChange={this.handleChange} /></td>
+    //             <td>{this.buttonElement()}</td>
+    //             <td>
+    //               < button onClick={this.handleGuestLogin} className="guest-login">
+    //                 Guest Login
+    //               </ button >
+    //             </td>
+    //           </tr>
+    //         </tbody>
+    //       </table>
+    //     </form>
+    //   );
     if (this.props.formType === "login") {
       form = (
         <form>
-          <table>
-            <tbody>
-              <tr>
-                <td><label htmlFor="username">Username</label></td>
-                <td><label htmlFor="password">Password</label></td>
-              </tr>
-              <tr>
-                <td><input id="username" type="text" onChange={this.handleChange} /></td>
-                <td><input id="password" type="password" onChange={this.handleChange} /></td>
-                <td>{this.buttonElement()}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="login-labels group">
+            <label htmlFor="username">Username</label>
+            <label htmlFor="password">Password</label>
+          </div>
+
+          <div className="login-input-buttons group">
+            <input id="username" type="text" onChange={this.handleChange} />
+            <input id="password" type="password" onChange={this.handleChange} />
+            {this.buttonElement()}
+            < button onClick={this.handleGuestLogin} className="guest-login">
+              Guest Login
+            </ button >
+          </div>
         </form>
       );
+
     } else {
       form = (
         <form>

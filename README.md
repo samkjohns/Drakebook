@@ -26,10 +26,10 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [x] Edit profile info at will. (MVP)
 - [ ] Upload profile and cover photos. (MVP)
 - [x] Befriend other users. (MVP)
-- [ ] Create, edit, and delete posts on their own wall or their friends' walls. (MVP)
+- [x] Create, edit, and delete posts on their own wall or their friends' walls. (MVP)
 - [ ] Like posts. (MVP)
 - [ ] Include photos in their posts. (MVP)
-- [ ] Curate their walls by allowing them to delete unwanted posts. (MVP)
+- [x] Curate their walls by allowing them to delete unwanted posts. (MVP)
 - [ ] Tag posts and photos with people and places. (expected feature, but not MVP)
 - [ ] Instant message friends (expected feature, but not MVP)
 
