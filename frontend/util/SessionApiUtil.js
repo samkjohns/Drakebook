@@ -43,7 +43,7 @@ var SessionApiUtil = module.exports = {
       success: this.registerUser,
       error: function (response) {
         SessionApiUtil.registerErrors({
-          signup: response.responseJSON.base
+          signup: response.responseJSON.errors
         });
       }
     });
