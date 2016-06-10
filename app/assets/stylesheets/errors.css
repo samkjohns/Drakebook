@@ -1,0 +1,21 @@
+.errors-modal-pane {
+  position: absolute;
+  display: block;
+  z-index: 5;
+  border: 1px solid red;
+  border-radius: 3px;
+  background: white;
+  color: red;
+  padding: 5px;
+}
+
+.signup-errors-pane {
+  top: 400px;
+  width: 330px;
+}
+
+.login-errors-pane {
+  top: 34px;
+  right: 475px;
+  font-size: 12px;
+}

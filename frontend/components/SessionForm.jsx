@@ -1,5 +1,6 @@
 var React = require('react');
     SessionActions = require('../actions/SessionActions'),
+    ErrorActions = require('../actions/ErrorActions'),
     SessionStore = require('../stores/SessionStore');
 
 var SessionForm = module.exports = React.createClass({
@@ -26,8 +27,12 @@ var SessionForm = module.exports = React.createClass({
     event.preventDefault();
     if (this.props.formType === "login")
     { SessionActions.login(this._info()); }
-    else if (this.state.password === this.state.confirm) {
-      SessionActions.signup(this._info());
+    else {
+      if (this.state.password === this.state.confirm) {
+        SessionActions.signup(this._info());
+      } else {
+        ErrorActions.errorMessage("signup", "password and confirm don't match");
+      }
     }
   },
 

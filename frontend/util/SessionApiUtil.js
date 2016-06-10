@@ -6,10 +6,16 @@ var SessionConstants = require('../constants/SessionConstants'),
 var SessionApiUtil = module.exports = {
 
   registerUser: function (user) {
-    // debugger
     AppDispatcher.dispatch({
       actionType: 'LOGIN',
       currentUser: user
+    });
+  },
+
+  registerErrors: function (errors) {
+    AppDispatcher.dispatch({
+      actionType: "ERRORS_RECEIVED",
+      errors: errors
     });
   },
 
@@ -19,7 +25,12 @@ var SessionApiUtil = module.exports = {
       url: "api/session",
       dataType: "JSON",
       data: userData,
-      success: this.registerUser
+      success: this.registerUser,
+      error: function (response) {
+        SessionApiUtil.registerErrors({
+          login: response.responseJSON.base
+        });
+      }
     });
   },
 
@@ -29,7 +40,12 @@ var SessionApiUtil = module.exports = {
       url: "api/users",
       dataType: "JSON",
       data: userData,
-      success: this.registerUser
+      success: this.registerUser,
+      error: function (response) {
+        SessionApiUtil.registerErrors({
+          signup: response.responseJSON.base
+        });
+      }
     });
   },
 
