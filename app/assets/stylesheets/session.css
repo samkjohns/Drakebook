@@ -40,7 +40,7 @@
   font-size: 12px;
 }
 
-.login-pane < div, .login-pane button {
+.login-pane > div, .login-pane button {
   float: left;
 }
 

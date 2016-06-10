@@ -4,22 +4,17 @@
 
 [heroku]: http://thedrakebook.herokuapp.com/
 
-Drakebook is a web application inspired by Facebook. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.
+## Minimum Viable Product
 
-## Features & Implementation
+Drakebook is a web application inspired by Facebook that will be built using Ruby on Rails and React.js. This app, at minumum, should satisfy the following criteria:
 
-### Single-Page App
+- [x] New account creation, login, and a guest login.
+- [ ] Seed data to demonstrate the site's features.
+- [ ] Editable profile info, the ability to befriend other users and post on their walls, the ability to upload photos and tag them, display notifications, and the ability to comment on and like posts and photos.
+- [x] Hosting on Heroku.
+- [x] CSS styling that mirrors Facebook.
 
-Drakebook is an entirely single-page app, meaning all Javascript is sent down in a single GET request, and the page is dynamically rendered with AJAX afterward.
-
-The page listens to a `SessionStore`, which stores the user's logged-in status. If the user is not logged in, it renders the `SessionView` (a hybrid login / signup view); if the user is logged in, it renders the user's content. Logged-in status is checked with an AJAX call to the Api::SessionsController on the backend, which either renders a JSON view of the logged-in user, or an empty object.
-
-### User Profiles and Drakeships
-
-  Users are stored in the database with their profile information in a users table. They're associated with other users through a `drakeships` (ie, friendship) join table. Because the table joins users to users, a user's `drakes` essentially represent the combination of that user's `received_drakes` and `requested_drakes` (where `request_status` is `accepted`). This necessitates a custom query.
-
-  Rendering a user's profile (in the `Profile` component) requires a `ProfileStore`;
-  when the component mounts, the user's relevant profile information is fetched from the server. This includes the user's `drakes` and `pendingDrakeships`; both of these lists are necessary to calculate the `SessionStore.currentUser()`'s relationship with the user whose profile is being viewed. Because there are many places where the current user's list of `drakes` becomes necessary, the server also sends those lists when rendering the current user.
+## Product Goals and Priorities
 
 Drakebook will allow users to do the following:
 
