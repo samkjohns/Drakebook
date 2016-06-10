@@ -32,7 +32,7 @@ usernames.each_with_index do |username, i|
 
   5.times do
     # create a post
-    userWall = usernames.shuffle.first
+    userWall = User.all.shuffle.first
     randomWord = [
       "banana", "apple", "NOT THE BEEEES", "whatever", "IF YOU REALLY WANNA KNOW CLAP YOUR hands",
       "seed", "wat", "no", "yes", "how you doin", "fun!", "sennacy is great", "buses",
