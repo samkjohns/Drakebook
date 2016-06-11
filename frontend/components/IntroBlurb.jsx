@@ -91,7 +91,7 @@ var IntroBlurb = module.exports = React.createClass({
 
         if (this.state.profile[key] && this.state.focused !== key) {
           blurb.push(
-            <div className="blurb-line-item">
+            <div className="blurb-line-item" key={idx}>
               <img src={img} />
               <li
                 id={idx}
@@ -105,7 +105,7 @@ var IntroBlurb = module.exports = React.createClass({
 
         } else if (this.state.focused === key) {
           blurb.push(
-            <div className="blurb-line-item">
+            <div className="blurb-line-item" key={idx}>
               <img src={img} />
               <li>{key+": "}
                 <input
@@ -121,7 +121,7 @@ var IntroBlurb = module.exports = React.createClass({
 
         } else {
           blurb.push(
-            <div className="blurb-line-item">
+            <div className="blurb-line-item" key={idx}>
               <img src={img} />
               <label className="blurb-edit-link" onClick={this.handleClick} id={idx} className={key} >
                 {"Add your " + this._unSnakeCase(key)}
@@ -148,7 +148,7 @@ var IntroBlurb = module.exports = React.createClass({
         img = this.fieldTypes()[key].img ? this.fieldTypes()[key].img : "";
 
         blurbs.push(
-          <div className="blurb-line-item">
+          <div className="blurb-line-item" key={i}>
             <img src={img} />
             <li id={i} className={key}>
               {this.displayNames[key] + ": " + this.state.profile[key]}

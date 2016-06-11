@@ -39,14 +39,21 @@ var Profile = module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function (newProps) {
-    console.log("receiving props");
+    console.log("Profile receiving props");
     var oldUserId = this.getUserId(this.props);
     var newUserId = this.getUserId(newProps);
-    debugger
+    // debugger
     if (oldUserId !== newUserId) {
       ProfileActions.fetchProfileInfo(newUserId);
       PostsActions.fetchPostsForUser(newUserId);
+    } else if (this.isTimelineRoute(newProps.location.pathname)) {
+      PostsActions.fetchPostsForUser(newUserId);
     }
+  },
+
+  isTimelineRoute: function (route) {
+    var reg = /^\/users\/[0-9]+$/;
+    return reg.test(route);
   },
 
   contextTypes: {
@@ -87,11 +94,12 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute + "/about")}
         className="">About</a>
 
+        // timeline = this.isTimelineRoute(selectedRoute) ?
     var timeRegxp = /^\/users\/[0-9]+$/;
     timeline = timeRegxp.test(selectedRoute) ?
       <a onClick={this.linkTo.bind(this, profileRoute)}
         className="selected">Timeline</a> :
-      <a onClick={this.linkTo.bind(this, profileRoute )}
+      <a onClick={this.linkTo.bind(this, profileRoute)}
         className="">Timeline</a>
 
     var drakeToggle = <div/>;
@@ -117,7 +125,6 @@ var Profile = module.exports = React.createClass({
 
           <nav className="profile-nav group">
             <ul className="profile-nav-links group">
-              {photos}
               {drakes}
               {about}
               {timeline}
