@@ -4,7 +4,7 @@
 
 [heroku]: http://thedrakebook.herokuapp.com/
 
-Drakebook is a web application inspired by Facebook. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.
+Drakebook is a web application inspired by Facebook. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the front end.
 
 ## Features & Implementation
 
@@ -18,132 +18,44 @@ The page listens to a `SessionStore`, which stores the user's logged-in status. 
 
   Users are stored in the database with their profile information in a users table. They're associated with other users through a `drakeships` (ie, friendship) join table. Because the table joins users to users, a user's `drakes` essentially represent the combination of that user's `received_drakes` and `requested_drakes` (where `request_status` is `accepted`). This necessitates a custom query.
 
-  Rendering a user's profile (in the `Profile` component) requires a `ProfileStore`;
-  when the component mounts, the user's relevant profile information is fetched from the server. This includes the user's `drakes` and `pendingDrakeships`; both of these lists are necessary to calculate the `SessionStore.currentUser()`'s relationship with the user whose profile is being viewed. Because there are many places where the current user's list of `drakes` becomes necessary, the server also sends those lists when rendering the current user.
+  Rendering a user's profile (in the `Profile` component) requires a `ProfileStore`; when the component mounts, the user's relevant profile information is fetched from the server. This includes the user's `drakes` and `pendingDrakeships`; both of these lists are necessary to calculate the `SessionStore.currentUser()`'s relationship with the user whose profile is being viewed. Because there are many places where the current user's list of `drakes` becomes necessary, the server also sends those lists when rendering the current user.
 
 ### Posts
 
-  Posts have a corresponding posts table in the database. They have an `author_id` pointing to the User who authored the post, a `body`, and also a polymorphic `postable_id` and `postable_type` pointing to the thing the post was posted to (either a User / User's wall or on a Post, making it a comment).
+  Posts have a corresponding posts table in the database. The table has an `author_id` foreign key pointing to the User who authored the post, a `body` column, and also a polymorphic `postable_id` and `postable_type` pointing to the thing the post was posted to (either a User / User's wall or on a Post – making it a comment).
 
-  On the frontend, I have the following components: `PostsIndex`, `Post`, `PostForm`,
-  and `CommentForm`. Because posts can appear on either a `Feed` or a `Timeline`, and because posts can be edited as well as created,
+  On the front end, I have the following components: `PostsIndex`, `Post`, `PostForm`, and `CommentForm`. Because posts can appear on either a `Feed` or a `Timeline`, and because posts can be edited as well as created, most of these components are used in several places. `PostsIndex`, for instance, has a `type` in its props indicating whether it represents posts on a specific user's `Timeline`, or on their `Feed`. Both `PostForm` and `CommentForm` can either create a new Post or edit an existing one.
 
-Drakebook will allow users to do the following:
+  `PostsIndex` listens to a `PostsStore` and calls the appropriate fetches from the server depending on its type. For a `Timeline`, that fetch is routed to `posts#index`; for a `Feed`, the corresponding controller action is `posts#feed`, which sends down posts that would be appropriate to appear on the given user's feed.
 
-<!-- This is a Markdown checklist. Use it to keep track of your
-progress. Put an x between the brackets for a checkmark: [x] -->
+### Search
 
-- [x] Create an account. (MVP)
-- [x] Log in / Log out, including as a Guest. (MVP)
-- [x] Edit profile info at will. (MVP)
-- [ ] Upload profile and cover photos. (MVP)
-- [x] Befriend other users. (MVP)
-- [x] Create, edit, and delete posts on their own wall or their friends' walls. (MVP)
-- [ ] Like posts. (MVP)
-- [ ] Include photos in their posts. (MVP)
-- [x] Curate their walls by allowing them to delete unwanted posts. (MVP)
-- [ ] Tag posts and photos with people and places. (expected feature, but not MVP)
-- [ ] Instant message friends (expected feature, but not MVP)
+  The custom route `api/search` corresponds to the `users#search` action, which expects a query in its params and sends down a list of users (a max of 10) whose usernames match the query. Every time the `Search` input changes, an AJAX call is made to this action, and the `Search` component renders the results – unless the input is empty. `SearchIndexItems` link to the shown user's `Profile`.
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+## Future directions for the project
 
-[views]: ./mydocs/views.md
-[components]: ./mydocs/components.md
-[flux-cycles]: ./mydocs/flux-cycles.md
-[api-endpoints]: ./mydocs/api-endpoints.md
-[schema]: ./mydocs/schema.md
+  There are three important features that haven't been implemented yet: Likes, Tags, and file upload. I also would like to implement notifications, privacy controls, and instant messaging.
 
-## Implementation Timeline
+### Likes
 
-### Phase 1: Backend Setup and Frontend User Authentication (with API) (1 day)
+  Users should have the ability to like posts. Posts should display the number of likes they have.
 
-**Objective:** Functioning rails project with Authentication
+### Tags
 
-- [x] create new project
-- [x] create `User` model
-- [x] Flux auth architecture (including a SessionForm component and SessionStore)
-- [x] setup `ApiUtil` to interact with the API
-- [x] test out API interaction in the console.
-- [x] user signup/signin (both on the same page)
+  When composing a post, a user should be able to tag their drakes in the post. This makes the post viewable by the tagged users' drakes as well as the author's drakes; it also notifies the tagged users.
 
-### Phase 2: Profile View and Drakeships Model (1 day)
+### File upload
 
-**Objective:** "Drakeship" requests can be made and responded to. Profiles
-have a link to a display page for the user's drakeships.
+  Users should be able to upload photos in at least three contexts: to change their profile photo, their cover photo, and to upload photos to their Timeline. Timeline photos would simply be a post with an attached image. Photos should also be browsable by user.
 
-- [x] setup React Router
-- [x] create Profile jBuilder view, component, and route
-- [x] create Drakeship model
-- [x] CRUD API for Drakeships (`DrakeshipsController`)
-- [x] jBuilder views for Drakeships
-- implement the following components (with flux loops):
-  - [x] `Profile`
-  - [x] `ProfileDetail` (as IntroBlurb)
-  - [x] `DrakeshipsIndex`
-  - [x] `DrakeshipsIndexItem`
+### Notifications
 
-### Phase 3: User Interface (1 day)
+  When certain events of interest occur, a user should receive a notification. This is already implemented for Drake Requests; however, it can be generalized through the use of a notifications table in the database. The table would have a `notified_user_id` as well as additional columns specifying the type of notification. Once a user need no longer be shown a notification, the entry could be deleted from the database or simply modified in a `seen` column.
 
-**Objective:** "Drakeship" requests can be made by users through an interface.
-(Namely, buttons on profiles and in notifications)
+### Privacy controls
 
-- Components and loops
-  - [x] `DrakeshipRequestsIndex`
-  - [x] `DrakeshipRequestsIndexItem`
-- [x] Profile should include a drakeship request button if the current user is not in a drakeship with the user whose profile they are visiting. (CREATE)
-- [x] Profile should include an "edit" function that allows the user to enter more information. (PATCH)
-  - [x] Add more columns to the users table for more user data. Also add these columns to the users#show jBuilder view.
-- [x] Navbar should include a drakeship requests notification dropdown menu, from which requests can be accepted or rejected. (PATCH)
+  Users should be able to customize who can and cannot see their posts and their Timeline. By default, posts are viewable only by their drakes, but users can make their posts public or restrict them from being viewed by groups or individuals.
 
-### Phase 4: Posts (2 days)
+### Instant Messaging
 
-**Objective:** Users can author posts, either on a user profile or as a reply to another post.
-
-- [x] create `Post` model
-- build out API, Flux loop, and components for:
-  - [ ] Post CRUD
-  - [x] Posts go on a user's Timeline
-    - [x] Build `PostIndex` and `PostIndexItem`
-  - [ ] Posts optionally include a photo
-  - [ ] Use `PostIndex` to build a `Feed` component as well.
-
-### Phase 5: Search (0.5 days)
-
-**Objective:** Users should be able to find each other through the search bar, which should display real-time search results.
-
-- [ ] Write a users_controller#index action that will find all users that match a given search.
-- [ ] Build out Flux loop for the `Search` component
-- [ ] Each `SearchIndexItem` should be selectable, and link to that user's profile page.
-
-### Phase 6: Photo upload (1 day)
-**Objective:** Users can upload profile and cover photos through the browser.
-
-(Steps to be filled out after I've watched the video lecture, but presumably there will need to be a way to store files. Database may need to be adjusted. And user input will of course be necessary.)
-
-### Phase 7: Likes and Tags (1.5 days)
-
-**Objective:** Users can like photos and posts, and tag them with/by their drakes.
-
-- [ ] create models and tables for `Like` and `Tag`
-- build out API, Flux loop, and components for:
-  - [ ] Like toggles
-  - [ ] Tag CRUD
-  - [ ] Liking and tagging send notifications to the relevant user(s)
-    - [ ] Create a `Notifications` table, model, API, and Flux loop
-    - [ ] This should display new notifications
-
-### Bonus Features (TBD)
-- [ ] Private, instant messaging.
-- [ ] Infinite scroll for the PostIndex component (ie the Feed and Timeline)
-- [ ] Multiple sessions
-
-[phase-one]: ./mydocs/phases/phase1.md
-[phase-two]: ./mydocs/phases/phase2.md
-[phase-three]: ./mydocs/phases/phase3.md
-[phase-four]: ./mydocs/phases/phase4.md
-[phase-five]: ./mydocs/phases/phase5.md
+  User should be able to message each other in real time and receive notifications when they do. Messages would require their own table in the database.
