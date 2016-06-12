@@ -25,16 +25,16 @@ var IntroBlurb = module.exports = React.createClass({
     });
   },
 
-  handleClick: function (event) {
-    event.preventDefault();
-    this.setState({ focused: event.currentTarget.className });
+  handleClick: function (evnt) {
+    evnt.preventDefault();
+    this.setState({ focused: evnt.currentTarget.id });
   },
 
-  handleBlur: function (event) {
-    event.preventDefault();
+  handleBlur: function (evnt) {
+    evnt.preventDefault();
     var profile = this.state.profile;
     debugger
-    profile[this.state.focused] = event.currentTarget.value;
+    profile[this.state.focused] = evnt.currentTarget.value;
     ProfileActions.updateProfileInfo(profile);
     this.setState({ focused: "" });
   },
@@ -90,14 +90,12 @@ var IntroBlurb = module.exports = React.createClass({
         img = this.fieldTypes()[key].img || window.drakeImages.iconIntroGlobe;
         type = this.fieldTypes()[key].type || "text";
 
-        debugger
         if (this.state.profile[key] && this.state.focused !== key) {
           blurb.push(
             <div className="blurb-line-item" key={idx}>
               <img src={img} />
               <li
-                id={idx}
-                className={key}
+                id={key}
                 onClick={this.handleClick}
               >
                 {this.displayNames[key] + ": " + this.state.profile[key]}
@@ -112,8 +110,7 @@ var IntroBlurb = module.exports = React.createClass({
               <li>{key+": "}
                 <input
                   type={type}
-                  id={idx}
-                  className={key}
+                  id={key}
                   onBlur={this.handleBlur} onSubmit={this.handleBlur}
                   defaultValue={this.state.profile[key]}
                 />
@@ -125,7 +122,7 @@ var IntroBlurb = module.exports = React.createClass({
           blurb.push(
             <div className="blurb-line-item" key={idx}>
               <img src={img} />
-              <label className="blurb-edit-link" onClick={this.handleClick} id={idx} className={key} >
+              <label className="blurb-edit-link" onClick={this.handleClick} id={key} >
                 {"Add your " + this._unSnakeCase(key)}
               </label>
             </div>
@@ -165,23 +162,27 @@ var IntroBlurb = module.exports = React.createClass({
   },
 
   buildIntroForm: function () {
-    if (this.state.profile.intro && this.state.focused !== "blurb-intro") {
+    if (this.state.profile.intro && this.state.focused !== "intro") {
       return(
-        <div className="blurb-intro" onClick={this.handleClick}>
+        <div className="blurb-intro" onClick={this.handleClick} id="intro">
           {this.state.profile.intro}
         </div>
       );
 
-    } else if (this.state.focused === "blurb-intro") {
+    } else if (this.state.focused === "intro") {
       return(
-        <div className="blurb-intro" onBlur={this.handleBlur} onSubmit={this.handleBlur}>
-          <textarea rows={3} defaultValue={this.state.profile.intro} />
+        <div className="blurb-intro" onSubmit={this.handleBlur} id="intro">
+          <textarea
+            rows={3}
+            onBlur={this.handleBlur}
+            defaultValue={this.state.profile.intro}
+          />
         </div>
       );
 
     } else {
       return(
-        <div className="blurb-intro" onClick={this.handleClick}>
+        <div className="blurb-intro" onClick={this.handleClick} id="intro">
           <a>Introduce yourself</a>
         </div>
       );
@@ -209,11 +210,11 @@ var IntroBlurb = module.exports = React.createClass({
 
     } else {
       form = (
-        <form className="intro-blurb-view">
+        <form className="intro-blurb-view" onsubmit="false">
           {this.buildBlurbView()}
         </form>
       );
-      intro = this.buildIntroForm();
+      intro = this.buildIntroView();
     }
 
     return(
