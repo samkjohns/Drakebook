@@ -6,7 +6,7 @@ var React = require('react'),
 var IntroBlurb = module.exports = React.createClass({
   getInitialState: function () {
     return {
-      profile: {},
+      profile: ProfileStore.profile(),
       focused: ""
     };
   },
@@ -33,6 +33,7 @@ var IntroBlurb = module.exports = React.createClass({
   handleBlur: function (event) {
     event.preventDefault();
     var profile = this.state.profile;
+    debugger
     profile[this.state.focused] = event.currentTarget.value;
     ProfileActions.updateProfileInfo(profile);
     this.setState({ focused: "" });
@@ -86,9 +87,10 @@ var IntroBlurb = module.exports = React.createClass({
       // console.log("building " + key);
       if (["id", "username", "intro", "drakeships", "pendingDrakeships"].indexOf(key) < 0) {
         var img, type;
-        img = this.fieldTypes()[key].img ? this.fieldTypes()[key].img : window.drakeImages.iconIntroGlobe;
-        type = this.fieldTypes()[key].type ? this.fieldTypes()[key].type : "text";
+        img = this.fieldTypes()[key].img || window.drakeImages.iconIntroGlobe;
+        type = this.fieldTypes()[key].type || "text";
 
+        debugger
         if (this.state.profile[key] && this.state.focused !== key) {
           blurb.push(
             <div className="blurb-line-item" key={idx}>
@@ -199,7 +201,7 @@ var IntroBlurb = module.exports = React.createClass({
     var form, intro;
     if (SessionStore.currentUser().id === ProfileStore.profile().id) {
       form = (
-        <form className="intro-blurb-form">
+        <form className="intro-blurb-form" onsubmit="false">
           {this.buildBlurbForm()}
         </form>
       );

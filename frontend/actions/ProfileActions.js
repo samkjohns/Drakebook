@@ -15,6 +15,7 @@ var ProfileActions = module.exports = {
   },
 
   updateProfileInfo: function (profile) {
+    debugger
     ProfileApiUtil.updateProfileInfo(profile);
   }
 };
