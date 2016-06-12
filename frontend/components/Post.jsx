@@ -105,19 +105,26 @@ var Post = module.exports = React.createClass({
   },
 
   render: function () {
-    var buttons = <div/>;
+    var editButton = <div/>;
+    var deleteButton = <div/>
+    var fullDelete = (
+      <button className="delete-post-button" onClick={this.handleDelete.bind(this, this.props.post)}>
+        Delete
+      </button>
+    );
+
     if (this.isPostAuthor(this.props.post)) {
-      buttons = (
-        <div className="modify-post-buttons group">
-          <button className="edit-post-button" onClick={this.handleEdit}>
-            Edit
-          </button>
-          <button className="delete-post-button" onClick={this.handleDelete.bind(this, this.props.post)}>
-            Delete
-          </button>
-        </div>
+      editButton = (
+        <button className="edit-post-button" onClick={this.handleEdit}>
+          Edit
+        </button>
       );
-    }
+      deleteButton = fullDelete;
+
+    } else if (
+      this.props.post.postable.type === "User" &&
+      this.props.post.postable.id === SessionStore.currentUser().id
+    ) { deleteButton = fullDelete; }
 
     var postBody;
     if (this.state.editing) {
@@ -154,7 +161,10 @@ var Post = module.exports = React.createClass({
               {this.props.post.author.username}
             </a>
             {wallArrow}
-            {buttons}
+            <div className="modify-post-buttons group">
+              {deleteButton}
+              {editButton}
+            </div>
           </section>
 
           {postBody}
