@@ -11,8 +11,20 @@ json.drakeships @user.drakeships do |drake|
 end
 
 json.pendingDrakeships(
-  @user.received_drakeships.where(request_status: "pending").includes(:requester)
+  # @user.received_drakeships.where(request_status: "pending").includes(:requester)
+  Drakeship.where(
+    "(requester_id = #{@user.id} OR recipient_id = #{@user.id}) AND request_status = 'pending'"
+  )
 ) do |drakeship|
-  # json.extract! drake, :id, :username, :profile_photo_path
-  json.extract! drakeship.requester, :id, :username, :profile_photo_path
+  json.requester do
+    json.id drakeship.requester.id
+    json.username drakeship.requester.username
+    json.profile_photo_path drakeship.requester.profile_photo_path
+  end
+
+  json.recipient do
+    json.id drakeship.recipient.id
+    json.username drakeship.recipient.username
+    json.profile_photo_path drakeship.recipient.profile_photo_path
+  end
 end

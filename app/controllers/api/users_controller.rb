@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login @user
-      render :show
+      render :profile
     else
       render(
         json: { errors: @user.errors.full_messages },

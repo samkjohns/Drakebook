@@ -5,7 +5,7 @@ var React = require('react'),
 var DrakeshipRequestsIndex = module.exports = React.createClass({
   getInitialState: function () {
     return {
-      potentialDrakes: SessionStore.currentUser().pendingDrakeships,
+      potentialDrakes: this.getPotentialDrakes(),
       displayed: false
     };
   },
@@ -23,7 +23,7 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
     // pendingDrakeships is a list of users
 
     this.setState({
-      potentialDrakes: SessionStore.currentUser().pendingDrakeships
+      potentialDrakes: this.getPotentialDrakes()
     });
   },
 
@@ -33,9 +33,15 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
 
   getPotentialDrakes: function () {
     var pendingDrakeships = SessionStore.currentUser().pendingDrakeships;
-    return pendingDrakeships.filter(function (drakeship) {
-      return drakeship.id !== SessionStore.currentUser().id
-    });
+    var requestedDrakeships = [];
+
+    pendingDrakeships.forEach(function (drakeship) {
+      if (drakeship.recipient.id === SessionStore.currentUser().id) {
+        requestedDrakeships.push(drakeship.requester);
+      }
+    }.bind(this));
+
+    return requestedDrakeships;
   },
 
   render: function () {

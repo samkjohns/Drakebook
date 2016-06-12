@@ -8,5 +8,9 @@ var DrakeshipActions = module.exports = {
 
   requestDrake: function (userId, drakeId) {
     DrakeshipApiUtil.requestDrake(userId, drakeId);
+  },
+
+  confirmDrake: function (user, drake) {
+    DrakeshipApiUtil.confirmRequest(drake, user);
   }
 };
