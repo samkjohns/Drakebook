@@ -10,6 +10,7 @@ var Home = module.exports = React.createClass({
   },
 
   getStateFromStore: function () {
+    window.Home = this;
     var component;
     // debugger
     if (!SessionStore.currentUserHasBeenFetched()) {
@@ -31,7 +32,7 @@ var Home = module.exports = React.createClass({
   componentDidMount: function () {
     this.sessionListener = SessionStore.addListener(this.onChange);
     SessionApiUtil.fetchCurrentUser(function () {
-      console.log("current user fetched");
+      // console.log("current user fetched");
     });
   },
 

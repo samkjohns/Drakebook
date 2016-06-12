@@ -7,7 +7,7 @@ var _errors = {};
 
 // type is either "login" or "signup"
 ErrorsStore.messages = function (type) {
-  debugger
+  // debugger
   return _errors[type] ? _errors[type].slice() : [];
 };
 
@@ -20,5 +20,5 @@ ErrorsStore.__onDispatch = function (payload) {
   }
 };
 
-window.ErrorsStore = ErrorsStore;
+// window.ErrorsStore = ErrorsStore;
 module.exports = ErrorsStore;

@@ -17,7 +17,7 @@ var DrakesIndex = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
-    console.log("in component did mount");
+    // console.log("in component did mount");
     this.profileListener = ProfileStore.addListener(this.onChange);
   },
 

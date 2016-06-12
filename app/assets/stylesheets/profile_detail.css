@@ -53,9 +53,12 @@
 }
 
 .blurb-intro {
+  position: absolute;
   display: block;
   text-align: center;
   font-size: 14px;
+  width: 400px;
+  right: 20px;
 }
 
 .blurb-items {
@@ -114,7 +117,9 @@
 }
 
 .blurb-intro textarea {
-  position: absolute;
-  right: 20px;
+  /*position: absolute;*/
+  /*right: 20px;*/
   background: white;
+  /*width: 400px;*/
+  border: 1px solid rgba(150, 150, 150, .4);
 }

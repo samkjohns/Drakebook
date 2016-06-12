@@ -39,7 +39,7 @@ var Profile = module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function (newProps) {
-    console.log("Profile receiving props");
+    // console.log("Profile receiving props");
     var oldUserId = this.getUserId(this.props);
     var newUserId = this.getUserId(newProps);
     // debugger

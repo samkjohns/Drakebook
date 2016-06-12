@@ -35,7 +35,7 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
     var pendingDrakeships = SessionStore.currentUser().pendingDrakeships;
     var requestedDrakeships = [];
 
-    pendingDrakeships.forEach(function (drakeship) {
+    pendingDrakeships && pendingDrakeships.forEach(function (drakeship) {
       if (drakeship.recipient.id === SessionStore.currentUser().id) {
         requestedDrakeships.push(drakeship.requester);
       }
@@ -45,7 +45,6 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
   },
 
   render: function () {
-    // console.log(this.state.displayed);
     var index;
     if (this.state.displayed) {
       index = (

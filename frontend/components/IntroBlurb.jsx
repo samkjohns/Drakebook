@@ -33,7 +33,7 @@ var IntroBlurb = module.exports = React.createClass({
   handleBlur: function (evnt) {
     evnt.preventDefault();
     var profile = this.state.profile;
-    debugger
+    // debugger
     profile[this.state.focused] = evnt.currentTarget.value;
     ProfileActions.updateProfileInfo(profile);
     this.setState({ focused: "" });
