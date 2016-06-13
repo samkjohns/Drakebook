@@ -94,19 +94,19 @@ have a link to a display page for the user's drakeships.
 
 - [x] create `Post` model
 - build out API, Flux loop, and components for:
-  - [ ] Post CRUD
+  - [x] Post CRUD
   - [x] Posts go on a user's Timeline
     - [x] Build `PostIndex` and `PostIndexItem`
   - [ ] Posts optionally include a photo
-  - [ ] Use `PostIndex` to build a `Feed` component as well.
+  - [x] Use `PostIndex` to build a `Feed` component as well.
 
 ### Phase 5: Search (0.5 days)
 
 **Objective:** Users should be able to find each other through the search bar, which should display real-time search results.
 
-- [ ] Write a users_controller#index action that will find all users that match a given search.
-- [ ] Build out Flux loop for the `Search` component
-- [ ] Each `SearchIndexItem` should be selectable, and link to that user's profile page.
+- [x] Write a users_controller#index action that will find all users that match a given search.
+- [x] Build out Flux loop for the `Search` component
+- [x] Each `SearchIndexItem` should be selectable, and link to that user's profile page.
 
 ### Phase 6: Photo upload (1 day)
 **Objective:** Users can upload profile and cover photos through the browser.

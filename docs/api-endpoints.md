@@ -4,50 +4,47 @@
 
 ### Root
 
-- `GET /` - loads React web app
-
-### Users
-
-- `GET /users/new`
-- `POST /users`
-- `PATCH /users`
-
-### Session
-
-- `GET /session/new`
-- `POST /session`
-- `DELETE /session`
+- `GET /` - loads React web app. Shows either the signin page or the Home page with a Feed.
 
 ## JSON API
 
-### Notes
+### Users
+- `GET /api/users/:id`
+  - Profile info and Timeline
+- `POST api/users`
+- `PATCH /api/users/:id`
+  - Edits profile info, including the ability to upload profile and cover photos.
 
-- `GET /api/notes`
-  - Notes index/search
-  - accepts `tag_name` query param to list notes by tag
-  - accepts pagination params (if I get there)
-- `POST /api/notes`
-- `GET /api/notes/:id`
-- `PATCH /api/notes/:id`
-- `DELETE /api/notes/:id`
+### Session
 
-### Notebooks
+- `GET api/session`
+- `POST api/session`
+- `DELETE api/session`
 
-- `GET /api/notebooks`
-- `POST /api/notebooks`
-- `GET /api/notebooks/:id`
-- `PATCH /api/notebooks/:id`
-- `DELETE /api/notebooks/:id`
-- `GET /api/notebooks/:id/notes`
-  - index of all notes for a notebook
-  - accepts pagination params (if I get there)
+### Drakeships
+- `GET /api/users/:id/drakeships`
+- `POST /api/drakeships`
+  - Makes a friend request. Accepts query string to specify requester and recipient.
+- `PATCH /api/drakeships/:id`
+  - Accepts or rejects a request.
 
-### Tags
+### Posts
+- `GET /api/users/:id/posts/`
+  - Posts index
+  - Accepts query string to specify Feed or Timeline
+- `GET /api/users/:user_id/posts/:id`
+  - Includes comments, likes, and any photos in the post.
+- `POST /api/posts`
+  - Allows photos to be uploaded
+- `PATCH /api/posts/:id`
+  - Allows the author to edit the content.
+- `DELETE /api/posts/:id`
 
-- A note's tags will be included in the note show template
-- `GET /api/tags`
-  - includes query param for typeahead suggestions
-- `POST /api/notes/:note_id/tags`: add tag to note by name
-  - if note doesn't already exist, it will be created
-- `DELETE /api/notes/:note_id/tags/:tag_name`: remove tag from note by
-  name
+### Likes
+- `POST /api/likes`
+- `DELETE /api/likes`
+
+### Conversations
+- `GET /api/users/:user_id/conversations`
+- `GET /api/users/:user_id/conversations/:id`
+  - Includes recent messages in the conversation.

@@ -1,51 +1,74 @@
 # Schema Information
 
-## notes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+## users
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+username          | string    | not null, indexed, unique
+password_digest   | string    | not null
+session_token     | string    | not null, indexed, unique
+profile_photo_path| string    | not null
+cover_photo_path  | string    | not null
+birth_date        | date      |
+workplace         | string    |
 
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
+## drakeships
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+requester_id      | integer   | not null, foreign key (references users), indexed
+recipient_id      | integer   | not null, foreign key (references users), indexed
+relationship_type | string    |
+request_status    | string    | not null ("accepted", "rejected", or "pending")
 
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
+## posts
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+author_id     | integer   | not null, foreign key (references users), indexed
+postable_id   | integer   | not null, foreign key (polymorphic reference), indexed
+postable_type | string    | not null, polymorphic type (Post and User)
+body          | text      | not null
 
-## tags
+## photos
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
+post_id     | integer   | not null, foreign key (references posts), indexed
+path        | string    | not null
+
+## likes
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+post_id     | integer   | not null, foreign key (references posts), indexed
+liker_id    | string    | not null, foreign key (references users), indexed
 
 ## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+name          | string    | not null
+post_id       | integer   | not null, foreign key (references posts), indexed
+tagged_user_id| integer   | not null, foreign key (references users), indexed
 
-## users
+## conversations
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
-password_digest | string    | not null
-session_token   | string    | not null, indexed, unique
+
+## conversation_participants
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+conversation_id | integer   | not null, foreign key (references conversations), indexed
+user_id         | integer   | not null, foreign key (references users), indexed
+
+## messages
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+author_id       | integer   | not null, foreign key (references users), indexed
+conversation_id | integer   | not null, foreign key (references conversations), indexed
+body            | text      | not null
+photo_path      | string    |

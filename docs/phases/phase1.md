@@ -1,29 +1,38 @@
-# Phase 1: User Authentication, Note Model and JSON API
+# Phase 1: User Authentication, User Model and JSON API
 
 ## Rails
 ### Models
 * User
-* Note
 
 ### Controllers
-* UsersController (create, new)
-* SessionsController (create, new, destroy)
-* Api::NotesController (create, destroy, index, show, update)
+* Api::UsersController (create, show, update)
+* Api::SessionsController (create, destroy)
 
 ### Views
-* users/new.html.erb
-* session/new.html.erb
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
+* users/show.json.jbuilder
+* session/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
+* App
+  * SessionForm
+  * LandingPagePlaceholder
 
 ### Stores
+* SessionStore
+  * isUserLoggedIn
+  * getCurrentUser
 
 ### Actions
+* SessionActions
+  * receiveCurrentUser
+  * removeCurrentUser
 
 ### ApiUtil
+* SessionApiUtil
+  * login
+  * logout
+  * fetchCurrentUser
 
 ## Gems/Libraries
 * BCrypt (Gem)
