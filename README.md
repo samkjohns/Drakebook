@@ -4,7 +4,7 @@
 
 [heroku]: http://thedrakebook.herokuapp.com/
 [Screenshot][screenshot]
-[screenshot]: [docs/screenshot.png]
+[screenshot]: docs/screenshot.png
 
 Drakebook is a web application inspired by Facebook. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the front end.
 
