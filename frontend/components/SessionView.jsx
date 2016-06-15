@@ -44,7 +44,6 @@ var SessionView = module.exports = React.createClass({
     }
 
     if (this.state.signup.length > 0) {
-      console.log(this.state.signup[0]);
       signupErrorsModal = (
         <div className="errors-modal-pane signup-errors-pane">
           <ul className="signup-errors group">
