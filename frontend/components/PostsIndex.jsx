@@ -13,7 +13,6 @@ var PostsIndex = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
-    // console.log("PostsIndex (" + this.props.type + ") mounting");
     this.listenSwitch(this.props);
   },
 
@@ -46,8 +45,6 @@ var PostsIndex = module.exports = React.createClass({
     });
   },
 
-  // Temporarily using PostsStore
-  // while I check to see if I need a FeedStore at all
   listenToFeedStore: function () {
     this.postsListener = PostsStore.addListener(this.onPostsChange);
     PostsActions.fetchFeedForUser(SessionStore.currentUser().id);

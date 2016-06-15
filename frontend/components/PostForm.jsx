@@ -59,13 +59,3 @@ var PostForm = module.exports = React.createClass({
     );
   }
 });
-
-/*
-
-<div className="buttons-pane">
-  <button onClick={this.submit}>
-    {this.props.type === "edit" ? "Save" : "Post"}
-  </button>
-</div>
-
-*/

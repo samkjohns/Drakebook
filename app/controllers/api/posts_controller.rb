@@ -64,17 +64,6 @@ class Api::PostsController < ApplicationController
     end
   end
 
-    #
-    # @postable_id = 'Feed' # just so the view doesn't yell at us
-    #
-    # # might be an N+1 query; check to see if .includes is working ~line 68
-    # @posts = current_user.wall_posts
-    # drakeships.each do |drake|
-    #   @posts += drake.wall_posts.where("created_at > ?", 1.hour.ago)
-    # end
-    #
-    # # @posts.sort { |post1, post2| post1.created_at <=> post2.created_at }
-
   def feed
     drakeships = current_user.drakeships
     drake_ids = drakeships.map { |drake| drake.id }

@@ -12,7 +12,7 @@ var Home = module.exports = React.createClass({
   getStateFromStore: function () {
     window.Home = this;
     var component;
-    // debugger
+
     if (!SessionStore.currentUserHasBeenFetched()) {
       component = "None";
     } else if (SessionStore.isUserLoggedIn()) {
@@ -20,9 +20,8 @@ var Home = module.exports = React.createClass({
     } else {
       component = "SessionView";
     }
+
     return { component: component };
-    // return SessionStore.isUserLoggedIn() ?
-    // { component: "Feed" } : { component : "SessionView" };
   },
 
   onChange: function () {
@@ -31,9 +30,7 @@ var Home = module.exports = React.createClass({
 
   componentDidMount: function () {
     this.sessionListener = SessionStore.addListener(this.onChange);
-    SessionApiUtil.fetchCurrentUser(function () {
-      // console.log("current user fetched");
-    });
+    SessionApiUtil.fetchCurrentUser();
   },
 
   componentWillUnmount: function () {
@@ -49,14 +46,13 @@ var Home = module.exports = React.createClass({
   },
 
   render: function () {
-    // debugger
-    // component = this.state.component === "Feed" ? this.buildFeed() : this.buildSessionView();
-
     switch (this.state.component) {
       case "None":
-        return <div></div>;
+        return <div/>;
+
       case "Feed":
         return this.buildFeed();
+
       default:
         return this.buildSessionView();
     }

@@ -17,7 +17,6 @@ var CommentForm = module.exports = React.createClass({
 
     var postableId = this.props.post.id;
 
-    // debugger
     if (this.props.type === "edit"){
       PostsActions.updatePost({
         id: postableId,

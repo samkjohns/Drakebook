@@ -19,7 +19,6 @@ json.user do
   end
 
   json.pendingDrakeships(
-    # current_user.pending_drakeships
     Drakeship.where(
       "(requester_id = #{current_user.id} OR recipient_id = #{current_user.id}) AND request_status = 'pending'"
     )

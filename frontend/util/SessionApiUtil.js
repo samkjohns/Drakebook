@@ -54,7 +54,7 @@ var SessionApiUtil = module.exports = {
       type: 'GET',
 			url: '/api/session',
 			success: function (currentUser) {
-			  SessionApiUtil.registerUser(currentUser)
+			  SessionApiUtil.registerUser(currentUser);
         success && success();
 			},
 		});

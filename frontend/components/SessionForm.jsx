@@ -12,10 +12,6 @@ var SessionForm = module.exports = React.createClass({
     };
   },
 
-  // componentDidMount: function () {
-  //   SessionStore.addListener(this.redirectOnSubmit)
-  // },
-
   _info: function () {
     return {
       username: this.state.username,
@@ -64,29 +60,7 @@ var SessionForm = module.exports = React.createClass({
 
   render: function () {
     var form;
-    // if (this.props.formType === "login") {
-    //   form = (
-    //     <form>
-    //       <table>
-    //         <tbody>
-    //           <tr>
-    //             <td><label htmlFor="username">Username</label></td>
-    //             <td><label htmlFor="password">Password</label></td>
-    //           </tr>
-    //           <tr>
-    //             <td><input id="username" type="text" onChange={this.handleChange} /></td>
-    //             <td><input id="password" type="password" onChange={this.handleChange} /></td>
-    //             <td>{this.buttonElement()}</td>
-    //             <td>
-    //               < button onClick={this.handleGuestLogin} className="guest-login">
-    //                 Guest Login
-    //               </ button >
-    //             </td>
-    //           </tr>
-    //         </tbody>
-    //       </table>
-    //     </form>
-    //   );
+
     if (this.props.formType === "login") {
       form = (
         <form>

@@ -51,7 +51,6 @@ var Search = module.exports = React.createClass({
   },
 
   makeSearchQuery: function () {
-    // console.log("in makeSearchQuery; search is " + this.state.search);
     if (this.state.search) {
       SearchActions.searchUsers(this.state.search);
     } else {

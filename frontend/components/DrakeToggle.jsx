@@ -12,12 +12,10 @@ var DrakeToggle = module.exports = React.createClass({
 
   componentDidMount: function () {
     this.sessionListener = SessionStore.addListener(function () {
-      // console.log("Setting currentUser state");
       this.setState({ currentUser: SessionStore.currentUser() });
     }.bind(this));
 
     this.profileListener = ProfileStore.addListener(function () {
-      // console.log("Setting profile state");
       this.setState({ viewingUser: ProfileStore.profile() });
     }.bind(this));
   },
@@ -35,29 +33,6 @@ var DrakeToggle = module.exports = React.createClass({
       return drake.id === this.state.viewingUser.id;
     });
   },
-
-  // drakeshipStatus: function () {
-  //
-  //   var self = this;
-  //   // check if a list of drakes has the user being viewed
-  //   function listHasViewing(drakeList) {
-  //     if (!drakeList) { return false; }
-  //     return !!drakeList.find(function (drake) {
-  //       return drake.id === self.state.viewingUser.id;
-  //     });
-  //   }
-  //
-  //   var currentDrakes = this.state.currentUser.drakeships,
-  //       pendingDrakes = this.state.currentUser.pendingDrakeships;
-  //
-  //   if (listHasViewing(currentDrakes)) {
-  //     return "accepted";
-  //
-  //   } else if(listHasViewing(pendingDrakes)) {
-  //     return "pending";
-  //
-  //   } return "undraked";
-  // },
 
   drakeshipStatus: function () {
     var isAcceptedDrake = false;
@@ -90,7 +65,6 @@ var DrakeToggle = module.exports = React.createClass({
       DrakeshipActions.requestDrake(userId, drakeId);
 
     } else if (this.drakeshipStatus() === "pending received") {
-      // confirm
       DrakeshipActions.confirmDrake(
         this.state.currentUser,
         this.state.viewingUser
@@ -105,16 +79,21 @@ var DrakeToggle = module.exports = React.createClass({
     var currentUser = SessionStore.currentUser();
 
     if (!currentUser || currentUser.id === this.props.userId) {
-      return <div></div>;
+      return <div/>;
 
     } else {
       var message;
       var status = this.drakeshipStatus();
-      if (status === "accepted") { message = "Remove Drake"; }
-      else if (status === "pending sent") { message = "Cancel Drake Request"; }
-      else if (status === "pending received") { message = "Confirm Drake Request"; }
-      else { message = "Request Drake"; }
-      // console.log(status + " :: " + message);
+
+      if (status === "accepted") {
+        message = "Remove Drake";
+      } else if (status === "pending sent") {
+        message = "Cancel Drake Request";
+      } else if (status === "pending received") {
+        message = "Confirm Drake Request";
+      } else {
+        message = "Request Drake";
+      }
 
       return(
         <div className="drake-toggle-button" onClick={this.handleClick}>

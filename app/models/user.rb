@@ -94,19 +94,10 @@ class User < ActiveRecord::Base
     self.cover_photo_path ||= "drake.png"
   end
 
-  # Other
+
+  ### ----------------------------- CUSTOM SQL ----------------------------- ###
 
   def drakeships
-    # accepted_statuses ||= ['accepted', 'pending']
-    # accepted_statuses_filter = accepted_statuses.map do |status|
-    #   <<-SQL
-    #     (drakeship.request_status = ?)
-    #   SQL
-    # end.join(' OR ')
-
-    # accepted_statuses_filter = '(drakeships.request_status IN (' +
-    #   (statuses.map { |status| "'#{status}'" } .join(', ')) + ')'
-
     subquery = <<-SQL
       (SELECT (
          CASE WHEN drakeships.requester_id = #{self.id}
@@ -132,8 +123,6 @@ class User < ActiveRecord::Base
     SQL
 
     User.find_by_sql(query)
-
-    # User.joins("#{subquery} AS drakes ON users.id = drakes.id")
   end
 
   def pending_drakeships
@@ -164,35 +153,3 @@ class User < ActiveRecord::Base
     User.find_by_sql(query)
   end
 end
-
-# subquery = <<-SQL
-#   (SELECT (
-#      CASE WHEN requested.id = #{self.id}
-#      THEN received.id
-#      ELSE requested.id
-#      END
-#    ) AS id
-#   FROM
-#     users AS requested
-#   JOIN
-#     drakeships ON drakeships.requester_id = requested.id
-#   JOIN
-#     users AS received ON drakeships.recipient_id = received.id
-#   WHERE
-#     requested.id = #{self.id} OR received.id = #{self.id}
-#   )
-# SQL
-
-# SELECT (
-#   CASE WHEN requested.id = 1
-#   THEN received.*
-#   ELSE requested.*
-#   END
-# ) FROM
-#   users AS requested
-# JOIN
-#   drakeships ON drakeships.requester_id = requested.id
-# JOIN
-#   users AS received ON drakeships.recipient_id = received.id
-#   WHERE
-#     requested.id = 1 OR received.id = 1

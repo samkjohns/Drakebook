@@ -1,11 +1,8 @@
-// don't use this
-
-function _jsonify(data) {
-
-}
+// Not fully functional / tested. Using jQuery for now.
 
 var _createXHR = function (options) {
   var xhr = new XMLHttpRequest();
+
   xhr.open(options.type, options.url);
   xhr.onload = options.success.bind(xhr);
   xhr.setRequestHeader("Content-type", "application/json");

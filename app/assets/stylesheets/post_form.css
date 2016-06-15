@@ -8,15 +8,10 @@
   margin-bottom: 30px;
 }
 
-/*.post-form-pane { width: 489px; }
-.edit-form-pane { width: 467px; }*/
 .post-form-pane, .edit-form-pane {
   box-sizing: border-box;
   width: 100%;
 }
-
-/*.post-form { width: 449px; }
-.edit-form { width: 427px; }*/
 
 .post-form, .edit-form {
   position: relative;
@@ -32,8 +27,6 @@
   top: 10px;
   left: 10px;
   z-index: 2;
-  /*padding: 10px 10px 15px 10px;
-  border-bottom: 1px solid rgba(150, 150, 150, .4);*/
 }
 
 .post-form textarea,

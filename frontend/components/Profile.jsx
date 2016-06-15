@@ -39,10 +39,9 @@ var Profile = module.exports = React.createClass({
   },
 
   componentWillReceiveProps: function (newProps) {
-    // console.log("Profile receiving props");
     var oldUserId = this.getUserId(this.props);
     var newUserId = this.getUserId(newProps);
-    // debugger
+
     if (oldUserId !== newUserId) {
       ProfileActions.fetchProfileInfo(newUserId);
       PostsActions.fetchPostsForUser(newUserId);
@@ -62,14 +61,12 @@ var Profile = module.exports = React.createClass({
 
   linkTo: function (route) {
     this.context.router.push(route);
-    // this.setSelectedSubroute(route);
   },
 
   render: function () {
     var profileRoute = "/users/" + this.getUserId(this.props);
     var photos, drakes, about, timeline;
     var selectedRoute = this.props.location.pathname;
-    // console.log(selectedRoute);
 
     photos = selectedRoute.endsWith('photos') ?
       <a onClick={this.linkTo.bind(this, profileRoute + "/photos")}
@@ -94,7 +91,6 @@ var Profile = module.exports = React.createClass({
       <a onClick={this.linkTo.bind(this, profileRoute + "/about")}
         className="">About</a>
 
-        // timeline = this.isTimelineRoute(selectedRoute) ?
     var timeRegxp = /^\/users\/[0-9]+$/;
     timeline = timeRegxp.test(selectedRoute) ?
       <a onClick={this.linkTo.bind(this, profileRoute)}

@@ -131,7 +131,7 @@ var Post = module.exports = React.createClass({
       postBody = (
         < PostForm post={this.props.post} type={"edit"} finishEditing={this.finishEditing} />
       );
-      // $('body').addClass('modal');
+
     } else {
       postBody = (
         <p className="post-body">

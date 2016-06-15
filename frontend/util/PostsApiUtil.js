@@ -42,7 +42,6 @@ var PostsApiUtil = module.exports = {
   },
 
   fetchFeedForUser: function (id) {
-    // console.log("ApiUtil: fetching feed for user");
     $.ajax({
       type: "GET",
       url: "api/feed",

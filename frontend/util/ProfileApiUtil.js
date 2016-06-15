@@ -29,7 +29,6 @@ var ProfileApiUtil = module.exports = {
   },
 
   updateProfileInfo: function (profile) {
-    // debugger
     $.ajax({
       type: "PATCH",
       url: "api/users/" + profile.id,

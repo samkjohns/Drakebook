@@ -22,7 +22,6 @@
 .intro-blurb-header {
   display: block;
   margin: 20px;
-  /*padding-bottom: 20px;*/
 }
 
 .intro-blurb-header-left {
@@ -69,7 +68,6 @@
 .blurb-line-item {
   float: left;
   display: block;
-  /*margin-right: auto;*/
   padding: 5px 0px;
   font-size: 12px;
 }
@@ -117,9 +115,6 @@
 }
 
 .blurb-intro textarea {
-  /*position: absolute;*/
-  /*right: 20px;*/
   background: white;
-  /*width: 400px;*/
   border: 1px solid rgba(150, 150, 150, .4);
 }

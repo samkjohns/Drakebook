@@ -33,7 +33,7 @@ var IntroBlurb = module.exports = React.createClass({
   handleBlur: function (evnt) {
     evnt.preventDefault();
     var profile = this.state.profile;
-    // debugger
+
     profile[this.state.focused] = evnt.currentTarget.value;
     ProfileActions.updateProfileInfo(profile);
     this.setState({ focused: "" });
@@ -72,7 +72,7 @@ var IntroBlurb = module.exports = React.createClass({
     var lowered = phrase.split("_").map(function (word) {
       return word.toLowerCase();
     });
-    // lowered[0] = lowered[0].replace(/^[a-z]/, lowered[0][0].toUpperCase());
+
     return lowered.join(' ');
   },
 
@@ -84,7 +84,6 @@ var IntroBlurb = module.exports = React.createClass({
     var blurb = [];
 
     this._blurbKeys().map(function (key, idx) {
-      // console.log("building " + key);
       if (["id", "username", "intro", "drakeships", "pendingDrakeships"].indexOf(key) < 0) {
         var img, type;
         img = this.fieldTypes()[key].img || window.drakeImages.iconIntroGlobe;

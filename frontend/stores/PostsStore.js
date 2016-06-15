@@ -103,7 +103,6 @@ function removeComment (comment) {
 }
 
 PostsStore.__onDispatch = function (payload) {
-  // debugger
   switch (payload.actionType) {
       case PostConstants.POSTS_RECEIVED:
         _posts = payload.index;
@@ -130,5 +129,4 @@ PostsStore.__onDispatch = function (payload) {
     }
 };
 
-window.PostsStore = PostsStore;
 module.exports = PostsStore;

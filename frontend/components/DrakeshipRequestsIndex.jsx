@@ -20,8 +20,6 @@ var DrakeshipRequestsIndex = module.exports = React.createClass({
   },
 
   onChange: function () {
-    // pendingDrakeships is a list of users
-
     this.setState({
       potentialDrakes: this.getPotentialDrakes()
     });

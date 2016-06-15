@@ -1,6 +1,6 @@
 # Drakebook
 
-[Heroku link][heroku]
+[live][heroku]
 
 [heroku]: http://thedrakebook.herokuapp.com/
 

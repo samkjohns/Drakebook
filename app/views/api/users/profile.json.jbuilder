@@ -11,7 +11,6 @@ json.drakeships @user.drakeships do |drake|
 end
 
 json.pendingDrakeships(
-  # @user.received_drakeships.where(request_status: "pending").includes(:requester)
   Drakeship.where(
     "(requester_id = #{@user.id} OR recipient_id = #{@user.id}) AND request_status = 'pending'"
   )

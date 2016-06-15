@@ -72,8 +72,6 @@ class Api::DrakeshipsController < ApplicationController
   end
 
   def undrake
-    # @user = User.find(params[:user_id])
-    # @drake = User.find(params[:drake_id])
     @drakeship = Drakeship.find_by(
       requester_id: params[:user_id],
       recipient_id: params[:drake_id]

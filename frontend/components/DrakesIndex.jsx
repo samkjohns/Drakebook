@@ -17,7 +17,6 @@ var DrakesIndex = module.exports = React.createClass({
   },
 
   componentDidMount: function () {
-    // console.log("in component did mount");
     this.profileListener = ProfileStore.addListener(this.onChange);
   },
 
@@ -26,7 +25,6 @@ var DrakesIndex = module.exports = React.createClass({
   },
 
   render: function () {
-    // console.log("Drakes: " + this.state.drakes);
     return(
       <div className="drakes-index-pane group">
         <header className="drakes-index-header group">
