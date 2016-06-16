@@ -9,7 +9,8 @@ var React = require('react'),
 var Profile = module.exports = React.createClass({
   getInitialState: function () {
     return {
-      profile: {}
+      profile: {},
+      searchDisplayed: false
     };
   },
 
@@ -63,6 +64,21 @@ var Profile = module.exports = React.createClass({
     this.context.router.push(route);
   },
 
+  handleClick: function (evnt) {
+    if (
+      evnt.target.id !== "search-input" &&
+      !evnt.target.id.startsWith('search-results')
+    ) {
+      this.setState({ searchDisplayed: false });
+    }
+  },
+
+  display: function () {
+    if (!this.state.searchDisplayed) {
+      this.setState({ searchDisplayed: true });
+    }
+  },
+
   render: function () {
     var profileRoute = "/users/" + this.getUserId(this.props);
     var photos, drakes, about, timeline;
@@ -104,8 +120,8 @@ var Profile = module.exports = React.createClass({
     }
 
     return(
-      <div className="profile-parent-container group">
-        < Search />
+      <div className="profile-parent-container group" onClick={this.handleClick}>
+        < Search displayed={this.state.searchDisplayed} display={this.display} />
         <div className="profile-pane group">
           <div className="cover-photo-pane group" >
             <img src={window.drakeImages.default.cover} className="cover-photo" />
