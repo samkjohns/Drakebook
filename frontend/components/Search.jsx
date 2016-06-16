@@ -47,6 +47,7 @@ var Search = module.exports = React.createClass({
   },
 
   handleFocus: function () {
+    this.props.display();
     this.makeSearchQuery();
   },
 
@@ -60,7 +61,7 @@ var Search = module.exports = React.createClass({
 
   render: function () {
     var searchResults = <div/>;
-    if (this.state.search) {
+    if (this.state.search && this.props.displayed) {
       searchResults = < SearchResultsIndex results={this.state.results} />;
     }
 
@@ -71,6 +72,7 @@ var Search = module.exports = React.createClass({
             <img onClick={this.redirectToHome} src={window.drakeImages.iconDrakebook} />
             <input
               type="text"
+              id="search-input"
               onChange={this.handleSearchChange}
               onFocus={this.handleFocus}
               placeholder="Search Drakes"

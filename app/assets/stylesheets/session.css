@@ -102,14 +102,13 @@ input {
 }
 
 .propaganda {
-  margin-top: 60px;
+  margin-top: 30px;
   float: left;
   width: 550px;
 }
 
 .propaganda div {
   display: block;
-  margin-top: 10px;
 }
 
 .propaganda img,
@@ -121,9 +120,17 @@ input {
   margin-left: 0px;
 }
 
-.propaganda strong {
+.propaganda img {
+  width: 50px;
+  height: 50px;
+  margin-left: 60px;
+}
+
+.propaganda strong, .propaganda label {
   font-weight: bold;
-  margin-right: 15px;
+  margin-left: 35px;
+  letter-spacing: 1px;
+  color: #3b5998;
 }
 
 .propaganda p {

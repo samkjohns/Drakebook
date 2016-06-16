@@ -10,7 +10,13 @@ var SearchResultsIndex = module.exports = React.createClass({
     return(
       <div className="search-results-pane group">
         {this.props.results.map(function (result, idx) {
-          return <SearchResultsIndexItem result={result} key={idx} />;
+          return(
+            < SearchResultsIndexItem
+              result={result}
+              key={idx}
+              id={"search-results-"+idx}
+            />
+          );
         })}
       </div>
     );

@@ -67,21 +67,23 @@ var SessionView = module.exports = React.createClass({
 
         <div className="session-body">
           <div className="propaganda">
-            <h2>Connect with other drakes and the world around you on Drakebook.</h2>
             <div className="group">
-              <img src={window.drakeImages.iconPhotos}></img>
-              <strong>Share whats new</strong>
-              <p>from friends in News Feed.</p>
+              <a href="http://www.github.com/samkjohns">
+                <img src={window.drakeImages.iconGithub}></img>
+                <label>Github</label>
+              </a>
             </div>
             <div className="group">
-              <img src={window.drakeImages.iconTimeline}></img>
-              <strong>See photos and updates</strong>
-              <p>in your life on Timeline.</p>
+              <a href="https://www.linkedin.com/in/sam-johns-07249876">
+                <img src={window.drakeImages.iconLinkedin}></img>
+                <label>Linkedin</label>
+              </a>
             </div>
             <div className="search-fix group">
-              <img src={window.drakeImages.iconSearch}></img>
-              <strong className="search-fix">Find more</strong>
-              <p>of what you are looking for with Drakebook Search.</p>
+              <a href="#">
+                <img src={window.drakeImages.iconPersonal}></img>
+                <label>Portfolio</label>
+              </a>
             </div>
           </div>
           <div className="signup-wrapper">
