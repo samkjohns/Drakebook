@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Post.destroy_all
+
 usernames = [
   "Ambush Drake", "Drake the Dragon",
   "Drakonia", "Drake Drake", "Ekardrake", "Draken", "Honorable Drake", "Dishonorable Drake"
@@ -37,14 +39,16 @@ usernames.each_with_index do |username, i|
       randomWord = [
         "banana", "apple", "NOT THE BEEEES", "whatever", "IF YOU REALLY WANNA KNOW CLAP YOUR hands",
         "seed", "wat", "no", "yes", "how you doin", "fun!", "sennacy is great", "buses",
-        "mice are meat", 'tell no one', 'tell everyone', 'si se puede', 'thanks obama'
+        "mice are meat", 'tell no one', 'tell everyone', 'si se puede', 'thanks obama',
+        "mother's milk is merciful", 'bite me', "I'm a shaaaark", "thanks for your drakeship",
+        "social mediaing is gr8", "kthxbai"
       ].shuffle.first
 
       Post.create(
         author_id: user.id,
         postable_type: "User",
         postable_id: userWall.id,
-        body: "I am #{user.username} and I'm posting on #{userWall}'s wall. #{randomWord}"
+        body: "I am #{user.username} and I'm posting on #{userWall.username}'s wall. #{randomWord}"
       )
 
       # find a random Post and comment on it
@@ -53,7 +57,7 @@ usernames.each_with_index do |username, i|
         author_id: user.id,
         postable_type: "Post",
         postable_id: randomPost.id,
-        body: "Comment comment #{randomWord} commenting on the post!!!"
+        body: "#{randomWord} commenting on the post!!!"
       )
     end
   end

@@ -14,14 +14,13 @@
 
 .search-nav > div {
   position: relative;
-  display: block;
+  /*display: block;*/
   float: left;
-  margin-left: 20px;
   margin-top: 9px;
   margin-bottom: 9px;
-  width: 70%;
+  width: 60%;
   min-width: 400px;
-  overflow: visible;
+  /*overflow: visible;*/
 }
 
 .search-nav-left img {
@@ -48,6 +47,7 @@
 
 .search-icons {
   float: right;
+  min-width: 200px;
 }
 
 .search-icons > li {
