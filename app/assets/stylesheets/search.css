@@ -63,6 +63,7 @@
 .icon-items img {
   margin-top: 12px;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .search-icons > label {
@@ -87,4 +88,5 @@
 .current-user-thumb img {
   display: block;
   float: left;
+  cursor: pointer;
 }

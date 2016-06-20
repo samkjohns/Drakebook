@@ -86,8 +86,6 @@ var Search = module.exports = React.createClass({
               <label>{SessionStore.currentUser().username}</label>
             </li>
             <li className="icon-items"><DrakeshipRequestsIndex/></li>
-            <li className="icon-items"><img src={window.drakeImages.iconMessages} /></li>
-            <li className="icon-items"><img src={window.drakeImages.iconNotifications} /></li>
             <li><button onClick={SessionActions.logout}>Logout</button></li>
           </ul>
 
