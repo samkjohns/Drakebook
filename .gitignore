@@ -16,6 +16,7 @@ node_modules
 bundle.*
 sample_docs
 .byebug_history
+.DS_Store
 
 # Ignore application configuration
 /config/application.yml

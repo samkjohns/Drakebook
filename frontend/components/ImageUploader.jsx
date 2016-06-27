@@ -25,17 +25,15 @@ var ImageUploader = module.exports = React.createClass({
   },
 
   submit: function (evnt) {
-    // evnt.preventDefault();
+    evnt.preventDefault();
 
     var formData = new FormData();
     formData.append('user[profile_photo]', this.state.imageFile);
-    // debugger
     ProfileActions.updatePhoto(ProfileStore.profile().id, formData);
     this.props.close();
   },
 
   handleClick: function (evnt) {
-    // debugger
     if (evnt.target.id === "modal-div") {
       this.props.close();
     }
