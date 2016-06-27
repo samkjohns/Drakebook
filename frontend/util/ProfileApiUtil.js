@@ -36,5 +36,21 @@ var ProfileApiUtil = module.exports = {
       data: { user: ProfileApiUtil._filterFields(profile) },
       success: ServerActions.receiveProfile
     });
+  },
+
+  updatePhoto: function (id, formData, callback) {
+    // debugger
+    $.ajax({
+      type: "PATCH",
+      url: "api/users/" + id,
+      dataType: "json",
+      contentType: false,
+      processData: false,
+      data: formData,
+      success: function (profile) {
+        callback && callback(profile);
+        ServerActions.receiveProfile(profile);
+      }
+    });
   }
 };

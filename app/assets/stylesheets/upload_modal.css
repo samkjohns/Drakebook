@@ -1,0 +1,39 @@
+.file-upload-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .6);
+  z-index: 100;
+}
+
+#modal-form {
+  margin: 100px auto;
+  width: 400px;
+  height: 400px;
+  background: white;
+  border: 1px solid rgba(255, 255, 255, .4);
+  border-radius: 3px;
+}
+
+#modal-img {
+  margin: 50px 100px;
+  width: 200px;
+  height: 200px;
+}
+
+#modal-input {
+  width: 300px;
+  margin: 0 50px;
+  text-align: center;
+}
+
+#modal-button {
+  right: 0;
+  bottom: 0;
+  box-sizing: content-box;
+  padding: 5px;
+  background: blue;
+  color: white;
+}

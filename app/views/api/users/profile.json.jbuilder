@@ -4,10 +4,14 @@ json.extract!(
   :email, :phone_number,
   :hometown, :current_city,
   :high_school, :college, :college_major,
-  :intro, :name_pronunciation
+  :intro, :name_pronunciation,
 )
+
+json.profile_photo_url asset_path(@user.profile_photo.url)
+
 json.drakeships @user.drakeships do |drake|
-  json.extract! drake, :id, :username, :profile_photo_path
+  json.extract! drake, :id, :username
+  json.profile_photo_url asset_path(drake.profile_photo.url)
 end
 
 json.pendingDrakeships(
@@ -18,12 +22,12 @@ json.pendingDrakeships(
   json.requester do
     json.id drakeship.requester.id
     json.username drakeship.requester.username
-    json.profile_photo_path drakeship.requester.profile_photo_path
+    json.profile_photo_url asset_path(drakeship.requester.profile_photo.url)
   end
 
   json.recipient do
     json.id drakeship.recipient.id
     json.username drakeship.recipient.username
-    json.profile_photo_path drakeship.recipient.profile_photo_path
+    json.profile_photo_url asset_path(drakeship.recipient.profile_photo.url)
   end
 end

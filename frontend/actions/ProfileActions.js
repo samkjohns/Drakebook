@@ -9,5 +9,9 @@ var ProfileActions = module.exports = {
 
   updateProfileInfo: function (profile) {
     ProfileApiUtil.updateProfileInfo(profile);
+  },
+
+  updatePhoto: function (id, formData, callback) {
+    ProfileApiUtil.updatePhoto(id, formData, callback);
   }
 };

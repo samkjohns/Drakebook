@@ -4,13 +4,15 @@ var React = require('react'),
     ProfileStore = require("../stores/ProfileStore"),
     PostsActions = require('../actions/PostsActions'),
     Search = require('./Search'),
-    DrakeToggle = require('./DrakeToggle');
+    DrakeToggle = require('./DrakeToggle'),
+    ImageUploader = require('./ImageUploader');
 
 var Profile = module.exports = React.createClass({
   getInitialState: function () {
     return {
       profile: {},
-      searchDisplayed: false
+      searchDisplayed: false,
+      modal: <div/>
     };
   },
 
@@ -64,7 +66,7 @@ var Profile = module.exports = React.createClass({
     this.context.router.push(route);
   },
 
-  handleClick: function (evnt) {
+  handleClick: function (evnt) {    
     if (
       evnt.target.id !== "search-input" &&
       !evnt.target.id.startsWith('search-results')
@@ -73,10 +75,26 @@ var Profile = module.exports = React.createClass({
     }
   },
 
+  handleProfileUploadModal: function (evnt) {
+    evnt.preventDefault();
+    this.setState({
+      modal: <
+        ImageUploader
+        className="upload-avatar-modal"
+        type="profile"
+        close={this.closeModal}
+      />
+    });
+  },
+
   display: function () {
     if (!this.state.searchDisplayed) {
       this.setState({ searchDisplayed: true });
     }
+  },
+
+  closeModal: function () {
+    this.setState({ modal: <div/> });
   },
 
   render: function () {
@@ -128,7 +146,13 @@ var Profile = module.exports = React.createClass({
           </div>
 
           <div className="avatar-photo-pane group">
-            <img src={window.drakeImages.default.profile} className="avatar-photo" />
+            <img src={this.state.profile.profile_photo_url} className="avatar-photo" />
+            <button
+              onClick={this.handleProfileUploadModal}
+              className="upload-avatar-button"
+            >
+              <img src={window.drakeImages.iconCamera} />
+            </button>
           </div>
 
           <h2 className="username">{this.state.profile.username}</h2>
@@ -147,6 +171,8 @@ var Profile = module.exports = React.createClass({
         <div className="profile-children group">
           {this.props.children}
         </div>
+
+        {this.state.modal}
       </div>
     );
   }

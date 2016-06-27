@@ -44,7 +44,8 @@ class Api::UsersController < ApplicationController
       :email, :phone_number,
       :hometown, :current_city,
       :high_school, :college, :college_major,
-      :intro, :name_pronunciation
+      :intro, :name_pronunciation,
+      :profile_photo, :cover_photo
     )
   end
 

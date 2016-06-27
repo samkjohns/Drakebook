@@ -24,12 +24,15 @@
 #
 
 class User < ActiveRecord::Base
+  # paperclip validations
+  has_attached_file :profile_photo, default_url: "default-avatar.png"
+  validates_attachment_content_type :profile_photo, content_type: /\Aimage\/.*\Z/
+
+  # other validations
   validates(
     :username,
     :password_digest,
     :session_token,
-    :profile_photo_path,
-    :cover_photo_path,
     presence: true
   )
 
@@ -38,7 +41,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   after_initialize :ensure_session_token
-  after_initialize :ensure_photos
+  # after_initialize :ensure_photos
 
   has_many(
     :requested_drakeships,

@@ -16,3 +16,6 @@ node_modules
 bundle.*
 sample_docs
 .byebug_history
+
+# Ignore application configuration
+/config/application.yml
