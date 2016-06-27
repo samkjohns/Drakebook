@@ -66,7 +66,7 @@ var Profile = module.exports = React.createClass({
     this.context.router.push(route);
   },
 
-  handleClick: function (evnt) {    
+  handleClick: function (evnt) {
     if (
       evnt.target.id !== "search-input" &&
       !evnt.target.id.startsWith('search-results')
@@ -82,6 +82,18 @@ var Profile = module.exports = React.createClass({
         ImageUploader
         className="upload-avatar-modal"
         type="profile"
+        close={this.closeModal}
+      />
+    });
+  },
+
+  handleCoverUploadModal: function (evnt) {
+    evnt.preventDefault();
+    this.setState({
+      modal: <
+        ImageUploader
+        className="upload-cover-modal"
+        type="cover"
         close={this.closeModal}
       />
     });
@@ -133,8 +145,28 @@ var Profile = module.exports = React.createClass({
         className="">Timeline</a>
 
     var drakeToggle = <div/>;
+    var profileUploadButton = <div/>;
+    var coverUploadButton = <div/>;
     if (SessionStore.currentUser().id !== ProfileStore.profile().id) {
       drakeToggle = < DrakeToggle userId={this.props.userId} />;
+    } else {
+      profileUploadButton = (
+        <button
+          onClick={this.handleProfileUploadModal}
+          className="upload-avatar-button upload-button"
+        >
+          <img src={window.drakeImages.iconCamera} />
+        </button>
+      );
+
+      coverUploadButton = (
+        <button
+          onClick={this.handleCoverUploadModal}
+          className="upload-cover-button upload-button"
+        >
+          <img src={window.drakeImages.iconCamera} />
+        </button>
+      );
     }
 
     return(
@@ -142,17 +174,13 @@ var Profile = module.exports = React.createClass({
         < Search displayed={this.state.searchDisplayed} display={this.display} />
         <div className="profile-pane group">
           <div className="cover-photo-pane group" >
-            <img src={window.drakeImages.default.cover} className="cover-photo" />
+            <img src={this.state.profile.cover_photo_url} className="cover-photo" />
+            {coverUploadButton}
           </div>
 
           <div className="avatar-photo-pane group">
             <img src={this.state.profile.profile_photo_url} className="avatar-photo" />
-            <button
-              onClick={this.handleProfileUploadModal}
-              className="upload-avatar-button"
-            >
-              <img src={window.drakeImages.iconCamera} />
-            </button>
+            {profileUploadButton}
           </div>
 
           <h2 className="username">{this.state.profile.username}</h2>

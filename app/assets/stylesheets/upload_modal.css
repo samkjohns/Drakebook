@@ -9,6 +9,7 @@
 }
 
 #modal-form {
+  position: relative;
   margin: 100px auto;
   width: 400px;
   height: 400px;
@@ -24,16 +25,23 @@
 }
 
 #modal-input {
-  width: 300px;
-  margin: 0 50px;
+  width: 200px;
+  float: left;
+  bottom: 85px;
   text-align: center;
+  margin: 20px;
 }
 
 #modal-button {
-  right: 0;
-  bottom: 0;
+  margin: 20px;
+  float: right;
   box-sizing: content-box;
-  padding: 5px;
-  background: blue;
+  font-size: 12px;
+  padding: 5px 10px;
+  background: #5973a8;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-style: outset;
+  border-radius: 3px;
+  font-weight: bold;
   color: white;
 }

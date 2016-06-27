@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   has_attached_file :profile_photo, default_url: "default-avatar.png"
   validates_attachment_content_type :profile_photo, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :cover_photo, default_url: "default-cover.png"
+  validates_attachment_content_type :cover_photo, content_type: /\Aimage\/.*\Z/
+
   # other validations
   validates(
     :username,
@@ -38,10 +41,9 @@ class User < ActiveRecord::Base
 
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  attr_reader :password
-
+  
   after_initialize :ensure_session_token
-  # after_initialize :ensure_photos
+  attr_reader :password
 
   has_many(
     :requested_drakeships,
@@ -90,11 +92,6 @@ class User < ActiveRecord::Base
     self.session_token = self.class.generate_session_token
     self.save!
     self.session_token
-  end
-
-  def ensure_photos
-    self.profile_photo_path ||= "drake.png"
-    self.cover_photo_path ||= "drake.png"
   end
 
 

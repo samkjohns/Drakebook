@@ -13,5 +13,9 @@ var ProfileActions = module.exports = {
 
   updatePhoto: function (id, formData, callback) {
     ProfileApiUtil.updatePhoto(id, formData, callback);
+  },
+
+  updateCover: function (id, formData, callback) {
+    ProfileApiUtil.updateCover(id, formData, callback);
   }
 };

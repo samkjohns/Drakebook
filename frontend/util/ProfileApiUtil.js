@@ -39,7 +39,6 @@ var ProfileApiUtil = module.exports = {
   },
 
   updatePhoto: function (id, formData, callback) {
-    // debugger
     $.ajax({
       type: "PATCH",
       url: "api/users/" + id,

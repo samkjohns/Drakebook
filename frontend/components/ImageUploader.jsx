@@ -28,7 +28,8 @@ var ImageUploader = module.exports = React.createClass({
     evnt.preventDefault();
 
     var formData = new FormData();
-    formData.append('user[profile_photo]', this.state.imageFile);
+    formData.append('user[' + this.props.type + '_photo]', this.state.imageFile);
+
     ProfileActions.updatePhoto(ProfileStore.profile().id, formData);
     this.props.close();
   },
