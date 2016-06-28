@@ -15,9 +15,9 @@
   height: 315px;
   width: 815px;
   overflow: hidden;
-  border-left: 1px solid rgba(0, 0, 0, .4);
-  border-right: 1px solid rgba(0, 0, 0, .4);
-  border-bottom: 1px solid rgba(0, 0, 0, .4);
+  border-left: 1px solid rgba(150, 150, 150, .2);
+  border-right: 1px solid rgba(150, 150, 150, .2);
+  border-bottom: 1px solid rgba(150, 150, 150, .2);
 }
 
 .cover-photo-pane img {
@@ -28,7 +28,7 @@
 .avatar-photo-pane {
   position: absolute;
   display: block;
-  border: 1px solid rgba(50, 50, 50, .4);
+  border: 1px solid rgba(100, 100, 100, .4);
   border-radius: 3px;
 
   width: 160px;
