@@ -8,12 +8,12 @@ var CommentForm = module.exports = React.createClass({
       { body: this.props.post.body } : { body: "" };
   },
 
-  onChange: function (event) {
-    this.setState({ body: event.currentTarget.value });
+  onChange: function (evnt) {
+    this.setState({ body: evnt.currentTarget.value });
   },
 
-  submit: function (event) {
-    event.preventDefault();
+  submit: function (evnt) {
+    evnt.preventDefault();
 
     var postableId = this.props.post.id;
 
@@ -43,7 +43,7 @@ var CommentForm = module.exports = React.createClass({
     return(
       <div className={paneClass}>
         <form className={mainClass}>
-          <img src={window.drakeImages.default.profile} />
+          <img src={SessionStore.currentUser().profile_photo_url} />
           <textarea onChange={this.onChange} value={this.state.body} />
           <div className="comment-buttons-pane group">
             <button onClick={this.submit}>
