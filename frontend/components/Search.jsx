@@ -82,7 +82,7 @@ var Search = module.exports = React.createClass({
 
           <ul className="search-icons group">
             <li className="current-user-thumb group" onClick={this.redirectToProfile}>
-              <img src={window.drakeImages.default.profile}/>
+              <img src={SessionStore.currentUser().profile_photo_url}/>
               <label>{SessionStore.currentUser().username}</label>
             </li>
             <li className="icon-items"><DrakeshipRequestsIndex/></li>

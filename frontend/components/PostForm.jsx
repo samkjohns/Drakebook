@@ -11,12 +11,12 @@ var PostForm = module.exports = React.createClass({
       { body: this.props.post.body } : { body: "" };
   },
 
-  onChange: function (event) {
-    this.setState({ body: event.currentTarget.value });
+  onChange: function (evnt) {
+    this.setState({ body: evnt.currentTarget.value });
   },
 
-  submit: function (event) {
-    event.preventDefault();
+  submit: function (evnt) {
+    evnt.preventDefault();
 
     var postableId = this.props.location === "Feed" ?
       SessionStore.currentUser().id : ProfileStore.profile().id;
@@ -47,7 +47,7 @@ var PostForm = module.exports = React.createClass({
     return(
       <div className={paneClass}>
         <form className={mainClass}>
-          <img src={window.drakeImages.default.profile} />
+          <img src={SessionStore.currentUser().profile_photo_url} />
           <textarea onChange={this.onChange} rows={3} value={this.state.body} />
           <div className="buttons-pane">
             <button onClick={this.submit}>
