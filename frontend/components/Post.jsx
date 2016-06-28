@@ -37,17 +37,17 @@ var Post = module.exports = React.createClass({
     this.context.router.push("/users/" + this.props.post.postable.id);
   },
 
-  handleDelete: function (post, event) {
-    event.preventDefault();
+  handleDelete: function (post, evnt) {
+    evnt.preventDefault();
     PostsActions.removePost(post.id);
   },
 
-  handleEdit: function (event) {
-    event.preventDefault();
+  handleEdit: function (evnt) {
+    evnt.preventDefault();
     this.setState({ editing: true });
   },
 
-  handleCommentEdit: function (comment, event) {
+  handleCommentEdit: function (comment, evnt) {
     this.setState({ commentEditing: comment });
   },
 
@@ -95,7 +95,7 @@ var Post = module.exports = React.createClass({
 
     return(
       <li key={key} className="comment-pane group">
-        <img src={window.drakeImages.default.profile} />
+        <img src={comment.author.profile_photo_url} />
         <div className="comment-box">
           {postBody}
         </div>
@@ -156,7 +156,7 @@ var Post = module.exports = React.createClass({
       <li className="post-pane group">
         <section className="post-content-pane group">
           <section className="post-author group">
-            <img src={window.drakeImages.default.profile} onClick={this.goToProfile} />
+            <img src={this.props.post.author.profile_photo_url} onClick={this.goToProfile} />
             <a onClick={this.goToProfile} className="post-author">
               {this.props.post.author.username}
             </a>

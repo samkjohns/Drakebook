@@ -4,6 +4,7 @@ json.array! @posts do |post|
 
   json.author do
     json.username post.author.username
+    json.profile_photo_url asset_path(post.author.profile_photo.url)
     json.authorId post.author.id
   end
 
@@ -22,6 +23,7 @@ json.array! @posts do |post|
 
     json.author do
       json.username comment.author.username
+      json.profile_photo_url asset_path(comment.author.profile_photo.url)
       json.authorId comment.author.id
     end
 
