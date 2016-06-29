@@ -60,6 +60,7 @@ var DrakeToggle = module.exports = React.createClass({
   handleClick: function () {
     var userId = this.state.currentUser.id;
     var drakeId = this.state.viewingUser.id;
+    debugger
 
     if (this.drakeshipStatus() === "undraked") {
       DrakeshipActions.requestDrake(userId, drakeId);

@@ -3,6 +3,7 @@ var ServerActions = require('../actions/ServerActions');
 var DrakeshipApiUtil = module.exports = {
 
   undrake: function (userId, drakeId) {
+    debugger
     var url = "api/drakeships/" + userId + "/undrake/" + drakeId
 
     $.ajax({
