@@ -13,7 +13,7 @@ var SearchResultIndexItem = module.exports = React.createClass({
   render: function () {
     return(
       <div className="search-result-item-pane group" onClick={this.goToProfile}>
-        <img src={window.drakeImages.default.profile} />
+        <img src={this.props.result.profile_photo_url} />
         <li className="search-result-username">
           {this.props.result.username}
         </li>

@@ -152,13 +152,15 @@ var Post = module.exports = React.createClass({
       );
     }
 
+    var author = this.props.post.author;
+
     return(
       <li className="post-pane group">
         <section className="post-content-pane group">
           <section className="post-author group">
-            <img src={this.props.post.author.profile_photo_url} onClick={this.goToProfile} />
+            <img src={author.profile_photo_url} onClick={this.goToProfile} id={author.username + "-img"} />
             <a onClick={this.goToProfile} className="post-author">
-              {this.props.post.author.username}
+              {author.username}
             </a>
             {wallArrow}
             <div className="modify-post-buttons group">
