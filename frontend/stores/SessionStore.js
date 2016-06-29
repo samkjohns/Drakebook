@@ -70,6 +70,12 @@ SessionStore.isUserLoggedIn = function () {
   return !$.isEmptyObject(_currentUser);
 };
 
+SessionStore.isDrakesWith = function (profile) {
+  return _currentUser.drakeships.find(function (drake) {
+    return drake.id === profile.id;
+  });
+};
+
 window.SessionStore = SessionStore;
 
 module.exports = SessionStore;

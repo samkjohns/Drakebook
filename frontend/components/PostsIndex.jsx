@@ -51,9 +51,19 @@ var PostsIndex = module.exports = React.createClass({
   },
 
   render: function () {
+    var form = <div/>;
+    // console.log(this.props.type);
+    if (
+      this.props.type === "Feed" ||
+      SessionStore.currentUser().id === ProfileStore.profile().id ||
+      SessionStore.isDrakesWith(ProfileStore.profile())
+    ) {
+      form = < PostForm type={"post"} location={this.props.type} />;
+    }
+
     return(
       <div className="posts-index-pane">
-        < PostForm type={"post"} location={this.props.type} />
+        {form}
         <ul className="posts-index group">
           {this.state.posts.map(function (post, key) {
             return(

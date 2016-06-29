@@ -13,7 +13,7 @@ json.cover_photo_url asset_path(@user.cover_photo.url)
 json.drakeships @user.drakeships do |drake|
   json.extract! drake, :id, :username
   json.profile_photo_url asset_path(drake.profile_photo.url)
-  json.cover_photo_url asset_path(drake.cover_photo.url)
+  # json.cover_photo_url asset_path(drake.cover_photo.url)
 end
 
 json.pendingDrakeships(
@@ -28,13 +28,13 @@ json.pendingDrakeships(
     json.id requester.id
     json.username requester.username
     json.profile_photo_url asset_path(requester.profile_photo.url)
-    json.cover_photo_url asset_path(requester.cover_photo.url)
+    # json.cover_photo_url asset_path(requester.cover_photo.url)
   end
 
   json.recipient do
     json.id recipient.id
     json.username recipient.username
     json.profile_photo_url asset_path(recipient.profile_photo.url)
-    json.cover_photo_url asset_path(recipient.cover_photo.url)
+    # json.cover_photo_url asset_path(recipient.cover_photo.url)
   end
 end
