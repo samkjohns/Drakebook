@@ -32,7 +32,10 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    @users = User.where("username ~ ?", search_params[:query]).limit(10)
+    @users = User.where(
+      "LOWER(username) ~ ?",
+      search_params[:query].downcase
+    ).limit(10)
     render :search
   end
 
