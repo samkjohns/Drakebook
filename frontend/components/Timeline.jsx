@@ -38,7 +38,7 @@ var Timeline = module.exports = React.createClass({
       <div className="timeline-pane group">
         <section className="left-timeline-pane group">
           <label className="timeline-friends-label">
-            Friends
+            Drakes
           </label>
           <ul className="timeline-friends-index">
             {displayedDrakes.map(function (drake, idx) {
