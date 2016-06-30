@@ -14,9 +14,19 @@
   display: block;
   float: left;
   width: 265px;
-  padding: 5px;
+  padding: 10px 0px 0px 5px;
   border: 1px solid rgba(150, 150, 150, .4);
   background: white;
+}
+
+.timeline-friends-label {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.timeline-friends-index {
+  margin-top: 5px;
 }
 
 .timeline-friends-index li {
