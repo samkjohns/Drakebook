@@ -20,7 +20,7 @@ var DrakeshipRequestsIndexItem = module.exports = React.createClass({
     return(
       <div className="drakeship-request-item group">
         <div className="drakeship-requester">
-          <img src={window.drakeImages.default.profile} />
+          <img src={this.props.potentialDrake.profile_photo_url} />
           <a onClick={this.goToProfile}>{this.props.potentialDrake.username}</a>
         </div>
 

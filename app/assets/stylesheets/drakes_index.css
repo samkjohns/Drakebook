@@ -55,6 +55,8 @@
   margin-left: 10px;
   line-height: 100px;
   vertical-align: middle;
+  max-width: 150px;
+  overflow: scroll;
 }
 
 .drakes-item-right {

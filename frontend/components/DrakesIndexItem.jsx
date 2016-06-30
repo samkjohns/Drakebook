@@ -25,11 +25,18 @@ var DrakesIndexItem = module.exports = React.createClass({
       );
     }
 
+    var username = this.props.user.username;
+    if (username.length > 10) {
+      username = username.substr(0, 10) + '...';
+    }
+
     return(
       <div className="drakes-item-pane group">
         <div className="drakes-item-left group">
-          <img src={window.drakeImages.default.profile} />
-          <a onClick={this.goToProfile}>{this.props.user.username}</a>
+          <img src={this.props.user.profile_photo_url} />
+          <a onClick={this.goToProfile}>
+            {username}
+          </a>
         </div>
 
         {undrake}
